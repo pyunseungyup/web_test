@@ -1,0 +1,43 @@
+#wrap { width : 960px;
+		margin: 0  auto;
+		padding: 0 ; 
+		background-color: #888; 
+		overflow: auto;
+		  }
+
+#top {width : 960px;
+ 	  position:fixed;
+ 	  left:0;
+	  top:0;
+	  background-color: #123; 
+	  overflow: auto;
+	   }
+
+#top-left { float : left;
+	width :300px;
+	height: 30px;
+	margin: 10px 0 0 30px;
+	background-color: #152;
+	overflow: auto;
+ }
+
+#top-right {
+	width :300px;
+	margin: 0 0 0 660px;
+	background-color:#331;
+	overflow: auto;
+}
+
+#contents-top-left {
+	width : 400px;
+	background-color:#551;
+	float : left;
+	overflow: auto;
+	
+}
+
+#contents-top-right{
+	background-color:#258;
+	margin: 0 0 0 550px auto;
+	overflow: auto;
+}
