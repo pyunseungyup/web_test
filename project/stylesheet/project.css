@@ -1,0 +1,106 @@
+#wrap { width : 960px;
+		margin: 0 auto;
+		padding: 0 ; 
+		background-color: #888; 
+		overflow: auto;
+		  }
+
+#top {width :960px;
+ 	  position:fixed;
+	  top:0px;
+	  background-color: #123; 
+	  overflow: auto;
+
+	 }
+
+#top-fixed{
+	position:fixed;
+	top:0 ;
+	left: 0;
+	display: block;
+	background-color: #cda;
+}
+
+#top-left { 
+	float : left;
+	width :300px;
+	height: 30px;
+	margin: 10px 30px;
+	padding: 0 200px;
+	background-color: #152;
+	overflow: auto;
+ }
+
+#top-right {
+	width :300px;
+	margin: 0 0 0 950px;
+	background-color:#331;
+	overflow: auto;
+}
+#contents-top{
+	margin: 50px 0 auto;
+	text-align: center;
+	overflow: auto;
+
+}
+#contents-top-left {
+	width : 400px;
+	padding-top: 50px;
+	background-color:#551;
+	float : left;
+	overflow: auto;
+	
+}
+
+
+form.navbar-formpull-left {
+
+	padding: 50px 0 0 30px;
+	overflow: auto;
+
+}
+
+
+#contents-top-right{
+	width: 560px;
+	background-color:#258;
+	margin: 0 auto;
+	overflow: auto;
+}
+
+#contents-body-top{
+	width : 960px;
+	height: 60px;
+	background-color:#712;
+	padding: 50px 0 0 0;
+	text-align: left;
+	overflow: auto;
+}
+
+#contents-body{
+	width: 960px;
+	height : 500px;
+	margin: 0 auto;
+
+	background-color: #a17;
+}
+#contents-body > ul  li {
+	list-style: none;
+}
+
+#contents-body-down {
+	width: 960px;
+	height : 300px;
+	margin: 0 auto;
+
+	background-color: #153;
+
+}
+
+#contents-body-down > ul  li {
+	list-style: none;
+}
+
+
+#footer {background-color:#abc; color:#888; text-align:center; padding: 20px;}
+#footer a{color:#888;}
