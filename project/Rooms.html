@@ -1,0 +1,142 @@
+<!DOCTIPE heml>
+<html lang = "ko">
+
+<head>
+<meta charset = "utf-8">
+<title>
+"Project - exbnb"
+</title>
+<!--
+<link rel="stylesheet" href= "./stylesheet/project.css" type = "text/css" >
+<link rel="stylesheet" href="http://twitter.github.com/bootstrap/1.4.0/bootstrap.min.css">
+-->
+<link rel="stylesheet" href= "./stylesheet/Room.css" type = "text/css" >
+</head>
+
+<body>
+
+  <h2>방 올리기</h2>
+
+<form accept-charset="UTF-8" action="#" method="post">
+
+  <fieldset>
+    
+    <div class="main_title"><h3 style="padding-left: 20px">방 기본정보</h3></div>
+   
+
+    <div class = "basic_information">
+
+        <label>인근 대학<strong style="color:red"> *</strong></label>
+          
+          <select name="room">
+            <option value=""></option>
+            <option value="Seoul_Un">서울대</option>
+            <option value="Yonsei_Un">연세대</option>
+            <option value="Myongji_Un">명지대</option>
+            <option value="other">등등 더추가</option>
+          </select>
+    </div>
+
+    <div class = "basic_information">
+    <label>거리(도보 기준) <strong style="color:red"> *</strong></label>
+
+        <input type="radio" name="location" value="one">5분 이내
+        <input type="radio" name="location" value="two">10분 이내
+        <input type="radio" name="location" value="three">20분 이내
+        <input type="radio" name="location" value="four">30분 이내
+        <input type="radio" name="location" value="five">30분 이상 
+    </div>
+    
+        <label>객실 타입<strong style="color:red"> *</strong></label>
+         
+          <select name="room">
+          <option value=""></option>
+          <option value="rented room">자취</option>
+          <option value="boarding house">하숙</option>
+          <option value="other">기타</option>
+          </select>
+    </div>
+    <div class = "basic_information">
+        <label>객실 종류<strong style="color:red"> *</strong></label>
+       
+          
+          <select name="room">
+            <option value=""></option>
+            <option value="officetel">오피스텔</option>
+            <option value="one_room">원룸</option>
+            <option value="two_room">투룸</option>
+          </select>
+    </div>
+    </div>
+
+    
+    <div class="main_title"><h3 style="padding-left: 20px">방 상세정보</h3></div>
+   
+      <div>
+        <label>방 이름<strong style="color:red"> *</strong></label>
+        <input type ="text" placeholder="멋진 방이름을 지어주세요" >
+
+      </div>
+
+      <div>
+        <label>주소<strong style="color:red"> *</strong></label>
+      <input type ="text" placeholder="우편번호" size ="4" > - <input type ="text" placeholder="우편번호" size ="4" > <input type ="text" placeholder="나머지 주소" >
+      </div>
+
+      <div>
+        <label>시설</label>
+
+        <input type="checkbox" name="room_facilities" value="tv"> TV
+        <input type="checkbox" name="room_facilities" value="internet"> 인터넷
+        <input type="checkbox" name="room_facilities" value="gas range"> 가스렌지
+        <input type="checkbox" name="room_facilities" value="air_conditioner"> 에어컨
+        <input type="checkbox" name="room_facilities" value="refrigerator">냉장고
+        <input type="checkbox" name="room_facilities" value="washing_machine"> 세탁기
+        <input type="checkbox" name="room_facilities" value="drying_rack"> 건조대
+        <input type="checkbox" name="room_facilities" value="parking"> 주차장
+        <input type="checkbox" name="room_facilities" value="bathtub"> 욕조
+      </div>
+
+      <div>
+        <label>소개</label>
+        <div>
+        <textarea   rows="5" placeholder = "방을 멋지게 소개 해주세요.">
+        </textarea>
+        </div>
+      </div>
+
+      <div>
+        <label>사진 올리기</label>
+        
+      </div>
+  
+
+   
+    
+    <div class="main_title"><h3 style="padding-left: 20px">판매자 정보</h3></div>
+  
+    <div class = "Seller_Impormation">
+    <label>이름<strong style="color:red"> *</strong></label>
+    <input type ="text" >
+    </div>
+
+    <div class = "Seller_Impormation">
+    <label>전화 번호<strong style="color:red"> *</strong></label> 
+    <select name="PhoneNumber">
+          <option value="">010</option>
+          <option value="">011</option>
+          <option value="">019</option>
+          <option value="">016</option>
+          </select>
+          <input type ="text" size = "5"> - <input type ="text" size = "5"> 
+     </div>     
+
+  <input type="submit"  value="방 등록 하기">
+  </fieldset>
+
+</form>
+ 
+</body>
+
+
+</html>
