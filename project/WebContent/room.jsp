@@ -138,16 +138,11 @@
 				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="room_facilities" value="bathtub">욕조</span></td>				
 				</tr>
 				</table>
-				
-				
-				
-				
-				
-				
-				
-
-				
-				
+      </div>
+      
+       <div class = "basic_information">
+        <label>사진 올리기</label>
+        <input type = "File">
       </div>
 
       <div class = "basic_information">
@@ -158,31 +153,9 @@
         </div>
       </div>
 
-      <div class = "basic_information">
-        <label>사진 올리기</label>
-        <input type = "File">
-      </div>
+     
   
 
-   
-    
-    <div class="main_title"><h3 style="padding-left: 20px">판매자 정보</h3></div>
-  
-    <div class = "Seller_Impormation">
-    <label>이름<strong style="color:red"> *</strong></label>
-    <input type ="text" >
-    </div>
-
-    <div class = "Seller_Impormation">
-    <label>전화 번호<strong style="color:red"> *</strong></label> 
-    <select name="PhoneNumber">
-          <option value="">010</option>
-          <option value="">011</option>
-          <option value="">019</option>
-          <option value="">016</option>
-          </select>
-          <input type ="text" size = "5"> - <input type ="text" size = "5"> 
-     </div>     
 
  	 <input type="submit"  value="방 등록 하기">
   </fieldset>
@@ -190,9 +163,7 @@
 	</form>
    
 		
-      <div class="footer">
-        <p>&copy; C반 5조 프로젝트 2012</p>
-      </div>
+      <jsp:include page="share/footer.jsp"></jsp:include>
 
     </div> <!-- /container -->
 

@@ -103,7 +103,7 @@
         </div>
       </div>
 
-      <hr>
+     
 
       
 		<jsp:include page="share/footer.jsp"></jsp:include>
