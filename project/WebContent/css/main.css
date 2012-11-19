@@ -1,0 +1,56 @@
+@CHARSET "UTF-8";
+
+  body {
+        padding-top: 20px;
+        padding-bottom: 40px;
+      }
+
+      /* Custom container */
+      .container-narrow {
+        margin: 0 auto;
+        max-width: 700px;
+      }
+      .container-narrow > hr {
+        margin: 30px 0;
+      }
+
+      /* Main marketing message and sign up button */
+      .jumbotron {
+        margin: 60px 0;
+        text-align: center;
+      }
+      .jumbotron h1 {
+        font-size: 72px;
+        line-height: 1;
+      }
+      .jumbotron .btn {
+        font-size: 21px;
+        
+      }
+
+      /* Supporting marketing content */
+      .marketing {
+        margin: 60px 0;
+      }
+      .marketing p + h4 {
+        margin-top: 28px;
+      }
+      .btn-group{
+        margin: 30px 0;
+      }
+      .btn-group #select{
+        width:25%;
+      }
+      
+div.masthead{
+		width : 700px;
+		height: 40px;
+		position:fixed;
+	  top:0px;
+	  background-color :#E1E1E1;
+	  z-index : 999999999;
+}
+
+div.footer{
+	margin : 50px 0 0 0;
+}
