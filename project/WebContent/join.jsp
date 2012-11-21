@@ -26,7 +26,11 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
- 
+ 		
+ 		<script src="js/jquery-1.8.2.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
+	  
+	  
 <title>Project Main</title>
 </head>  
 
@@ -38,7 +42,7 @@
   	
  	<jsp:include page="share/header.jsp"></jsp:include>
   	
-  <div class="row-fluid marketing">
+  <div class="jumbotron">
   
    <h2>회  원  가  입</h2>
 
@@ -48,7 +52,7 @@
   
     <div class = "basic_information">
       <form action="#" method="post">
-      <table border="1">
+      <table class = "body_imfor" border="0">
         <tr>
           <th>e-mail</th>
           <td colspan="3">
@@ -85,7 +89,7 @@
   </fieldset> 
 </form>
    
-		
+		</div>
      <jsp:include page="share/footer.jsp"></jsp:include>
     
     </div> <!-- /container -->

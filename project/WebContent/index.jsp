@@ -28,7 +28,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
 
-
+		<script src="js/jquery-1.8.2.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
 </head>  
 
   <body>
@@ -125,6 +126,11 @@
     <script src="../assets/js/bootstrap-collapse.js"></script>
     <script src="../assets/js/bootstrap-carousel.js"></script>
     <script src="../assets/js/bootstrap-typeahead.js"></script>
+   
 
+ 
+    
   </body>
+  
+ 
 </html>

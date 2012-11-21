@@ -27,7 +27,10 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
- 
+ 	
+ 	
+ 		<script src="js/jquery-1.8.2.min.js"></script>
+	  <script src="js/bootstrap.min.js"></script>
 <title>Project Main</title>
 </head>  
 
@@ -39,10 +42,13 @@
   	
   	<jsp:include page="share/header.jsp"></jsp:include>
   	
-  	
-  <div class="row-fluid marketing">
-  
-  <h1>방 올리기</h1>
+
+<% if (session.getAttribute("userId") == null) { %>
+		
+		 <jsp:forward page="login.jsp"></jsp:forward>
+
+<% } else { %>
+ <h1>방 올리기</h1>
       
 
 	<form accept-charset="UTF-8" action="#" method="post">
@@ -161,6 +167,9 @@
   </fieldset>
 
 	</form>
+<% } %>
+  
+  
    
 		
       <jsp:include page="share/footer.jsp"></jsp:include>

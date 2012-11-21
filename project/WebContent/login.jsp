@@ -27,38 +27,68 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
  
+ 	
 <title>Project Main</title>
 </head>  
 
   <body>
+
+  
   
   <div class="container-narrow">
   
   
   	
  	<jsp:include page="share/header.jsp"></jsp:include>
+  
+ 
+
   	
-  <div class="row-fluid marketing">
+  <div class="jumbotron">
+  
+    
+ <%
+  if (request.getMethod() == "POST") {
+	  String id = request.getParameter("email");
+	  String pwd = request.getParameter("pwd");
+	  
+	  if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
+		  %>
+		         아이디와 비밀번호를 입력하세요.
+		  <%
+	  } else if (id.equals("admin") && pwd.equals("1234")) {
+		  // 로그인 성공
+	      session.setAttribute("userId", "admin");
+	      session.setAttribute("userName", "정경락");	
+	      response.sendRedirect("room.jsp");	      
+		 } else {
+		  %>
+					   아이디나 비밀번호가 잘못되었습니다.
+		  <%
+	  }
+	  
+  }
+  %> 
   
   <h2>로  그  인</h2>
+<fieldset>
+<form accept-charset="UTF-8" method="post">
 
-<form accept-charset="UTF-8" action="#" method="post">
-
-  <fieldset>
+  
     
-    <div class = "basic_information">
-      <form action="#" method="post">
-      <table border="1">
+    
+     
+      <table class = "body_imfor" border="0">
         <tr>
           <th>e-mail</th>
           <td colspan="3">
-            <input type="text"/>
+            <input type="text" name="email">
           </td>
         </tr>
         <tr>
           <th>비밀번호</th>
           <td>
-            <input type="password"/>
+            <input type="password" name="pwd">
           </td>
         </tr>
 
@@ -66,26 +96,18 @@
         </table>
         
           <span> <input type = "checkbox" name = "email_check">e-mail 저장
-          <a href = "" >비밀번호 찾기</a><br/> </span>
+         
     	<input type="submit"  value="로그인" />
-    </form>
-        
-    </div>
-    
-        
+
  
-    </div>
-
-    
-   
-  </fieldset>
-
-</form>
-   
+    </form>
+    </fieldset>
+         <a href = "" >비밀번호 찾기</a><br/> </span>
+    </div> 
 		
      <jsp:include page="share/footer.jsp"></jsp:include>
     
-    </div> <!-- /container -->
+   <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->

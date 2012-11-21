@@ -6,9 +6,14 @@
           <li><a href="room.jsp">방올리기</a></li>
           <li><a href="join.jsp">회원가입</a></li>
           <li><a href="login.jsp">login</a></li>
-          <li><a href="#">logout</a></li>
+          <li><a href="#" data-action="logout" >logout</a></li>
+          
           <li><a href="#">my page</a>
         </ul>
-        <h3 class="muted"><a href = "index.jsp" >BnB UN</a></h3>
-       
+        <h3 class="muted"><a href = "index.jsp" >BnB UN</a></h3>     
  </div>
+ 
+ 
+
+ 
+ 
