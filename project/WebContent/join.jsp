@@ -1,7 +1,62 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+    pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
+		import="org.apache.commons.lang3.StringUtils"%>
+<%
+	String errorMsg = null;
+
+	String actionUrl;
+	// DB 접속을 위한 준비
+	Connection conn = null;
+	PreparedStatement stmt = null;
+	ResultSet rs = null;
+	
+	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
+	String dbUser = "bnb";
+	String dbPassword = "bnbun";
+	
+	// 사용자 정보를 위한 변수 초기화
+	String userid = "";
+	String pwd = "";
+	String name = "";
+	String phonenumber = "";
+	
+	// Request로 ID가 있는지 확인
+	int id = 0;
+	try {
+		id = Integer.parseInt(request.getParameter("id"));
+	} catch (Exception e) {}
+
+	if (id > 0) {
+		// Request에 id가 있으면 update모드라 가정
+		actionUrl = "update.jsp";
+		try {
+		  Class.forName("com.mysql.jdbc.Driver");
+
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+			stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
+			stmt.setInt(1, id);
+	 		rs = stmt.executeQuery();
+			
+			if (rs.next()) {
+				userid = rs.getString("userid");
+				pwd = rs.getString("pwd");
+				name = rs.getString("name");
+				phonenumber = rs.getString("phonenumber");
+			}
+		}catch (SQLException e) {
+			errorMsg = "SQL 에러: " + e.getMessage();
+		} finally {
+			// 무슨 일이 있어도 리소스를 제대로 종료
+			if (rs != null) try{rs.close();} catch(SQLException e) {}
+			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
+			if (conn != null) try{conn.close();} catch(SQLException e) {}
+		}
+	} else {
+		actionUrl = "register.jsp";
+	}
+%>
 <!DOCTYPE html>
-<html lan = "ko">
+<html lang = "ko">
 <head>
 
   	<meta charset="utf-8">
@@ -46,17 +101,15 @@
   
    <h2>회  원  가  입</h2>
 
-<form accept-charset="UTF-8" action="#" method="post">
-
   <fieldset>
   
     <div class = "basic_information">
-      <form action="#" method="post">
-      <table class = "body_imfor" border="0">
+      <form action="<%=actionUrl %>" method="post">
+      <table class = "body_imfor">
         <tr>
           <th>e-mail</th>
           <td>
-            <input type="email"/>
+            <input type="text" name="userid" value="<%=userid%>"/>
           </td>
            <td>
             <input type="button" value="중복조회"/>
@@ -65,31 +118,32 @@
         <tr>
           <th>비밀번호</th>
           <td colspan = "2">
-            <input type="password"/>
+            <input type="password" name="pwd"/>
           </td>
         </tr>
         <tr>  
           <th>확인</th>
           <td colspan = "2">
-            <input type="password"/>
+            <input type="password" name="pwd_confirm"/>
           </td>
         </tr>
         <tr>
           <th>이름</th>
           <td colspan="3">
-            <input type="text"/>
+            <input type="text" name="name" value="<%=name %>"/>
           </td>
         </tr>
         <tr>
           <th>PHONE-NUMBER</th>
           <td colspan="3">
-            <input type="text"/>
+            <input type="text" name=phonenumber value="<%=phonenumber%>"/>
           </td>
         </tr>
         </table>
     <input type="submit"  value="회원가입" />
+	</form>
+	</div> 
   </fieldset> 
-</form>
    
 		</div>
      <jsp:include page="share/footer.jsp"></jsp:include>
