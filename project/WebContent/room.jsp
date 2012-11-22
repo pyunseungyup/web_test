@@ -48,14 +48,13 @@
 		 <jsp:forward page="login.jsp"></jsp:forward>
 
 <% } else { %>
- <h1>방 올리기</h1>
-      
+
 
 	<form accept-charset="UTF-8" action="#" method="post">
 
   <fieldset>
     
-    <div class="main_title"><h3 style="padding-left: 20px">방 기본정보</h3></div>
+    <div class="main_title"><h3 style="padding-left: 20px ; margin-top: 50px ">방 기본정보</h3></div>
    
 
     <div class = "basic_information">

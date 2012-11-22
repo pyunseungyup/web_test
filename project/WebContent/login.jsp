@@ -14,7 +14,7 @@
     <link href="css/bootstrap.css" rel="stylesheet">
   	<link href="css/main.css" rel="stylesheet">
     <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
-
+	
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -27,7 +27,8 @@
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
  
- 	
+ 
+ 
 <title>Project Main</title>
 </head>  
 
@@ -50,13 +51,11 @@
   <% if (session.getAttribute("userId") == null) { %>
 		
 		  <h2>로  그  인</h2>
+		  
 <fieldset>
 <form accept-charset="UTF-8" method="post">
 
   
-    
-    
-     
       <table class = "body_imfor" border="0">
         <tr>
           <th>e-mail</th>

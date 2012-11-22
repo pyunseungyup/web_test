@@ -12,12 +12,21 @@
           %>
           <li><a href="login.jsp">login</a></li>
           <% } 
-           else { %>
+          else { %>
           
-          	<li><%=session.getAttribute("userName") %>님 환영합니다.</li>
-          	<li><a href="logout.jsp" data-action="logout"  >logout</a></li>
-          	<li><a href="#">my page</a></li>
-          	
+          
+          <li class="dropdown item">
+	      		<a href="#" class="dropdown-toggle item" data-toggle="dropdown">
+	            		  안녕하세요, <%=session.getAttribute("userName") %>님
+	          	<span style="font-size:6px;">▼</span>
+	        	</a>
+	        	<ul class="dropdown-menu">
+	            <li><a href="#">회원정보</a></li>
+	            <li><a href="#">my page</a></li>
+	            <li class="divider"></li>
+	            <li><a href="logout.jsp">로그아웃</a></li>            
+	          </ul>    	
+	      	</li>
           
           <%  } %>  
           
