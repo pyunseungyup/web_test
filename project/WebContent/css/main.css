@@ -41,6 +41,9 @@
       .btn-group #select{
         width:25%;
       }
+       .masthead>h3>a:hover{
+        text-decoration:none;
+      }
       
 div.masthead{
 		width : 700px;

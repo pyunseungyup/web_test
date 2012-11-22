@@ -35,8 +35,9 @@
   <body>
 		
     <div class="container-narrow">
-	
+		
 		<jsp:include page="share/header.jsp"></jsp:include>
+		
       <div class="jumbotron">
         <h2>당신이 원하는 자취방</h2>
         <h1>검색하나로!!</h1>

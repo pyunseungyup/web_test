@@ -55,20 +55,22 @@
       <table class = "body_imfor" border="0">
         <tr>
           <th>e-mail</th>
-          <td colspan="3">
-            <input type="text"/>
+          <td>
+            <input type="email"/>
+          </td>
+           <td>
             <input type="button" value="중복조회"/>
           </td>
         </tr>
         <tr>
           <th>비밀번호</th>
-          <td>
+          <td colspan = "2">
             <input type="password"/>
           </td>
         </tr>
         <tr>  
           <th>확인</th>
-          <td>
+          <td colspan = "2">
             <input type="password"/>
           </td>
         </tr>

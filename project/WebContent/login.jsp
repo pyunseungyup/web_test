@@ -46,31 +46,10 @@
   	
   <div class="jumbotron">
   
-    
- <%
-  if (request.getMethod() == "POST") {
-	  String id = request.getParameter("email");
-	  String pwd = request.getParameter("pwd");
-	  
-	  if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
-		  %>
-		         아이디와 비밀번호를 입력하세요.
-		  <%
-	  } else if (id.equals("admin") && pwd.equals("1234")) {
-		  // 로그인 성공
-	      session.setAttribute("userId", "admin");
-	      session.setAttribute("userName", "정경락");	
-	      response.sendRedirect("room.jsp");	      
-		 } else {
-		  %>
-					   아이디나 비밀번호가 잘못되었습니다.
-		  <%
-	  }
-	  
-  }
-  %> 
   
-  <h2>로  그  인</h2>
+  <% if (session.getAttribute("userId") == null) { %>
+		
+		  <h2>로  그  인</h2>
 <fieldset>
 <form accept-charset="UTF-8" method="post">
 
@@ -103,6 +82,36 @@
     </form>
     </fieldset>
          <a href = "" >비밀번호 찾기</a><br/> </span>
+
+<% } else { %>
+		
+		 <jsp:forward page="index.jsp"></jsp:forward>
+
+<%} %>
+
+
+ <%
+  if (request.getMethod() == "POST") {
+	  String id = request.getParameter("email");
+	  String pwd = request.getParameter("pwd");
+	  
+	  if (id == null || pwd == null || id.length() == 0 || pwd.length() == 0) {
+		 
+	  } else if (id.equals("admin") && pwd.equals("1234")) {
+		  // 로그인 성공
+	      session.setAttribute("userId", "admin");
+	      session.setAttribute("userName", "정경락");	
+	      response.sendRedirect("index.jsp");
+	    
+	      
+		 } else {
+	  }
+	  
+  }
+  %> 
+  
+  
+ 
     </div> 
 		
      <jsp:include page="share/footer.jsp"></jsp:include>
