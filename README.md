@@ -16,3 +16,5 @@ CREATE TABLE users (
          name VARCHAR(100), 
 	phonenumber VARCHAR(100) UNIQUE
 );
+
+승엽 : 데이터 베이스 로그인 완료.
