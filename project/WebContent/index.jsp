@@ -36,7 +36,7 @@
 		
     <div class="container-narrow">
 		
-		<jsp:include page="share/header.jsp"></jsp:include>
+		<%@ include file="share/header.jsp"%>
 		
       <div class="jumbotron">
         <h2>당신이 원하는 자취방</h2>
