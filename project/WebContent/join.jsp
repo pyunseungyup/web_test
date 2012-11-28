@@ -21,39 +21,9 @@
 	String phonenumber = "";
 	
 	// Request로 ID가 있는지 확인
-	int id = 0;
-	try {
-		id = Integer.parseInt(request.getParameter("id"));
-	} catch (Exception e) {}
 
-	if (id > 0) {
-		// Request에 id가 있으면 update모드라 가정
-		actionUrl = "update.jsp";
-		try {
-		  Class.forName("com.mysql.jdbc.Driver");
-
-			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-			stmt = conn.prepareStatement("SELECT * FROM users WHERE id = ?");
-			stmt.setInt(1, id);
-	 		rs = stmt.executeQuery();
-			
-			if (rs.next()) {
-				userid = rs.getString("userid");
-				pwd = rs.getString("pwd");
-				name = rs.getString("name");
-				phonenumber = rs.getString("phonenumber");
-			}
-		}catch (SQLException e) {
-			errorMsg = "SQL 에러: " + e.getMessage();
-		} finally {
-			// 무슨 일이 있어도 리소스를 제대로 종료
-			if (rs != null) try{rs.close();} catch(SQLException e) {}
-			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
-			if (conn != null) try{conn.close();} catch(SQLException e) {}
-		}
-	} else {
-		actionUrl = "register.jsp";
-	}
+	actionUrl = "register.jsp";
+	
 %>
 <!DOCTYPE html>
 <html lang = "ko">
@@ -101,10 +71,11 @@
   
    <h2>회  원  가  입</h2>
 
-  <fieldset>
+  
   
     <div class = "basic_information">
       <form action="<%=actionUrl %>" method="post">
+      <fieldset>
       <table class = "body_imfor">
         <tr>
           <th>e-mail</th>
@@ -141,9 +112,10 @@
         </tr>
         </table>
     <input type="submit"  value="회원가입" />
+   </fieldset> 
 	</form>
 	</div> 
-  </fieldset> 
+
    
 		</div>
      <jsp:include page="share/footer.jsp"></jsp:include>

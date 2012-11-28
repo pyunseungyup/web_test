@@ -43,7 +43,7 @@
 	phonenumber = request.getParameter("phonenumber");
 	
 	
-	List<String> errorMsgs = new ArrayList<String>(); // 일단 에러 x 
+	//List<String> errorMsgs = new ArrayList<String>(); // 일단 에러 x 
 	
 	
 	int result = 0;
@@ -55,8 +55,6 @@
 			rs= stmt.executeQuery();
 			rs.next();
 			userid= rs.getString("userid");	
-			
-			
 			
 			stmt = conn.prepareStatement(
 					"INSERT INTO rooms(name, userid, location, distance,type,kind, price,address,facility,description,photo) " +
@@ -77,15 +75,10 @@
 			stmt.setString(11, photo);
 			
 			
-		
-			
 			result = stmt.executeUpdate();
 			
-			
-			
-		
+
 			if (result == 0) {
-				errorMsgs.add("등록에 실패하였습니다.");
 				%>
 				<jsp:forward page="room.jsp"></jsp:forward>
 				<%
@@ -97,8 +90,7 @@
 			}
 			
 			
-		} catch (SQLException e) {
-			errorMsgs.add("SQL 에러: " + e.getMessage());
+		
 		} finally {
 			// 무슨 일이 있어도 리소스를 제대로 종료
 			if (rs != null) try{rs.close();} catch(SQLException e) {}

@@ -71,9 +71,9 @@
 
 			<h2>로 그 인</h2>
 
-			<fieldset>
+			
 				<form action="registerlogin.jsp" method="post">
-
+					<fieldset>
 					<table class="body_imfor">
 						<tr>
 							<th>e-mail</th>
@@ -90,8 +90,9 @@
 
 					<span> <input type="checkbox" name="email_check">e-mail
 						저장 <input type="submit" value="로그인" />
+						</fieldset>
 				</form>
-			</fieldset>
+			
 			<a href="">비밀번호 찾기</a><br /> </span>
 
 
