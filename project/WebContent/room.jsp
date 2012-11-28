@@ -43,7 +43,7 @@
   	<jsp:include page="share/header.jsp"></jsp:include>
   	
 
-<% if (session.getAttribute("id") == null) { %>
+<% if (session.getAttribute("s_userid") == null) { %>
 		
 		 <jsp:forward page="login.jsp"></jsp:forward>
 

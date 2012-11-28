@@ -16,7 +16,7 @@
 	String userid =request.getParameter("userid");
 	String pwd = request.getParameter("pwd");
 	String dbpwd="";
-	String name = "";
+	String dbname = "";
 	
 	request.setCharacterEncoding("utf-8");
 	
@@ -25,17 +25,17 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
-		stmt = conn.prepareStatement("SELECT userid,pwd FROM users WHERE userid = ?");
-		stmt.setString(1, userid);	
+		stmt = conn.prepareStatement("SELECT userid,pwd,name FROM users WHERE userid = ?");
+		stmt.setString(1, userid);
 		rs= stmt.executeQuery();
 		rs.next();
 		
 		dbpwd=rs.getString("pwd");
-	
-		
+		dbname=rs.getString("name");		
 		
 		if(dbpwd.equals(pwd)){
-			session.setAttribute("id", "id");
+			session.setAttribute("s_userid", userid);	
+			session.setAttribute("s_name", dbname);
 	
 	 		
 	%>

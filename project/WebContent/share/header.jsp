@@ -14,7 +14,7 @@
 	
 	String userid =request.getParameter("userid");
 	String pwd = request.getParameter("pwd");
-	String name ="";
+	String name="";
 	
 	request.setCharacterEncoding("utf-8");
 	
@@ -47,14 +47,14 @@
           <li><a href="room.jsp">방올리기</a></li>
           <li><a href="join.jsp">회원가입</a></li>
           <%
-          if (session.getAttribute("id") == null) {
+          if (session.getAttribute("s_userid")==null) {
           %>
           <li><a href="login.jsp">login</a></li>
           <% } 
           else { %>     
           <li class="dropdown item">
 	      		<a href="#" class="dropdown-toggle item" data-toggle="dropdown">
-	            		  안녕하세요, <%=session.getAttribute("name")%>님
+	            		  안녕하세요, <%=session.getAttribute("s_name")%>님
 	          	<span style="font-size:6px;">▼</span>
 	        	</a>
 	        	<ul class="dropdown-menu">
