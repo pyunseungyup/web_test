@@ -16,6 +16,8 @@
 	String userid =request.getParameter("userid");
 	String pwd = request.getParameter("pwd");
 	String dbpwd="";
+	String name = "";
+	
 	request.setCharacterEncoding("utf-8");
 	
 	List<String> errorMsgs = new ArrayList<String>();
@@ -23,14 +25,20 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
-					
 		stmt = conn.prepareStatement("SELECT userid,pwd FROM users WHERE userid = ?");
 		stmt.setString(1, userid);	
 		rs= stmt.executeQuery();
 		rs.next();
-		dbpwd=rs.getString("pwd");
 		
-		if(dbpwd.equals(pwd)){%>
+		dbpwd=rs.getString("pwd");
+	
+		
+		
+		if(dbpwd.equals(pwd)){
+			session.setAttribute("id", "id");
+	
+	 		
+	%>
 		  <jsp:forward page="index.jsp"></jsp:forward>
 	<%}else{%>
 		  <jsp:forward page="login.jsp"></jsp:forward>

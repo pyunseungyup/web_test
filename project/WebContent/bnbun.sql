@@ -6,10 +6,9 @@ use bnbun;
 
 
 CREATE TABLE users (
-	id INT AUTO_INCREMENT PRIMARY KEY, 
 	userid VARCHAR(100) NOT NULL UNIQUE,
 	pwd VARCHAR(255) NOT NULL,
-    name VARCHAR(100), 
+  name VARCHAR(100), 
 	phonenumber VARCHAR(100) UNIQUE
 );
 

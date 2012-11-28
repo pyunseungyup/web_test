@@ -18,7 +18,9 @@
 	String name = request.getParameter("name");
 	String phonenumber = request.getParameter("phonenumber");
 	
+	
 	List<String> errorMsgs = new ArrayList<String>();
+
 	int result = 0;
 	
 	if (userid == null || userid.trim().length() == 0) {

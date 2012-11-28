@@ -47,16 +47,14 @@
           <li><a href="room.jsp">방올리기</a></li>
           <li><a href="join.jsp">회원가입</a></li>
           <%
-          if (request.getParameter("userid") == null) {
+          if (session.getAttribute("id") == null) {
           %>
           <li><a href="login.jsp">login</a></li>
           <% } 
-          else { %>
-          
-          
+          else { %>     
           <li class="dropdown item">
 	      		<a href="#" class="dropdown-toggle item" data-toggle="dropdown">
-	            		  안녕하세요, <%=name%>님
+	            		  안녕하세요, <%=session.getAttribute("name")%>님
 	          	<span style="font-size:6px;">▼</span>
 	        	</a>
 	        	<ul class="dropdown-menu">

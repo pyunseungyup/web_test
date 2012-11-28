@@ -9,7 +9,7 @@
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
-	
+
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
