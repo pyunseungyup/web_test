@@ -1,8 +1,3 @@
-﻿﻿CREATE TABLE users CREATE DATABASE bnbun DEFAULT CHARACTER SET utf8 DEFAULT COLLATE utf8_general_ci;
-
-GRANT ALL ON bnbun.* TO 'bnb'@'localhost' IDENTIFIED BY 'bnbun';
-
-use bnbun;
 
 CREATE TABLE `rooms` (
   `name` varchar(20) DEFAULT '',

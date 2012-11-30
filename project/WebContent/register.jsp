@@ -12,6 +12,7 @@
 	String dbPassword = "bnbun";
 	
 	request.setCharacterEncoding("utf-8");
+	
 	String userid = request.getParameter("userid");
 	String pwd = request.getParameter("pwd");
 	String pwd_confirm = request.getParameter("pwd_confirm");
@@ -20,7 +21,7 @@
 	
 	//List<String> errorMsgs = new ArrayList<String>(); // 일단 에러 x 
 
-	int result = 0;
+  int result = 0;
 
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
@@ -38,10 +39,9 @@
 
 			if (result == 0) {
 				%>
-				<jsp:forward page="room.jsp"></jsp:forward>
+				<jsp:forward page="join.jsp"></jsp:forward>
 				<%
-			}else
-			{
+	    }else{
 				%>
 				<jsp:forward page="index.jsp"></jsp:forward>
 				<%

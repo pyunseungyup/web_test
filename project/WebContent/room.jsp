@@ -66,9 +66,9 @@
           
           <select name="location">
             <option value=""></option>
-            <option value="Seoul_Un">서울대</option>
-            <option value="Yonsei_Un">연세대</option>
-            <option value="Myongji_Un">명지대</option>
+            <option value="서울대">서울대</option>
+            <option value="연세대">연세대</option>
+            <option value="명지대">명지대</option>
             <option value="other">등등 더추가</option>
           </select>
     </div>

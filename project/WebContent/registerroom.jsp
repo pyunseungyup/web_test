@@ -29,7 +29,7 @@
   String phonenumber = ""; 
 	
 	
-	
+	userid=session.getAttribute("s_userid").toString();
 	location = request.getParameter("location");
 	name = request.getParameter("name");
 	distance = request.getParameter("distance");
@@ -49,21 +49,22 @@
 	int result = 0;
 		
 		try {
-			
-			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-			stmt = conn.prepareStatement("SELECT userid FROM users ");
+			/*
+			stmt = conn.prepareStatement("SELECT userid FROM users WHERE userid=?");
+			stmt.setString(1,userid);
 			rs= stmt.executeQuery();
 			rs.next();
 			userid= rs.getString("userid");	
-			
+			*/
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"INSERT INTO rooms(name, userid, location, distance,type,kind, price,address,facility,description,photo) " +
+					"INSERT INTO rooms(userid, name, location, distance,type,kind, price,address,facility,description,photo) " +
 					"VALUES(?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ?)"
 					);
 					
 			
-			stmt.setString(1,  name);
-			stmt.setString(2,  userid);
+			stmt.setString(1,  userid);
+			stmt.setString(2,  name);
 			stmt.setString(3,  location);
 			stmt.setString(4,  distance);
 			stmt.setString(5,  type);
