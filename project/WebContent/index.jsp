@@ -83,10 +83,13 @@
       </div>
 
       <hr>
+      <div class="row-fluid marketing">   
+        
+          <ul class="thumbnails">           
 
-      <div class="row-fluid marketing">
+      
       <%
-    for(int i=1;i<5;i++){
+    for(int i=0;i<4;i++){
 		String roomname = "" ; // 방이름 
 		String location = ""; // 대학별 위치
 		String distance = ""; // 도보거리 기준 
@@ -107,8 +110,7 @@
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			
 			
-			stmt = conn.prepareStatement("SELECT * FROM rooms WHERE id=?");
-			stmt.setInt(1,i);
+			stmt = conn.prepareStatement("SELECT * FROM rooms");
 			
 			rs= stmt.executeQuery();
 			rs.next();
@@ -136,30 +138,28 @@
 		}
 		
 		%>
-        <div class="span6">
-          <h3><%=location %> 자취방 </h3>
-          <p><%= roomname %> 
-          <%=userid %>
-			    <%=roomname%>
-			    <%=location%>
-			    <%=distance%>
-			    <%=type%>
-			    <%=kind%>
-			    <%=price%>
-			    <%=address %>
-			    <%=facility %>
-			    <%=description %>
-			    <%=photo %>
-		   	 </p>
-         
-        </div>       
+		    <li class="span3">
+              <div class="thumbnails">
+                 
+                <img src="http://placehold.it/300x200" alt="">
+                  <h3><%=location %> 자취방 </h3>
+                  <p>방이름: <%= roomname %><br/> 
+			                                   학교에서의 거리: <%=distance%><br/>
+			                                   방 종류: <%=type%>
+			            </p>			                         
+             
+              </div>
+        </li>    
        <%}%>
-        </div>
-      </div>    
+            
+          </ul>             
+         
+        </div>     
+      
 
       
 		<jsp:include page="share/footer.jsp"></jsp:include>
-    </div> <!-- /container -->
+    </div>     <!-- /container -->
 
     <!-- Le javascript
     ================================================== -->
