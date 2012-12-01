@@ -40,50 +40,8 @@
 		
 		<%@ include file="share/header.jsp"%>
 		
-		
-		
-      <div class="jumbotron">
-        <h2>당신이 원하는 자취방</h2>
-        <h1>검색하나로!!</h1>
-        
-        <div class="btn-group">        
-            <select name="school" id="select">
-              <option value="school">학교</option>
-              <option value="Seoul_Un">서울대</option>
-              <option value="Yonsei_Un">연세대</option>
-              <option value="Myongji_Un">명지대</option>
-              <option value="other">등등 더추가</option>
-            </select> 
-            <select name="distance" id="select">
-              <option value="distance">거리</option>
-              <option value="one">5분이내</option>
-              <option value="two">10분이내</option>
-              <option value="three">20분이내</option>
-              <option value="four">30분이내</option>
-              <option value="five">30분이상</option>
-            </select>      
-         
-            <select name="roomtype" id="select">
-              <option value="roomtype">방구조</option>
-              <option value="one_room">원룸</option>
-              <option value="two_room">투룸</option>
-              <option value="officetel">오피스텔</option>     
-              <option value="other">기타</option>         
-            </select>            
-      
-        </div>
-        <a class="btn btn-large btn-success" href="searchroom.jsp">검색</a>             
-       
-      </div>
-
-      <hr>
-      <div class="row-fluid marketing">   
-        
-          <ul class="thumbnails">           
-
-      
-      <%
-    for(int i=0;i<4;i++){
+		<%
+	
 		String roomname = "" ; // 방이름 
 		String location = ""; // 대학별 위치
 		String distance = ""; // 도보거리 기준 
@@ -94,20 +52,27 @@
 		String facility = ""; //시설
 		String description = "" ; // 설명
 		String photo = "" ; // 사진 	
+
 		
-		request.setCharacterEncoding("utf-8");
+		location=request.getParameter("school");
+		distance=request.getParameter("distance");
+		kind=request.getParameter("roomtype");
 		
-		
-		try {
+try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			
 			
-			stmt = conn.prepareStatement("SELECT * FROM rooms");
+			stmt = conn.prepareStatement("SELECT location,distance,kind FROM rooms WHERE location =? and distance=? and kind=?");
+			
+			stmt.setString(1,location);
+			stmt.setString(2,distance);
+			stmt.setString(3,kind);
+
 			
 			rs= stmt.executeQuery();
-			rs.next();
+			
 			
 			userid=rs.getString("userid");
 			roomname = rs.getString("name");
@@ -131,8 +96,18 @@
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
 		}
 		
+		
+		
+		
+		
 		%>
-		    <li class="span3">
+		
+		<div class="row-fluid marketing">   
+        
+          <ul class="thumbnails">       
+          
+          
+           <li class="span3">
               <div class="thumbnails">
                  
                 <img src="http://placehold.it/300x200" alt="">
@@ -144,14 +119,12 @@
              
               </div>
         </li>    
-       <%}%>
-            
+                  
           </ul>             
          
         </div>     
       
-
-      
+		
 		<jsp:include page="share/footer.jsp"></jsp:include>
     </div>     <!-- /container -->
 
