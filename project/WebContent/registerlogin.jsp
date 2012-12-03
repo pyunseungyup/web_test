@@ -26,8 +26,6 @@
 	if (userid == null || userid.trim().length() == 0) {
 		errorMsgs.add("ID 반드시 입력해주세요.");
 	}
-	
-	
 	if (pwd == null || pwd.length() < 6) {
 		errorMsgs.add("비밀번호는 6자 이상 입력해주세요.");
 	} 
@@ -37,25 +35,26 @@
 		
 		Class.forName("com.mysql.jdbc.Driver");
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
-		stmt = conn.prepareStatement("SELECT userid,pwd,name FROM users WHERE userid = ?");
+		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid =?");
 		stmt.setString(1, userid);
 		rs= stmt.executeQuery();
 		rs.next();
 		
 		dbpwd=rs.getString("pwd");
 		dbname=rs.getString("name");		
-		 
+		int dbid = rs.getInt("id"); 
 	
 		if(dbpwd.equals(pwd) || userid == null){
 			session.setAttribute("s_userid", userid);	
-			session.setAttribute("s_name", dbname);
-	
-	 		
+			session.setAttribute("s_name", dbname);	
 	%>
-		  <jsp:forward page="index.jsp"></jsp:forward>
-	<%}else{%>
-		  <jsp:forward page="login.jsp"></jsp:forward>
-	<%}
+			<jsp:forward page="index.jsp?id=<%=dbid%>"></jsp:forward>
+	<%
+	}else{
+		%>
+			<jsp:forward page="login.jsp"></jsp:forward>
+		<%
+	}
 		
 			
 		}catch (SQLException e){
@@ -83,7 +82,7 @@
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/main.css" rel="stylesheet">
-<link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -91,15 +90,7 @@
     <![endif]-->
 
 <!-- Fav and touch icons -->
-<link rel="shortcut icon" href="../assets/ico/favicon.ico">
-<link rel="apple-touch-icon-precomposed" sizes="144x144"
-	href="../assets/ico/apple-touch-icon-144-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="114x114"
-	href="../assets/ico/apple-touch-icon-114-precomposed.png">
-<link rel="apple-touch-icon-precomposed" sizes="72x72"
-	href="../assets/ico/apple-touch-icon-72-precomposed.png">
-<link rel="apple-touch-icon-precomposed"
-	href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
 
 
 <title>Errors</title>
@@ -172,19 +163,7 @@
 		<!-- Le javascript
     ================================================== -->
 		<!-- Placed at the end of the document so the pages load faster -->
-		<script src="../assets/js/jquery.js"></script>
-		<script src="../assets/js/bootstrap-transition.js"></script>
-		<script src="../assets/js/bootstrap-alert.js"></script>
-		<script src="../assets/js/bootstrap-modal.js"></script>
-		<script src="../assets/js/bootstrap-dropdown.js"></script>
-		<script src="../assets/js/bootstrap-scrollspy.js"></script>
-		<script src="../assets/js/bootstrap-tab.js"></script>
-		<script src="../assets/js/bootstrap-tooltip.js"></script>
-		<script src="../assets/js/bootstrap-popover.js"></script>
-		<script src="../assets/js/bootstrap-button.js"></script>
-		<script src="../assets/js/bootstrap-collapse.js"></script>
-		<script src="../assets/js/bootstrap-carousel.js"></script>
-		<script src="../assets/js/bootstrap-typeahead.js"></script>
+	
 </body>
 </html>
 

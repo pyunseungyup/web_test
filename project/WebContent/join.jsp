@@ -2,9 +2,8 @@
     pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
 		import="org.apache.commons.lang3.StringUtils"%>
 <%
-	String errorMsg = null;
 
-	String actionUrl;
+
 	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -20,9 +19,8 @@
 	String name = "";
 	String phonenumber = "";
 	
-	// Request로 ID가 있는지 확인
 
-	actionUrl = "register.jsp";
+
 	
 %>
 <!DOCTYPE html>
@@ -38,7 +36,7 @@
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
   	<link href="css/main.css" rel="stylesheet">
-    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -46,11 +44,7 @@
     <![endif]-->
 
     <!-- Fav and touch icons -->
-    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
-    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
-    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+   
  		
  		<script src="js/jquery-1.8.2.min.js"></script>
 	  <script src="js/bootstrap.min.js"></script>
@@ -74,7 +68,7 @@
   
   
     <div class = "basic_information">
-      <form action="<%=actionUrl %>" method="post">
+      <form action="register.jsp" method="post">
       <fieldset>
       <table class = "body_imfor">
         <tr>
@@ -82,9 +76,7 @@
           <td>
             <input type="text" name="userid" value="<%=userid%>"/>
           </td>
-           <td>
-            <input type="button" value="중복조회"/>
-          </td>
+           
         </tr>
         <tr>
           <th>비밀번호</th>
@@ -125,19 +117,7 @@
     <!-- Le javascript
     ================================================== -->
     <!-- Placed at the end of the document so the pages load faster -->
-    <script src="../assets/js/jquery.js"></script>
-    <script src="../assets/js/bootstrap-transition.js"></script>
-    <script src="../assets/js/bootstrap-alert.js"></script>
-    <script src="../assets/js/bootstrap-modal.js"></script>
-    <script src="../assets/js/bootstrap-dropdown.js"></script>
-    <script src="../assets/js/bootstrap-scrollspy.js"></script>
-    <script src="../assets/js/bootstrap-tab.js"></script>
-    <script src="../assets/js/bootstrap-tooltip.js"></script>
-    <script src="../assets/js/bootstrap-popover.js"></script>
-    <script src="../assets/js/bootstrap-button.js"></script>
-    <script src="../assets/js/bootstrap-collapse.js"></script>
-    <script src="../assets/js/bootstrap-carousel.js"></script>
-    <script src="../assets/js/bootstrap-typeahead.js"></script>
+
 
   </body>
 </html>

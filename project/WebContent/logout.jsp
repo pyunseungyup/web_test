@@ -4,14 +4,7 @@
 
 <%
 session.invalidate();
+response.sendRedirect("index.jsp");
 %>    
 
-<html lang = "ko">
-<head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<title>logout</title>
-</head>
-<body>
-	<jsp:forward page="index.jsp"></jsp:forward>
-</body>
-</html>
+

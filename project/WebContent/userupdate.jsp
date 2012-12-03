@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    import="org.apache.commons.lang3.StringUtils"%>
+    %>
 
 <%
 	// DB 접속을 위한 준비
@@ -19,28 +19,28 @@
 	String userid = "" ; 
 	String pwd = "";
 	String name = "" ;  
-	String phonnumber = "" ; 
+	String phonenumber = "" ; 
 	String pwd_confirm = "";
 	//Date date;
 	
-	
+	id = request.getParameter("id");		
 	userid = request.getParameter("userid");
 	pwd = request.getParameter("pwd");
 	pwd_confirm = request.getParameter("pwd_confirm");
 	name = request.getParameter("name");
-	phonnumber = request.getParameter("phonnumber");
+	phonenumber = request.getParameter("phonenumber");
 	
-	id = request.getParameter("id");		
+	
 	
 	List<String> errorMsgs = new ArrayList<String>();
 	
 	int result = 0;
 	
-	if (id == null || id.trim().length() == 0) {
+	if (userid == null || userid.trim().length() == 0) {
 		errorMsgs.add("아이디를 다시  입력해주세요.");
 	}
 	
-	if (pwd != pwd_confirm || pwd == null || pwd.trim().length() == 0) {
+	if (pwd == null  || pwd_confirm == null  || pwd.trim().length() == 0 || pwd_confirm.trim().length() == 0) {
 		errorMsgs.add("패스워드을 다시  입력해주세요.");
 	}
 	
@@ -48,7 +48,7 @@
 		errorMsgs.add("이름을 다시  입력해주세요.");
 	}
 	
-	if (phonnumber == null || phonnumber.trim().length() == 0) {
+	if (phonenumber == null || phonenumber.trim().length() == 0) {
 		errorMsgs.add("전화 번호을 다시  입력해주세요.");
 	}
 
@@ -66,13 +66,13 @@
 		conn =DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 		
 		stmt = conn.prepareStatement(
-				"UPDATE boards " +
-				"SET userid=?, pwd=?, name=?, phonnumber=?");
+				"UPDATE users " +
+				"SET userid=?, pwd=?, name=?, phonenumber=?");
 		
 		stmt.setString(1,  userid);
 		stmt.setString(2,  pwd);
 		stmt.setString(3,  name);
-		stmt.setString(4,  phonnumber);
+		stmt.setString(4,  phonenumber);
 	
 		  
 		session.setAttribute("s_userid", userid);	
@@ -83,11 +83,11 @@
 		
 	
 		if (result == 0) {
-			
 			response.sendRedirect("update.jsp");
 		}else
 		{
 			response.sendRedirect("index.jsp");
+			
 		}
 	
 	} finally {
@@ -96,7 +96,7 @@
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	
-}
+	}
 	}
 	
 	else {
@@ -107,7 +107,7 @@
 <head>
 
   <meta charset="utf-8">
-<title>Project Main Window</title>
+<title>update Error</title>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="description" content="">
@@ -133,10 +133,10 @@
   <body>
 
    
-
+	<div class="container-narrow">
       <%@ include file="share/header.jsp"%>
 
-      <div class="container">
+      <div class="jumbotron">
  				
  			<div class="alert alert-error">
  				<h3>Errors:</h3>
@@ -153,6 +153,7 @@
     
 			<%@ include file="share/footer.jsp"%>
      <!-- /container -->
+		</div>
 
     <!-- Le javascript
     ================================================== -->
