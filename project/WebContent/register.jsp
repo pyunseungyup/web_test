@@ -22,6 +22,7 @@
 	//List<String> errorMsgs = new ArrayList<String>(); // 일단 에러 x 
 
   int result = 0;
+	
 
 		try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);

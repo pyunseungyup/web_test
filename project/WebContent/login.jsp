@@ -88,19 +88,19 @@
 
 					</table>
 
-					<span> <input type="checkbox" name="email_check">e-mail
+					<input type="checkbox" name="email_check">e-mail
 						저장 <input type="submit" value="로그인" />
 						</fieldset>
 				</form>
 			
-			<a href="">비밀번호 찾기</a><br /> </span>
+			<a href="">비밀번호 찾기</a><br /> 
 
 
 		</div>
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
-
+		</div>
 		<% //if (session.getAttribute("userid") == null) %>
 
 
