@@ -10,20 +10,22 @@
 	
 	request.setCharacterEncoding("utf-8");
 	
-	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
+	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
 	
-	String id = "";
+	int id = 0;
 	String userid = "" ; 
+	String s_userid="";
 	String pwd = "";
 	String name = "" ;  
 	String phonenumber = "" ; 
 	String pwd_confirm = "";
 	//Date date;
 	
-	id = request.getParameter("id");		
+	//id = request.getParameter("id");		
+	s_userid=session.getAttribute("s_userid").toString();
 	userid = request.getParameter("userid");
 	pwd = request.getParameter("pwd");
 	pwd_confirm = request.getParameter("pwd_confirm");
@@ -67,19 +69,21 @@
 		
 		stmt = conn.prepareStatement(
 				"UPDATE users " +
-				"SET userid=?, pwd=?, name=?, phonenumber=?");
+				"SET userid=?, pwd=?, name=?, phonenumber=?"+
+						"WHERE userid = ?");
 		
 		stmt.setString(1,  userid);
 		stmt.setString(2,  pwd);
 		stmt.setString(3,  name);
 		stmt.setString(4,  phonenumber);
-	
-		  
+		stmt.setString(5, s_userid);
+		
+		
+				  
 		session.setAttribute("s_userid", userid);	
 		session.setAttribute("s_name", name);
 		
-    result = stmt.executeUpdate();
-		
+		result = stmt.executeUpdate();
 		
 	
 		if (result == 0) {

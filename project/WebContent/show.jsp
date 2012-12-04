@@ -12,7 +12,7 @@
 	
 	Class.forName("com.mysql.jdbc.Driver");
 	
-	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
+	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	

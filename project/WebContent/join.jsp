@@ -9,7 +9,7 @@
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 
-	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
+	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
