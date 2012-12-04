@@ -69,7 +69,7 @@
     <div class = "basic_information">
     <label>거리(도보 기준) <strong style="color:red"> *</strong></label>
 
-        <input type="radio" name="distance" value="one">5분 이내
+        <input type="radio" name="distance" value="one" >5분 이내
         <input type="radio" name="distance" value="two">10분 이내
         <input type="radio" name="distance" value="three">20분 이내
         <input type="radio" name="distance" value="four">30분 이내
