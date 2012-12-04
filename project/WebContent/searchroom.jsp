@@ -36,7 +36,17 @@
 		<%@ include file="share/header.jsp"%>
 		
 		<%
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		
+		String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
+		String dbUser = "bnb";
+		String dbPassword = "bnbun";
+		
+		List<String> errorMsgs = new ArrayList<String>();		
 	
+		String userid="";
 		String roomname = "" ; // 방이름 
 		String location = ""; // 대학별 위치
 		String distance = ""; // 도보거리 기준 

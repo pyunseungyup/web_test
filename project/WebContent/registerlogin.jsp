@@ -15,6 +15,7 @@
 	
 	String userid =request.getParameter("userid");
 	String pwd = request.getParameter("pwd");
+	String dbuserid="";
 	String dbpwd="";
 	String dbname = "";
 	
@@ -40,11 +41,12 @@
 		rs= stmt.executeQuery();
 		rs.next();
 		
+		dbuserid=rs.getString("userid");
 		dbpwd=rs.getString("pwd");
 		dbname=rs.getString("name");		
 		int dbid = rs.getInt("id"); 
 	
-		if(dbpwd.equals(pwd) || userid == null){
+		if(dbpwd.equals(pwd) && dbuserid.equals(userid)){
 			session.setAttribute("s_userid", userid);	
 			session.setAttribute("s_name", dbname);	
 	%>

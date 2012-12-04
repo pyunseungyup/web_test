@@ -27,21 +27,20 @@
 	String photo = "" ; // 사진 	
 	int roomid =0;
 	
-	
-	
-	request.setCharacterEncoding("utf-8");
-	
-try {
-	
-	Class.forName("com.mysql.jdbc.Driver");
-	
-	conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+	int pageNo = 1;
 
-	stmt = conn.prepareStatement("SELECT * FROM rooms");
+	try {
+		pageNo = Integer.parseInt(request.getParameter("page"));
+	} catch (NumberFormatException ex) {
+	}
+
+	int numInPage = 10; // 한페이지에 출력할 아이템 개수
+	int startPos = (pageNo - 1) * numInPage; // 몇 번째 아이템 부터 이 페이지에?
+	int numItems, numPages;
 	
-	rs= stmt.executeQuery();
-
-
+	
+	
+	request.setCharacterEncoding("utf-8");	
 
 %>
 <!DOCTYPE html>
@@ -116,54 +115,137 @@ try {
       <hr>
       
       
-        <%
-      while(rs.next()){
-      	
-			roomid=rs.getInt("roomid");
-			userid=rs.getString("userid");
-			roomname = rs.getString("name");
-			location = rs.getString("location");
-			distance = rs.getString("distance");
-			type =rs.getString("type");
-			kind =rs.getString("kind");
-			price = rs.getString("price");
-			address = rs.getString("address");
-			facility = rs.getString("facility");
-			description = rs.getString("description");
-			photo = rs.getString("photo");		
-     
+       
+<%
+    try {
 
+				try {
+					Class.forName("com.mysql.jdbc.Driver");
+				} catch (ClassNotFoundException e) {
+					e.printStackTrace();
+				}
+
+				request.setCharacterEncoding("utf-8");
+
+				conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword); //DB 접속 
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms");
+				rs = stmt.executeQuery();
+				rs.next();
+				numItems = rs.getInt(1);
+				numPages = (int) Math.ceil((double) numItems
+						/ (double) numInPage);
+				rs.close();
+				stmt.close();
+
+				stmt = conn
+						.prepareStatement("SELECT * FROM rooms ORDER BY roomid DESC LIMIT "
+								+ startPos + ", " + numInPage);
+				rs = stmt.executeQuery();
+				
+				 /*
+			      while(rs.next()){
+			      	
+						roomid=rs.getInt("roomid");
+						userid=rs.getString("userid");
+						roomname = rs.getString("name");
+						location = rs.getString("location");
+						distance = rs.getString("distance");
+						type =rs.getString("type");
+						kind =rs.getString("kind");
+						price = rs.getString("price");
+						address = rs.getString("address");
+						facility = rs.getString("facility");
+						description = rs.getString("description");
+						photo = rs.getString("photo");		
+			     
+
+		        }*/%>
 		
-		%>
-		
-		
-       <div class="row-fluid marketing">  
+		<div class="row">
+			<div class="span12 page-info">
+				<div class="pull-left">
+					Total <b><%=numItems%></b> boards
+				</div>				
+			</div>
+		</div>
+
+
+		 <div class="row-fluid marketing">  
+		 
         
-          <ul class="thumbnails">           
+       <ul class="thumbnails">           
 
-      
+       <% while(rs.next()){%>      
     
-		    <li class="span3" style="width: 250px ; float:left;" >
+		    <li class="span3">
               <div class="thumbnails" >
                  
-                <a href = "show.jsp?roomid=<%=roomid%>"><img src="http://placehold.it/300x200" alt=""></a>
-                  <h3><%=location %> 자취방 </h3>
-                  <p>방이름:<%= roomname %><br/> 
-			                                   학교에서의 거리: <%=distance%><br/>
-			                                   방 종류: <%=type%>
+                <a href = "show.jsp?roomid=<%=rs.getInt("roomid")%>"><img src="http://placehold.it/300x200" alt=""></a>
+                  <h3><%=rs.getString("location")%></h3>
+                  <p>방이름:<%= rs.getString("name") %><br/> 
+			                                   학교에서의 거리: <%=rs.getString("distance")%><br/>
+			                                   방 종류: <%=rs.getString("type")%>
 			            </p>			                         
              
               </div>
         </li>    
-     
+       <%} %>
             
-          </ul>             
+       </ul>
+                    
          
-        </div>     
-      
-<%
-      }
-%>
+     </div>
+
+
+		<div class="pagination pagination-centered">
+			<ul>
+				<%
+					// 페이지 네비게이션을 위한 준비
+						int startPageNo, endPageNo;
+						int delta = 5;
+						startPageNo = (pageNo <= delta) ? 1 : pageNo - delta;
+						endPageNo = startPageNo + (delta * 2) + 1;
+
+						if (endPageNo > numPages) {
+							endPageNo = numPages;
+						}
+
+						// 이전 페이지로
+						if (pageNo <= 1) {
+				%>
+				<li class="disabled"><a href="#">&laquo;</a></li>
+				<%
+					} else {
+				%>
+				<li><a href="index.jsp?page=<%=pageNo - 1%>">&laquo;</a></li>
+				<%
+					}
+
+						// 페이지 목록 출력 (현재-delta ~ 현재+delta까지)
+						String className = "";
+						for (int i = startPageNo; i <= endPageNo; i++) {
+							className = (i == pageNo) ? "active" : "";
+							out.println("<li class='" + className + "'>");
+							out.println("<a href='index.jsp?page=" + i + "'>" + i
+									+ "</a>");
+							out.println("</li>");
+						}
+
+						// 다음 페이지로
+						if (pageNo >= numPages) {
+				%>
+				<li class="disabled"><a href="#">&raquo;</a></li>
+				<%
+					} else {
+				%>
+				<li><a href="index.jsp?page=<%=pageNo + 1%>">&raquo;</a></li>
+				<%
+					}
+				%>
+			</ul>
+		</div>
+
+	
       
 		<jsp:include page="share/footer.jsp"></jsp:include>
     </div>     <!-- /container -->
@@ -177,7 +259,7 @@ try {
   
  <%
  
-}finally {
+ }finally {
 	// 무슨 일이 있어도 리소스를 제대로 종료
 	if (rs != null) try{rs.close();} catch(SQLException e) {}
 	if (stmt != null) try{stmt.close();} catch(SQLException e) {}
