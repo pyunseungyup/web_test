@@ -34,7 +34,11 @@
 	} catch (NumberFormatException ex) {
 	}
 
+<<<<<<< HEAD
 	int numInPage = 9; // 한페이지에 출력할 아이템 개수
+=======
+	int numInPage = 10; // 한페이지에 출력할 아이템 개수
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 	int startPos = (pageNo - 1) * numInPage; // 몇 번째 아이템 부터 이 페이지에?
 	int numItems, numPages;
 	
@@ -145,7 +149,11 @@
 				 /*
 			      while(rs.next()){
 			      	
+<<<<<<< HEAD
 			    		roomid=rs.getInt("roomid");
+=======
+						roomid=rs.getInt("roomid");
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 						userid=rs.getString("userid");
 						roomname = rs.getString("name");
 						location = rs.getString("location");
@@ -174,6 +182,7 @@
 		 
         
        <ul class="thumbnails">           
+<<<<<<< HEAD
 
        <% while(rs.next()){
        
@@ -243,6 +252,19 @@
                   <p>방이름:<%=roomname%><br/> 
 			                                   학교에서의 거리: <%=distance%><br/>
 			                                   방 종류: <%=type%>
+=======
+
+       <% while(rs.next()){%>      
+    
+		    <li class="span3">
+              <div class="thumbnails" >
+                 
+                <a href = "show.jsp?roomid=<%=rs.getInt("roomid")%>"><img src="http://placehold.it/300x200" alt=""></a>
+                  <h3><%=rs.getString("location")%></h3>
+                  <p>방이름:<%= rs.getString("name") %><br/> 
+			                                   학교에서의 거리: <%=rs.getString("distance")%><br/>
+			                                   방 종류: <%=rs.getString("type")%>
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 			            </p>			                         
               </div>
         </li>    

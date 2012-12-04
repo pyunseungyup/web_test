@@ -229,11 +229,19 @@
    
    <h2>상 세 보 기</h2>
    
+<<<<<<< HEAD
+=======
+
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 
 
     <img src="http://placehold.it/300x200" width = "400px" heigth = "500px"  alt="">
   
   
+<<<<<<< HEAD
+=======
+  
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
    
     
     <div class="main_title"><h3 style="padding-left: 20px;">방 기본정보</h3></div>

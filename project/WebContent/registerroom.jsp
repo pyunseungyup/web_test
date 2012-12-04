@@ -23,6 +23,10 @@
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
 	String address = ""; // 주소
+<<<<<<< HEAD
+=======
+	
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 	String description = "" ; // 설명
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
@@ -37,11 +41,18 @@
 	kind = request.getParameter("kind");
 	price = request.getParameter("price");
 	address = request.getParameter("address");
+<<<<<<< HEAD
+=======
+	String facility = request.getParameterValue("facility");
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 	description = request.getParameter("description");
 	photo = request.getParameter("photo");
 	phonenumber = request.getParameter("phonenumber");
 	
+
+	int result = 0;
 	
+<<<<<<< HEAD
 	String[] facility =request.getParameterValues("facility");
 	String favoriteStr = StringUtils.join(facility, ",");
 
@@ -66,6 +77,27 @@
 		errorMsgs.add("가격 정보를 입력해주세요.");
 	}
 	
+=======
+	List<String> errorMsgs = new ArrayList<String>(); 
+	
+	if(location == ""){
+		errorMsgs.add("인근 대학을 선택해 주세요.");
+	}
+
+	if(distance == null || !(distance.equals("one") || distance.equals("two")|| distance.equals("three")|| distance.equals("four")|| distance.equals("five")) ){
+		errorMsgs.add("거리을 다시 선택해 주세요.");
+	}
+	if(type == ""){
+		errorMsgs.add("인근 대학을 선택해 주세요.");
+	}
+	if(kind == ""){
+		errorMsgs.add("인근 대학을 선택해 주세요.");
+	}
+	if (price == null || price.trim().length() == 0) {
+		errorMsgs.add("가격 정보를 입력해주세요.");
+	}
+	
+>>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 	if (name == null || name.trim().length() == 0) {
 		errorMsgs.add("방 이름을 입력해주세요.");
 	}
