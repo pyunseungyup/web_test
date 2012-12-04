@@ -1,9 +1,9 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
-		import="org.apache.commons.lang3.StringUtils"%>
+    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
+    import="org.apache.commons.lang3.StringUtils"%>
+
+
 <%
-
-
 	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -28,13 +28,12 @@
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
 	String address = ""; // 주소
-	String facility = ""; //시설
+
 	String description = "" ; // 설명
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
 	
   roomid = request.getParameter("roomid");
-	
 	
 	
 
@@ -54,7 +53,7 @@
     <!-- Le styles -->
     <link href="css/bootstrap.css" rel="stylesheet">
   	<link href="css/main.css" rel="stylesheet">
-
+		<link href="css/showroom.css" rel="stylesheet">
 
     <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
     <!--[if lt IE 9]>
@@ -165,10 +164,57 @@
 		kind = rs.getString("kind");
 		price = rs.getString("price");
 		address = rs.getString("address");
-		facility = rs.getString("facility");
+		String facility[] = request.getParameterValues("facility");
 		description = rs.getString("description");
 		photo = rs.getString("photo");
   	
+		if(location.equals("Seoul_Un")){
+			location = "서울대";
+		}else if (location.equals("Yonsei_Un" )){
+			location = "연세대";
+		}else if (location.equals("Myongji_Un" )){
+			location = "명지대";
+		}else{
+			location = "기타";
+		}
+		
+		if(type.equals("rented room")){
+			type = "자취";
+		}else if (type.equals("two" )){
+			distance = "10분 이내";
+		}else if (type.equals("boarding house" )){
+			type = "하숙";
+		}else{
+			distance = "기타";
+		}
+		
+		if(kind.equals("officetel")){
+			kind = "오피스텔";
+		}else if (kind.equals("one_room" )){
+			kind = "원룸";
+		}else if (kind.equals("two_room" )){
+			kind = "투룸";
+		}else{
+			kind = "기타";
+		}
+
+		
+		if(distance.equals("one")){
+			distance = "5분 이내";
+		}else if (distance.equals("two" )){
+			distance = "10분 이내";
+		}else if (distance.equals("three" )){
+			distance = "20분 이내";
+		}else if (distance.equals("four" )){
+			distance = "30분 이내";
+		}else if (distance.equals("five" )){
+			distance = "30분 이상";
+		}else{
+			distance = "기타";
+		}
+
+
+
   
   %>
   
@@ -179,18 +225,19 @@
  	<jsp:include page="share/header.jsp"></jsp:include>
   	
   <div class="jumbotron">
-  
+   <fieldset>
+   
    <h2>상 세 보 기</h2>
    
-   	<h1><%=name%></h1>
+
 
     <img src="http://placehold.it/300x200" alt="">
   
-    <div class = "basic_information">
-    <fieldset>
-    
-    <div class="main_title"><h3 style="padding-left: 20px ; margin-top: 50px ">방 기본정보</h3></div>
+  
    
+    
+    <div class="main_title"><h3 style="padding-left: 20px;">방 기본정보</h3></div>
+  	 
 
     <div class = "basic_information">
 
@@ -222,10 +269,10 @@
           
          
     </div>
-
+		
    
     
-    <div class="main_title"><h3 style="padding-left: 20px">방 상세정보</h3></div>
+    <div class="main_title"><h3 style=" padding-left: 20px">방 상세정보</h3></div>
    
      <div class = "basic_information">
         <label>방 이름<strong style="color:red"> *</strong></label>
@@ -236,6 +283,22 @@
      <div class = "basic_information">
         <label>주소<strong style="color:red"> *</strong></label>
      <span > <%=address%></span>  
+     
+     <div id="container">
+
+          
+         
+          <label for="searchTextField">상세 위치정보</label>
+          <input  id="searchTextField" name="searchTextField" title="상세 위치 정보" style=" display:none; width: 50%;"  value="<%=address%>"/>
+          
+          
+       		<div id="map_canvas" style=" height: 250px; width: 450px; margin : 0 0 0 130px " ></div>
+    			
+    	
+    
+  		</div>
+      
+      
       </div>
 
       <div class = "basic_information">
@@ -246,29 +309,11 @@
 
       <div class = "basic_information">
         <label>소개</label>
-       <span > <%=description %></span>  
+       <fieldset> <%=description %></fieldset>
      
       </div>
       </fieldset>
-      
-      
-       <div id="container">
-    <form>
-      <fieldset>
-        <div>
-          <label for="searchTextField">검색위치</label>
-          <input id="searchTextField" name="searchTextField" title="목적지를 입력해주세요."/>
-        </div>
-        <div id="map_canvas" style=" height: 400px; width: 600px;"></div>
-       
-      </fieldset>
-    </form>
-  </div>
-      </div>
-			
      
-  
-
 
   
 	</div> 
