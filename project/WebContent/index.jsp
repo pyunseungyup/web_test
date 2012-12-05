@@ -236,9 +236,15 @@
 
 				<li class="span3" style="width: 210px">
 					<div class="thumbnails">
+<<<<<<< HEAD
 						<a href="show.jsp?roomid=<%=roomid%>">
 						<img src="./images/<%=photo%>" alt="http://placehold.it/300x200"
 							width="150" height="200"></a>
+=======
+						<a href="show.jsp?roomid=<%=roomid%>"><img
+							src="/bnbun/images/<%=photo%>" alt="http://placehold.it/300x200"
+							width="150" heigt="200"></a>
+>>>>>>> 6268c79c907698d4b3c9fd03f082876c67de00ac
 						<h3><%=location%></h3>
 						<p>
 							방이름:<%=roomname%><br /> 학교에서의 거리:

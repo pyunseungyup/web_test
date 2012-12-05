@@ -123,7 +123,12 @@
  } else { %>
 
 
+<<<<<<< HEAD
 		<form action="registerroom.jsp" method="post" enctype="multipart/form-data">
+=======
+		<form action="registerroom.jsp" method="post" enctype="multipart/form-data"
+			>
+>>>>>>> 6268c79c907698d4b3c9fd03f082876c67de00ac
 
 			<fieldset>
 

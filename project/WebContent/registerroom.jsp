@@ -1,16 +1,27 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 	import="com.oreilly.servlet.MultipartRequest,
                    com.oreilly.servlet.multipart.DefaultFileRenamePolicy"
+=======
+	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 	import="com.oreilly.servlet.MultipartRequest"
+>>>>>>> 6268c79c907698d4b3c9fd03f082876c67de00ac
 	import="org.apache.commons.lang3.StringUtils"
 %>
 
 <%
 	
+<<<<<<< HEAD
 	String path= getServletContext().getRealPath("./images");
 
   
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
 	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit);
+=======
+	String path= getServletContext().getRealPath("/images");
+  
+	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit ,"euc-kr");
+>>>>>>> 6268c79c907698d4b3c9fd03f082876c67de00ac
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
