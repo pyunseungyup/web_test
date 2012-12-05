@@ -62,12 +62,12 @@
 
 			<h2>로 그 인</h2>
 
-			
-				<form action="registerlogin.jsp" method="post">
-					<fieldset>
+
+			<form action="registerlogin.jsp" method="post">
+				<fieldset>
 					<table class="body_imfor">
 						<tr>
-							<th>e-mail</th>
+								<th class="contlor-label" for="userid">e-mail</th>
 							<td colspan="3"><input type="text" name="userid"
 								value="<%=userid %>" /></td>
 						</tr>
@@ -79,34 +79,34 @@
 
 					</table>
 
-					<input type="checkbox" name="email_check">e-mail
-						저장 <input type="submit" value="로그인" />
-						</fieldset>
-				</form>
-			
-			<a href="">비밀번호 찾기</a><br /> 
+					<input type="checkbox" name="email_check">e-mail 저장 <input
+						type="submit" value="로그인" />
+				</fieldset>
+			</form>
+
+			<a href="">비밀번호 찾기</a><br />
 
 
 		</div>
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
-		</div>
-		<% //if (session.getAttribute("userid") == null) %>
+	</div>
+	<% //if (session.getAttribute("userid") == null) %>
 
 
-		<% //if (session.getAttribute("userid") == null) { %>
-		<% //<jsp:forward page="login.jsp"></jsp:forward> %>
+	<% //if (session.getAttribute("userid") == null) { %>
+	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
 
-		<% //} else { %>
-		<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-		<%//<jsp:forward page="index.jsp"></jsp:forward>
+	<% //} else { %>
+	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
+	<%//<jsp:forward page="index.jsp"></jsp:forward>
 		//}%>
 
-		<%//}%>
+	<%//}%>
 
 
-		<%
+	<%
 			/*
     if (request.getMethod().equals("POST")) {
 	  //String id = request.getParameter("userid");
@@ -121,11 +121,11 @@
   %>
 
 
-		<!-- /container -->
+	<!-- /container -->
 
-		<!-- Le javascript
+	<!-- Le javascript
     ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-	
+	<!-- Placed at the end of the document so the pages load faster -->
+
 </body>
 </html>

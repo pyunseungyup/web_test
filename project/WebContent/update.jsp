@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.util.*"  import="java.sql.*" 
-		import="org.apache.commons.lang3.StringUtils"%>
+	pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
+	import="org.apache.commons.lang3.StringUtils"%>
 <%
 
 
@@ -38,102 +38,98 @@
 
 %>
 <!DOCTYPE html>
-<html lang = "ko">
+<html lang="ko">
 <head>
 
-  	<meta charset="utf-8">
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-  	<link href="css/main.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-   
- 		
- 		<script src="js/jquery-1.8.2.min.js"></script>
-	  <script src="js/bootstrap.min.js"></script>
-	  
-	  
+<!-- Fav and touch icons -->
+
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
 <title>update</title>
-</head>  
+</head>
 
-  <body>
-  
-  <div class="container-narrow">
-  
-  
-  	
- 	<jsp:include page="share/header.jsp"></jsp:include>
-  	
-  <div class="jumbotron">
-  
-   <h2>정 보 수 정</h2>
+<body>
 
-  
-  
-    <div class = "basic_information">
-      <form action="userupdate.jsp" method="post">
-      <fieldset>
-      <table class = "body_imfor">
-        <tr>
-          <th>e-mail</th>
-          <td>
-            <input type="text" name="userid" value="<%=userid%>"/>
-          </td>
-          
-        </tr>
-        <tr>
-          <th>비밀번호</th>
-          <td colspan = "2">
-            <input type="password" name="pwd"  value ="<%=pwd%>">
-          </td>
-        </tr>
-        <tr>  
-          <th>확인</th>
-          <td colspan = "2">
-            <input type="password" name="pwd_confirm" value="<%=pwd%>"/>
-          </td>
-        </tr>
-        <tr>
-          <th>이름</th>
-          <td colspan="2">
-            <input type="text" name="name" value="<%=name%>"/>
-          </td>
-        </tr>
-        <tr>
-          <th>PHONE-NUMBER</th>
-          <td colspan="2">
-            <input type="text" name=phonenumber value="<%=phonenumber%>"/>
-          </td>
-        </tr>
-        </table>
-    <input type="submit"  value="정보수정" />
-   </fieldset> 
-	</form>
-	</div> 
+	<div class="container-narrow">
 
-   
+
+
+		<jsp:include page="share/header.jsp"></jsp:include>
+
+		<div class="jumbotron">
+
+			<h2>정 보 수 정</h2>
+
+
+
+			<div class="basic_information">
+				<form action="userupdate.jsp" method="post">
+					<fieldset>
+						<table class="body_imfor">
+							<tr>
+								<th>e-mail</th>
+								<td><input type="text" name="userid" value="<%=userid%>" />
+								</td>
+
+							</tr>
+							<tr>
+								<th>비밀번호</th>
+								<td colspan="2"><input type="password" name="pwd"
+									value="<%=pwd%>"></td>
+							</tr>
+							<tr>
+								<th>확인</th>
+								<td colspan="2"><input type="password" name="pwd_confirm"
+									value="<%=pwd%>" /></td>
+							</tr>
+							<tr>
+								<th>이름</th>
+								<td colspan="2"><input type="text" name="name"
+									value="<%=name%>" /></td>
+							</tr>
+							<tr>
+								<th>PHONE-NUMBER</th>
+								<td colspan="2"><input type="text" name=phonenumber
+									value="<%=phonenumber%>" /></td>
+							</tr>
+						</table>
+						<input type="submit" value="정보수정" />
+					</fieldset>
+				</form>
+			</div>
+
+
 		</div>
-     <jsp:include page="share/footer.jsp"></jsp:include>
-    
-    </div> <!-- /container -->
+		<jsp:include page="share/footer.jsp"></jsp:include>
 
-    <!-- Le javascript
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
 
 
-  </body>
+</body>
 </html>
 
 <%

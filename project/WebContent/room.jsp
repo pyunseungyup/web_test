@@ -4,31 +4,32 @@
 
 
 <!DOCTYPE html>
-<html lang = "ko">
+<html lang="ko">
 <head>
 
-  	<meta charset="utf-8">
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-  	<link href="css/main.css" rel="stylesheet">
-  	<link href="css/room.css" rel="stylesheet">
- 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/room.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-  
- 		<script src="js/jquery-1.8.2.min.js"></script>
-	  <script src="js/bootstrap.min.js"></script>
-	  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-	   <script>
+<!-- Fav and touch icons -->
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script>
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-33.8688, 151.2195),
@@ -101,187 +102,199 @@
       }
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
-	  
-	  
+
+
 <title>Project Main</title>
-</head>  
+</head>
 
-  <body>
-  
-  <div class="container-narrow">
-  
-  
-  	
-  	<jsp:include page="share/header.jsp"></jsp:include>
-  	
+<body>
 
-<% if (session.getAttribute("s_userid") == null) { 
+	<div class="container-narrow">
+
+
+
+		<jsp:include page="share/header.jsp"></jsp:include>
+
+
+		<% if (session.getAttribute("s_userid") == null) { 
 		
 		 response.sendRedirect("login.jsp");
 
  } else { %>
 
 
-	<form action="registerroom.jsp" method="post">
+		<form action="registerroom.jsp" method="post" enctype="multipart/form-data"
+			>
 
-  <fieldset>
-    
-    <div class="main_title"><h3 style="padding-left: 20px ; margin-top: 50px ">방 기본정보</h3></div>
-   
+			<fieldset>
 
-    <div class = "basic_information">
+				<div class="main_title">
+					<h3 style="padding-left: 20px; margin-top: 50px">방 기본정보</h3>
+				</div>
 
-        <label>인근 대학<strong style="color:red"> *</strong></label>
-          
-          <select name="location">
-            <option value=""></option>
-            <option value="Seoul_Un">서울대</option>
-            <option value="Yonsei_Un">연세대</option>
-            <option value="Myongji_Un">명지대</option>
-            <option value="other">등등 더추가</option>
-          </select>
-    </div>
 
-    <div class = "basic_information">
-    <label>거리(도보 기준) <strong style="color:red"> *</strong></label>
+				<div class="basic_information">
 
-        <input type="radio" name="distance" value="one" >5분 이내
-        <input type="radio" name="distance" value="two">10분 이내
-        <input type="radio" name="distance" value="three">20분 이내
-        <input type="radio" name="distance" value="four">30분 이내
-        <input type="radio" name="distance" value="five">30분 이상 
-    </div>
-    <div class = "basic_information">
-        <label>객실 타입<strong style="color:red"> *</strong></label>
-         
-          <select name="type">
-          <option value=""></option>
-          <option value="rented room">자취</option>
-          <option value="boarding house">하숙</option>
-          <option value="other">기타</option>
-          </select>
-    </div>
-    <div class = "basic_information">
-        <label>객실 종류<strong style="color:red"> *</strong></label>
-          <select name="kind">
-            <option value=""></option>
-            <option value="officetel">오피스텔</option>
-            <option value="one_room">원룸</option>
-            <option value="two_room">투룸</option>
-            <option value="other">기타</option>
-          </select>
-    </div>
+					<label>인근 대학<strong style="color: red"> *</strong></label> <select
+						name="location">
+						<option value=""></option>
+						<option value="Seoul_Un">서울대</option>
+						<option value="Yonsei_Un">연세대</option>
+						<option value="Myongji_Un">명지대</option>
+						<option value="other">등등 더추가</option>
+					</select>
+				</div>
 
-    <div class = "basic_information">
-        <label>가격 정보<strong style="color:red"> *</strong></label>
-       
-          
-             
-          <table id="tab" >
-							<tr>
+				<div class="basic_information">
+					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <input
+						type="radio" name="distance" value="one">5분 이내 <input
+						type="radio" name="distance" value="two">10분 이내 <input
+						type="radio" name="distance" value="three">20분 이내 <input
+						type="radio" name="distance" value="four">30분 이내 <input
+						type="radio" name="distance" value="five">30분 이상
+				</div>
+				<div class="basic_information">
+					<label>객실 타입<strong style="color: red"> *</strong></label> <select
+						name="type">
+						<option value=""></option>
+						<option value="rented room">자취</option>
+						<option value="boarding house">하숙</option>
+						<option value="other">기타</option>
+					</select>
+				</div>
+				<div class="basic_information">
+					<label>객실 종류<strong style="color: red"> *</strong></label> <select
+						name="kind">
+						<option value=""></option>
+						<option value="officetel">오피스텔</option>
+						<option value="one_room">원룸</option>
+						<option value="two_room">투룸</option>
+						<option value="other">기타</option>
+					</select>
+				</div>
+
+				<div class="basic_information">
+					<label>가격 정보<strong style="color: red"> *</strong></label>
+
+
+
+					<table id="tab">
+						<tr>
 							<td><input type='checkbox'></td>
-							<td>
-							 <input type = "button" id ="price" value = "보증금">    
-							</td>
-							<td id = "price_add">
-							</td>
-							<td>
-							<input type ="text" name ="price" placeholder = "가격을 입력해 주세요">만원	
-							</td>						
-							</tr>
+							<td><input type="button" id="price" value="보증금"></td>
+							<td id="price_add"></td>
+							<td><input type="text" name="price"
+								placeholder="가격을 입력해 주세요">만원</td>
+						</tr>
 					</table>
-					
-					<div id="price_" style="display:none">
-								<table>
-								<tr>
+
+					<div id="price_" style="display: none">
+						<table>
+							<tr>
 								<th>보증금</th>
-								<td><input type='text' size='15' placeholder = "보증금 입력해 주세요"></td>				
-								</tr>
-								</table>
-				 </div>
-  
-  	</div>
+								<td><input type='text' size='15' placeholder="보증금 입력해 주세요"></td>
+							</tr>
+						</table>
+					</div>
 
-   
-    
-    <div class="main_title"><h3 style="padding-left: 20px">방 상세정보</h3></div>
-   
-     <div class = "basic_information">
-        <label>방 이름<strong style="color:red"> *</strong></label>
-        <input type ="text" name = "name" placeholder="멋진 방이름을 지어주세요" >
+				</div>
 
-      </div>
 
-     <div class = "basic_information">
-        <label>주소<strong style="color:red"> *</strong></label>
-         <div id="container">        
-        <input id="searchTextField" name="address" style="width:80%;" title="목적지를 입력해주세요."/>
-        <div id="map_canvas"></div>
-     
-  </div>
-        </div>
 
-      <div class = "basic_information">
-        <label>시설</label>
-				<table>
-				<tr>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="tv">TV</span> </td>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="internet">인터넷</span> </td>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="gas range">가스렌지</span> </td>				
-				</tr>
-				
-				<tr>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="air_conditioner"> 에어컨	</span> </td>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="refrigerator">냉장고	</span> </td>
-				<td class = "facilities_item"> <span class = "facilities"> <input type="checkbox" name="facility " value="washing_machine">세탁기</span> </td>				
-				</tr>
-				
-				<tr>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="drying_rack">건조대</span> </td>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="parking">주차장</span></td>
-				<td class = "facilities_item"> <span class = "facilities"><input type="checkbox" name="facility " value="bathtub">욕조</span></td>				
-				</tr>
-				</table>
-				
-      </div>
-      
-       <div class = "basic_information">
-        <label>사진 올리기</label>
-        <input type = "File" name = "photo">
-      </div>
+				<div class="main_title">
+					<h3 style="padding-left: 20px">방 상세정보</h3>
+				</div>
 
-      <div class = "basic_information">
-        <label>소개</label>
-        <div>
-        <textarea   rows="5" name = "description" placeholder = "방을 멋지게 소개 해주세요.">
+				<div class="basic_information">
+					<label>방 이름<strong style="color: red"> *</strong></label> <input
+						type="text" name="name" placeholder="멋진 방이름을 지어주세요">
+
+				</div>
+
+				<div class="basic_information">
+					<label>주소<strong style="color: red"> *</strong></label>
+					<div id="container">
+						<input id="searchTextField" name="address" style="width: 80%;"
+							title="목적지를 입력해주세요." />
+						<div id="map_canvas"></div>
+
+					</div>
+				</div>
+
+				<div class="basic_information">
+					<label>시설</label>
+					<table>
+						<tr>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="tv">TV</span></td>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="internet">인터넷</span></td>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="gas range">가스렌지</span>
+							</td>
+						</tr>
+
+						<tr>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="air_conditioner">
+									에어컨 </span></td>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="refrigerator">냉장고
+							</span></td>
+							<td class="facilities_item"><span class="facilities">
+									<input type="checkbox" name="facility " value="washing_machine">세탁기
+							</span></td>
+						</tr>
+
+						<tr>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="drying_rack">건조대</span>
+							</td>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="parking">주차장</span></td>
+							<td class="facilities_item"><span class="facilities"><input
+									type="checkbox" name="facility " value="bathtub">욕조</span></td>
+						</tr>
+					</table>
+
+				</div>
+
+				<div class="basic_information">
+					<label>사진 올리기</label> <input type="File" name="photo">
+				</div>
+
+				<div class="basic_information">
+					<label>소개</label>
+					<div>
+						<textarea rows="5" name="description"
+							placeholder="방을 멋지게 소개 해주세요.">
         </textarea>
-        </div>
-      </div>
-
-     
-  
+					</div>
+				</div>
 
 
- 	 <input type="submit"  value="방 등록 하기">
-  </fieldset>
-	</form>
-<% } %>
-  
-  
-   
-		
-      <jsp:include page="share/footer.jsp"></jsp:include>
 
-    </div> <!-- /container -->
 
-    <!-- Le javascript
+
+				<input type="submit" value="방 등록 하기">
+			</fieldset>
+		</form>
+		<% } %>
+
+
+
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
+
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
+	<!-- Placed at the end of the document so the pages load faster -->
 
-  </body>
-</html>
 
+</body>
 <script type="text/javascript">
 
 $(function() {
@@ -295,5 +308,8 @@ $(function() {
 	});
 });
 </script>
+
+</html>
+
 
 
