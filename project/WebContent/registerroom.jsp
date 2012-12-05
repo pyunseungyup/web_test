@@ -1,19 +1,30 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    import="org.apache.commons.lang3.StringUtils"%>
+	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 	import="com.oreilly.servlet.MultipartRequest,
+                   com.oreilly.servlet.multipart.DefaultFileRenamePolicy"
+	import="org.apache.commons.lang3.StringUtils"
+%>
+
 <%
-	// DB 접속을 위한 준비
+	
+	String path= getServletContext().getRealPath("./images");
+
+  
+	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit);
+	
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
+	
+	request.setCharacterEncoding("utf-8");
 	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	request.setCharacterEncoding("utf-8");
+	
 
-
+	
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
@@ -23,56 +34,30 @@
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
 	String address = ""; // 주소
-
 	String description = "" ; // 설명
-	String photo = "" ; // 사진 	
-  String phonenumber = ""; 
-  String facility="";
+ 
+	
+  userid=session.getAttribute("s_userid").toString();
+	location =multi.getParameter("location");
+	name = multi.getParameter("name").toString();
+	distance = multi.getParameter("distance");
+	type = multi.getParameter("type");
+	kind = multi.getParameter("kind");
+	price = multi.getParameter("price").toString();
+	address = multi.getParameter("address").toString();
+	description = multi.getParameter("description").toString();
 	
 	
-	userid=session.getAttribute("s_userid").toString();
-	location = request.getParameter("location");
-	name = request.getParameter("name");
-	distance = request.getParameter("distance");
-	type = request.getParameter("type");
-	kind = request.getParameter("kind");
-	price = request.getParameter("price");
-	address = request.getParameter("address");
+	String photo = multi.getParameter("photo"); // 파일의 url
 
-	facility = request.getParameter("facility");
-
-	description = request.getParameter("description");
-	photo = request.getParameter("photo");
-	phonenumber = request.getParameter("phonenumber");
-	
-
-	int result = 0;
-	
-
-	String[] facility =request.getParameterValues("facility");
+	String[] facility = multi.getParameterValues("facility");
 	String favoriteStr = StringUtils.join(facility, ",");
-
+	
+   Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
+	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
+	 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
+	 
 	int result = 0;
-	
-	List<String> errorMsgs = new ArrayList<String>(); 
-	
-	if(location == ""){
-		errorMsgs.add("인근 대학을 선택해 주세요.");
-	}
-
-	if(distance == null || !(distance.equals("one") || distance.equals("two")|| distance.equals("three")|| distance.equals("four")|| distance.equals("five")) ){
-		errorMsgs.add("거리을 다시 선택해 주세요.");
-	}
-	if(type == ""){
-		errorMsgs.add("인근 대학을 선택해 주세요.");
-	}
-	if(kind == ""){
-		errorMsgs.add("인근 대학을 선택해 주세요.");
-	}
-	if (price == null || price.trim().length() == 0) {
-		errorMsgs.add("가격 정보를 입력해주세요.");
-	}
-	
 
 	List<String> errorMsgs = new ArrayList<String>(); 
 	
@@ -111,6 +96,13 @@
 			rs.next();
 			userid= rs.getString("userid");	
 			*/
+			
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				}catch(ClassNotFoundException e){
+					e.printStackTrace();
+				}
+			
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
 					"INSERT INTO rooms(userid, name, location, distance,type,kind, price,address,facility,description,photo) " +
@@ -128,22 +120,16 @@
 			stmt.setString(8,  address);
 			stmt.setString(9,  favoriteStr);
 			stmt.setString(10, description);
-			stmt.setString(11, photo);
+			stmt.setString(11, fileName);
 			
 			
 			result = stmt.executeUpdate();
 			
 
 			if (result == 0) {
-				%>
-				<jsp:forward page="room.jsp"></jsp:forward>
-				<%
+				response.sendRedirect("room.jsp");
 			}else
-			{
-				%>
-				<jsp:forward page="index.jsp"></jsp:forward>
-				<%
-			}
+				response.sendRedirect("index.jsp");
 			
 			
 		
@@ -188,33 +174,33 @@
 
 
 
-<div class="container-narrow">
+	<div class="container-narrow">
 
 
 
-	<jsp:include page="share/header.jsp"></jsp:include>
+		<jsp:include page="share/header.jsp"></jsp:include>
 
 
-	<div class="jumbotron">
+		<div class="jumbotron">
 
 			<div class="alert alert-error">
 				<h3>Errors:</h3>
 				<ul>
 					<% for(String msg: errorMsgs) { %>
-						<li><%=msg %></li>
+					<li><%=msg %></li>
 					<% } %>
 				</ul>
 			</div>
-	 	<div class="form-action">
-	 		<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
-	 	</div>
-  </div>
+			<div class="form-action">
+				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+			</div>
+		</div>
 
-		
-	
-	
 
-	<jsp:include page="share/footer.jsp"></jsp:include>
+
+
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
 
 	<% //if (session.getAttribute("userid") == null) %>
@@ -257,10 +243,9 @@ if (request.getMethod().equals("POST")) {
 
 
 
-	<%
+<%
 }
 	
 	%>
 
 
-  
