@@ -61,7 +61,7 @@
 		
 		location=request.getParameter("school");
 		distance=request.getParameter("distance");
-		kind=request.getParameter("roomtype");
+		kind=request.getParameter("kind");
 		
 try {
 			
@@ -69,7 +69,7 @@ try {
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			
 			
-			stmt = conn.prepareStatement("SELECT location,distance,kind FROM rooms WHERE location =? and distance=? and kind=?");
+			stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? AND distance=? AND kind=?");
 			
 			stmt.setString(1,location);
 			stmt.setString(2,distance);
@@ -78,6 +78,7 @@ try {
 			
 			rs= stmt.executeQuery();
 			
+			rs.next();		
 			
 			userid=rs.getString("userid");
 			roomname = rs.getString("name");
@@ -116,10 +117,10 @@ try {
               <div class="thumbnails">
                  
                 <img src="http://placehold.it/300x200" alt="">
-                  <h3><%=location %> 자취방 </h3>
+                  <h3><%=location %></h3>
                   <p>방이름: <%= roomname %><br/> 
 			                                   학교에서의 거리: <%=distance%><br/>
-			                                   방 종류: <%=type%>
+			                                   방 종류: <%=kind%>
 			            </p>			                         
              
               </div>

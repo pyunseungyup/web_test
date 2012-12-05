@@ -1,10 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
     import="org.apache.commons.lang3.StringUtils"%>
-<%
-
-
-	
+<%	
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -34,11 +31,7 @@
 	} catch (NumberFormatException ex) {
 	}
 
-<<<<<<< HEAD
-	int numInPage = 9; // 한페이지에 출력할 아이템 개수
-=======
 	int numInPage = 10; // 한페이지에 출력할 아이템 개수
->>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 	int startPos = (pageNo - 1) * numInPage; // 몇 번째 아이템 부터 이 페이지에?
 	int numItems, numPages;
 	
@@ -85,7 +78,7 @@
       <div class="jumbotron">
         <h2>당신이 원하는 자취방</h2>
         <h1>검색하나로!!</h1>
-        
+        <form action="searchroom.jsp" method="post">
         <div class="btn-group">        
             <select name="school" id="select">
               <option value="school">학교</option>
@@ -103,8 +96,8 @@
               <option value="five">30분이상</option>
             </select>      
          
-            <select name="roomtype" id="select">
-              <option value="roomtype">방구조</option>
+            <select name="kind" id="select">
+              <option value="kind">방구조</option>
               <option value="one_room">원룸</option>
               <option value="two_room">투룸</option>
               <option value="officetel">오피스텔</option>     
@@ -112,7 +105,8 @@
             </select>            
       
         </div>
-        <a class="btn btn-large btn-success" href="searchroom.jsp">검색</a>             
+        <input type="submit" class="btn btn-large btn-success" value="검색" />      
+        </form>       
        
       </div>
 		
@@ -149,11 +143,7 @@
 				 /*
 			      while(rs.next()){
 			      	
-<<<<<<< HEAD
-			    		roomid=rs.getInt("roomid");
-=======
 						roomid=rs.getInt("roomid");
->>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 						userid=rs.getString("userid");
 						roomname = rs.getString("name");
 						location = rs.getString("location");
@@ -182,77 +172,6 @@
 		 
         
        <ul class="thumbnails">           
-<<<<<<< HEAD
-
-       <% while(rs.next()){
-       
-    	roomid=rs.getInt("roomid");
-			userid=rs.getString("userid");
-			roomname = rs.getString("name");
-			location = rs.getString("location");
-			distance = rs.getString("distance");
-			type =rs.getString("type");
-			kind =rs.getString("kind");
-			price = rs.getString("price");
-			address = rs.getString("address");
-			facility = rs.getString("facility");
-			description = rs.getString("description");
-			photo = rs.getString("photo");		
-       
-			if(location.equals("Seoul_Un")){
-				location = "서울대";
-			}else if (location.equals("Yonsei_Un" )){
-				location = "연세대";
-			}else if (location.equals("Myongji_Un" )){
-				location = "명지대";
-			}else{
-				location = "기타";
-			}
-			
-			if(type.equals("rented room")){
-				type = "자취";
-			}else if (type.equals("two" )){
-				distance = "10분 이내";
-			}else if (type.equals("boarding house" )){
-				type = "하숙";
-			}else{
-				distance = "기타";
-			}
-			
-			if(kind.equals("officetel")){
-				kind = "오피스텔";
-			}else if (kind.equals("one_room" )){
-				kind = "원룸";
-			}else if (kind.equals("two_room" )){
-				kind = "투룸";
-			}else{
-				kind = "기타";
-			}
-
-			if(distance.equals("one")){
-				distance = "5분 이내";
-			}else if (distance.equals("two" )){
-				distance = "10분 이내";
-			}else if (distance.equals("three" )){
-				distance = "20분 이내";
-			}else if (distance.equals("four" )){
-				distance = "30분 이내";
-			}else if (distance.equals("five" )){
-				distance = "30분 이상";
-			}else{
-				distance = "기타";
-			}
-       
-       %>      
-    
-		    <li class="span3" style = " width : 210px ">
-              <div class="thumbnails" >   
-                <a href = "show.jsp?roomid=<%=roomid%>"><img src="http://placehold.it/300x200" alt=""></a>
-                  <h3><%=location%></h3>
-                  <p>방이름:<%=roomname%><br/> 
-			                                   학교에서의 거리: <%=distance%><br/>
-			                                   방 종류: <%=type%>
-=======
 
        <% while(rs.next()){%>      
     
@@ -264,8 +183,8 @@
                   <p>방이름:<%= rs.getString("name") %><br/> 
 			                                   학교에서의 거리: <%=rs.getString("distance")%><br/>
 			                                   방 종류: <%=rs.getString("type")%>
->>>>>>> 84a0afb4bc18bea7a1216896bd5ce6ceac5f9bf8
 			            </p>			                         
+             
               </div>
         </li>    
        <%} %>
