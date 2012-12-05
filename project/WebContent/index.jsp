@@ -78,7 +78,7 @@
       <div class="jumbotron">
         <h2>당신이 원하는 자취방</h2>
         <h1>검색하나로!!</h1>
-        <form action="searchroom.jsp" method="post">
+        <form action="searchroom.jsp" method="post" enctype="multipart/form-data	">
         <div class="btn-group">        
             <select name="school" id="select">
               <option value="school">학교</option>
@@ -89,11 +89,10 @@
             </select> 
             <select name="distance" id="select">
               <option value="distance">거리</option>
-              <option value="one">5분이내</option>
-              <option value="two">10분이내</option>
-              <option value="three">20분이내</option>
-              <option value="four">30분이내</option>
-              <option value="five">30분이상</option>
+              <option value="5">5분이내</option>
+              <option value="10">10분이내</option>
+              <option value="20">20분이내</option>
+              <option value="30">30분이내</option>
             </select>      
          
             <select name="kind" id="select">

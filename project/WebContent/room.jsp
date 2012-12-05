@@ -115,11 +115,11 @@
   	<jsp:include page="share/header.jsp"></jsp:include>
   	
 
-<% if (session.getAttribute("s_userid") == null) { %>
+<% if (session.getAttribute("s_userid") == null) { 
 		
-		 <jsp:forward page="login.jsp"></jsp:forward>
+		 response.sendRedirect("login.jsp");
 
-<% } else { %>
+ } else { %>
 
 
 	<form action="registerroom.jsp" method="post">
