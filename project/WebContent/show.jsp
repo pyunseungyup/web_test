@@ -30,14 +30,16 @@
 	String address = ""; // 주소
 	String lat = "";
 	String lng = "";
-	
+	String dbuser= "";
 	String description = "" ; // 설명
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
-	
+	String dbuserid = "";
   roomid = request.getParameter("roomid");
-	
-	
+  
+  if (session.getAttribute("s_userid")!=null) {
+		userid = session.getAttribute("s_userid").toString();
+  }
 
 
   try {
@@ -56,7 +58,7 @@
 		rs.next();
 		
 		name = rs.getString("name");
-		userid = rs.getString("userid");
+		dbuserid = rs.getString("userid");
 	  location = rs.getString("location");
 		distance = rs.getString("distance");
 		type = rs.getString("type");
@@ -113,7 +115,7 @@
 		}
 		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
-		stmt.setString(1, userid);
+		stmt.setString(1, dbuserid);
 		
 		rs= stmt.executeQuery();
 		rs.next();
@@ -240,15 +242,26 @@
 			<fieldset>
 
 				<h2>상세보기</h2>
-
-
-
+			
+				
 
 				<img src="./upload/<%=photo%>" width="400px" height="500px"
 					alt="http://placehold.it/300x200">
 
 
+				<div class="main_title">
+					<h3 style="padding-left: 20px">판매자 정보</h3>
+				</div>
 
+				<div class="basic_information">
+					<label>판매자 이름<strong style="color: red"> *</strong></label> <span>
+						<%=username%></span>
+				</div>
+				
+				<div class="basic_information">
+					<label>판매자 전화번호<strong style="color: red"> *</strong></label> <span>
+						<%=userphon%></span>
+				</div>
 
 				<div class="main_title">
 					<h3 style="padding-left: 20px;">방 기본정보</h3>
@@ -331,23 +344,18 @@
 				</div>
 				
 				
-				<div class="main_title">
-					<h3 style="padding-left: 20px">판매자 정보</h3>
-				</div>
-
-				<div class="basic_information">
-					<label>판매자 이름<strong style="color: red"> *</strong></label> <span>
-						<%=username%></span>
-				</div>
 				
-				<div class="basic_information">
-					<label>판매자 전화번호<strong style="color: red"> *</strong></label> <span>
-						<%=userphon%></span>
-				</div>
 				
 			</fieldset>
 
-
+				<div style="margin : 50px 0 0 500px">
+				
+				<%if(dbuserid.equals(userid)){%>
+				  <a href="updateroom.jsp?id=<%=roomid %>" class="btn btn-mini">update</a>
+					<a href="delete.jsp?id=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
+				<%} %>
+				
+				</div>
 
 		</div>
 
@@ -365,8 +373,6 @@
 
 </body>
 </html>
-
-
 
 <%
 	}finally {

@@ -101,7 +101,7 @@
 									value="<%=phonenumber%>" /></td>
 							</tr>
 						</table>
-						<input type="submit" value="회원가입" />
+						<input class="btn btn-mini disabled" type="submit" value="회원가입" />
 					</fieldset>
 				</form>
 			</div>
