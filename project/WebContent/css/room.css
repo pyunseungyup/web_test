@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 @CHARSET "UTF-8";
 
 div.main_title {
@@ -18,7 +19,35 @@ td.facilities_item {
 }
 
 span.facilities {
+<<<<<<< HEAD
+=======
 	position: relative;
 	left: 50px;
 	overflow: auto;
+=======
+@CHARSET "UTF-8";
+
+div.main_title {
+	margin-top: 10px;
+	padding: 0 0 0 50px;
+	background-color: #DFFFFF;
+	color: #555;
+}
+
+div.basic_information {
+	padding: 0 0 0 100px;
+	background-color: #eeeeee;
+	overflow: auto;
+}
+
+td.facilities_item {
+	padding: 0 80px 0 0;
+}
+
+span.facilities {
+>>>>>>> 22462c80488cf0b814815b4eabcb2bdcc84d1406
+	position: relative;
+	left: 50px;
+	overflow: auto;
+>>>>>>> 2c3a5148be34e192bbf3b783e4114e57a3423b71
 }

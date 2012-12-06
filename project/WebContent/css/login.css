@@ -1,7 +1,19 @@
+<<<<<<< HEAD
 @CHARSET "UTF-8";
 
 #login {
+<<<<<<< HEAD
+=======
 	margin: 0 auto;
 	padding: 100px 0 0 100px;
 	overflow: auto;
+=======
+@CHARSET "UTF-8";
+
+#login {
+>>>>>>> 22462c80488cf0b814815b4eabcb2bdcc84d1406
+	margin: 0 auto;
+	padding: 100px 0 0 100px;
+	overflow: auto;
+>>>>>>> 2c3a5148be34e192bbf3b783e4114e57a3423b71
 }
