@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    import="org.apache.commons.lang3.StringUtils"%>
+	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"
+	import="org.apache.commons.lang3.StringUtils"%>
 
 
 <%
@@ -10,7 +10,6 @@
 	ResultSet rs = null;
 	
 	
-	Class.forName("com.mysql.jdbc.Driver");
 	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
@@ -23,12 +22,15 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
+	String userphon = "";
 	String distance = ""; // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
 	String address = ""; // 주소
-
+	String lat = "";
+	String lng = "";
+	
 	String description = "" ; // 설명
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
@@ -38,40 +40,121 @@
 	
 
 
+  try {
+	  
+	
+		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);	
+		
+		
+		
+		
+		stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomid=?");
+		stmt.setString(1, roomid);
+		
+		rs= stmt.executeQuery();
+	
+		rs.next();
+		
+		name = rs.getString("name");
+		userid = rs.getString("userid");
+	  location = rs.getString("location");
+		distance = rs.getString("distance");
+		type = rs.getString("type");
+		kind = rs.getString("kind");
+		price = rs.getString("price");
+		address = rs.getString("address");
+		String facility[] = request.getParameterValues("facility");
+		description = rs.getString("description");
+		photo = rs.getString("photo");
+		lat =rs.getString("lat");
+		lng =rs.getString("lng");
+  	
+		if(location.equals("Seoul_Un")){
+			location = "서울대";
+		}else if (location.equals("Yonsei_Un" )){
+			location = "연세대";
+		}else if (location.equals("Myongji_Un" )){
+			location = "명지대";
+		}else{
+			location = "기타";
+		}
+		
+		if(type.equals("rented room")){
+			type = "자취";
+		}else if (type.equals("boarding house" )){
+			type = "하숙";
+		}else{
+			type = "기타";
+		}
+		
+		if(kind.equals("officetel")){
+			kind = "오피스텔";
+		}else if (kind.equals("one_room" )){
+			kind = "원룸";
+		}else if (kind.equals("two_room" )){
+			kind = "투룸";
+		}else{
+			kind = "기타";
+		}
 
-%>
+		
+		if(distance.equals("one")){
+			distance = "5분 이내";
+		}else if (distance.equals("two" )){
+			distance = "10분 이내";
+		}else if (distance.equals("three" )){
+			distance = "20분 이내";
+		}else if (distance.equals("four" )){
+			distance = "30분 이내";
+		}else if (distance.equals("five" )){
+			distance = "30분 이상";
+		}else{
+			distance = "기타";
+		}
+		
+		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
+		stmt.setString(1, userid);
+		
+		rs= stmt.executeQuery();
+		rs.next();
+		username = rs.getString("name");
+		userphon = rs.getString("phonenumber");
+		
+		%>
+
 <!DOCTYPE html>
-<html lang = "ko">
+<html lang="ko">
 <head>
 
-  	<meta charset="utf-8">
-   
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta charset="utf-8">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-  	<link href="css/main.css" rel="stylesheet">
-		<link href="css/showroom.css" rel="stylesheet">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
+<link href="css/showroom.css" rel="stylesheet">
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-   
- 		
- 		<script src="js/jquery-1.8.2.min.js"></script>
-	  <script src="js/bootstrap.min.js"></script>
-	  
-	  <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
-	   <script>
+<!-- Fav and touch icons -->
+
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+<script
+	src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false&libraries=places"></script>
+<script>
       function initialize() {
         var mapOptions = {
-          center: new google.maps.LatLng(-33.8688, 151.2195),
-          zoom: 8,
+        	center: new google.maps.LatLng(<%=lat%>, <%=lng%>),
+          zoom: 16,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById('map_canvas'),
@@ -141,196 +224,146 @@
       google.maps.event.addDomListener(window, 'load', initialize);
     </script>
 <title>show</title>
-</head>  
+</head>
 
-  <body>
-  
-  <%
+<body>
 
-  try {
-		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
-		stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomid=?");
-		stmt.setString(1, roomid);
-		
-		rs= stmt.executeQuery("SELECT * FROM rooms");
 	
-		rs.next();
-		
-		name = rs.getString("name");
-		userid = rs.getString("userid");
-	  location = rs.getString("location");
-		distance = rs.getString("distance");
-		type = rs.getString("type");
-		kind = rs.getString("kind");
-		price = rs.getString("price");
-		address = rs.getString("address");
-		String facility[] = request.getParameterValues("facility");
-		description = rs.getString("description");
-		photo = rs.getString("photo");
-  	
-		if(location.equals("Seoul_Un")){
-			location = "서울대";
-		}else if (location.equals("Yonsei_Un" )){
-			location = "연세대";
-		}else if (location.equals("Myongji_Un" )){
-			location = "명지대";
-		}else{
-			location = "기타";
-		}
-		
-		if(type.equals("rented room")){
-			type = "자취";
-		}else if (type.equals("two" )){
-			distance = "10분 이내";
-		}else if (type.equals("boarding house" )){
-			type = "하숙";
-		}else{
-			distance = "기타";
-		}
-		
-		if(kind.equals("officetel")){
-			kind = "오피스텔";
-		}else if (kind.equals("one_room" )){
-			kind = "원룸";
-		}else if (kind.equals("two_room" )){
-			kind = "투룸";
-		}else{
-			kind = "기타";
-		}
 
-		
-		if(distance.equals("one")){
-			distance = "5분 이내";
-		}else if (distance.equals("two" )){
-			distance = "10분 이내";
-		}else if (distance.equals("three" )){
-			distance = "20분 이내";
-		}else if (distance.equals("four" )){
-			distance = "30분 이내";
-		}else if (distance.equals("five" )){
-			distance = "30분 이상";
-		}else{
-			distance = "기타";
-		}
+	<div class="container-narrow">
 
 
 
-  
-  %>
-  
-  <div class="container-narrow">
-  
-  
-  	
- 	<jsp:include page="share/header.jsp"></jsp:include>
-  	
-  <div class="jumbotron">
-   <fieldset>
-   
-   <h2>상 세 보 기</h2>
-   
+		<jsp:include page="share/header.jsp"></jsp:include>
+
+		<div class="jumbotron">
+			<fieldset>
+
+				<h2>상세보기</h2>
 
 
 
-    <img src="http://placehold.it/300x200" width = "400px" heigth = "500px"  alt="">
-  
 
-   
-    
-    <div class="main_title"><h3 style="padding-left: 20px;">방 기본정보</h3></div>
-  	 
-
-    <div class = "basic_information">
-
-        <label>인근 대학<strong style="color:red"> *</strong></label>
-        <span > <%=location %></span>  
-        
-    </div>
-
-    <div class = "basic_information">
-    <label>거리(도보 기준) <strong style="color:red"> *</strong></label>
-        <span > <%=distance %></span>  
-    </div>
-    <div class = "basic_information">
-        <label>객실 타입<strong style="color:red"> *</strong></label>
-         
-         
-          <span > <%=type %></span>  
-    </div>
-    <div class = "basic_information">
-        <label>객실 종류<strong style="color:red"> *</strong></label>
-      
-         <span > <%=kind %></span>  
-    </div>
-
-    <div class = "basic_information">
-        <label>가격 정보<strong style="color:red"> *</strong></label>
-      
-      	 <span > <%=price %> 만원</span>  
-          
-         
-    </div>
-		
-   
-    
-    <div class="main_title"><h3 style=" padding-left: 20px">방 상세정보</h3></div>
-   
-     <div class = "basic_information">
-        <label>방 이름<strong style="color:red"> *</strong></label>
-        <span > <%=name%></span>  
-					
-      </div>
-
-     <div class = "basic_information">
-        <label>주소<strong style="color:red"> *</strong></label>
-     <span > <%=address%></span>  
-     
-     <div id="container">
-
-          
-         
-          <label for="searchTextField">상세 위치정보</label>
-          <input  id="searchTextField" name="searchTextField" title="상세 위치 정보" style=" display:none; width: 50%;"  value="<%=address%>"/>
-          
-          
-       		<div id="map_canvas" style=" height: 250px; width: 450px; margin : 0 0 0 130px " ></div>
-    			
-    	
-    
-  		</div>
-      
-      
-      </div>
-
-      <div class = "basic_information">
-        <label>시설</label>
-				<span > <%=facility %></span>  
-      </div>
+				<img src="./upload/<%=photo%>" width="400px" height="500px"
+					alt="http://placehold.it/300x200">
 
 
-      <div class = "basic_information">
-        <label>소개</label>
-       <fieldset> <%=description %></fieldset>
-     
-      </div>
-      </fieldset>
-     
 
-  
-	</div> 
 
-   
-		
-     <jsp:include page="share/footer.jsp"></jsp:include>
-    
-    </div> <!-- /container -->
+				<div class="main_title">
+					<h3 style="padding-left: 20px;">방 기본정보</h3>
+				</div>
 
-    <!-- Le javascript
+
+				<div class="basic_information">
+
+					<label>인근 대학<strong style="color: red"> *</strong></label> <span>
+						<%=location %></span>
+
+				</div>
+
+				<div class="basic_information">
+					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <span>
+						<%=distance %></span>
+				</div>
+				<div class="basic_information">
+					<label>객실 타입<strong style="color: red"> *</strong></label> <span>
+						<%=type %></span>
+				</div>
+				<div class="basic_information">
+					<label>객실 종류<strong style="color: red"> *</strong></label> <span>
+						<%=kind %></span>
+				</div>
+
+				<div class="basic_information">
+					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
+						<%=price %> 만원
+					</span>
+
+
+				</div>
+
+
+
+				<div class="main_title">
+					<h3 style="padding-left: 20px">방 상세정보</h3>
+				</div>
+
+				<div class="basic_information">
+					<label>방 이름<strong style="color: red"> *</strong></label> <span>
+						<%=name%></span>
+
+				</div>
+
+				<div class="basic_information">
+					<label>주소<strong style="color: red"> *</strong></label> <span>
+						<%=address%></span>
+
+					<div id="container">
+
+
+
+						<label for="searchTextField">상세 위치정보</label> <input type ="hidden"
+							id="searchTextField" name="searchTextField" title="상세 위치 정보"
+							style=" width: 50%;" value="<%=address%>" />
+
+
+						<div id="map_canvas"
+							style="height: 250px; width: 450px; margin: 0 0 0 130px"></div>
+
+
+
+					</div>
+
+
+				</div>
+
+				<div class="basic_information">
+					<label>시설</label> <span> <%=facility%></span>
+				</div>
+
+
+				<div class="basic_information">
+					<label>소개</label>
+					<fieldset>
+						<%=description%></fieldset>
+
+				</div>
+				
+				
+				<div class="main_title">
+					<h3 style="padding-left: 20px">판매자 정보</h3>
+				</div>
+
+				<div class="basic_information">
+					<label>판매자 이름<strong style="color: red"> *</strong></label> <span>
+						<%=username%></span>
+				</div>
+				
+				<div class="basic_information">
+					<label>판매자 전화번호<strong style="color: red"> *</strong></label> <span>
+						<%=userphon%></span>
+				</div>
+				
+			</fieldset>
+
+
+
+		</div>
+
+
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
+
+	</div>
+	<!-- /container -->
+
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
 
 
-  </body>
+</body>
 </html>
 
 
