@@ -1,6 +1,5 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    %>
+	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"%>
 
 <%
 	// DB 접속을 위한 준비
@@ -105,74 +104,74 @@
 	
 	else {
 		%>
-		
+
 <!DOCTYPE html>
-<html lang = "ko">
+<html lang="ko">
 <head>
 
-  <meta charset="utf-8">
+<meta charset="utf-8">
 <title>update Error</title>
 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="">
-    <meta name="author" content="">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
 
-    <!-- Le styles -->
-    <link href="css/bootstrap.css" rel="stylesheet">
-    <link href="css/main.css" rel="stylesheet">
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/main.css" rel="stylesheet">
 
 
-    <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-    <!--[if lt IE 9]>
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
     <![endif]-->
 
-    <!-- Fav and touch icons -->
-   
+<!-- Fav and touch icons -->
 
-		<script src="js/jquery-1.8.2.min.js"></script>
-	  <script src="js/bootstrap.min.js"></script>
-</head>  
 
-  <body>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+</head>
 
-   
+<body>
+
+
 	<div class="container-narrow">
-      <%@ include file="share/header.jsp"%>
+		<%@ include file="share/header.jsp"%>
 
-      <div class="jumbotron">
- 				
- 			<div class="alert alert-error">
- 				<h3>Errors:</h3>
- 				<ul>
- 					<% for(String msg: errorMsgs) { %>
- 						<li><%=msg %></li>
- 					<% } %>
- 				</ul>
- 			</div>
-		 	<div class="form-action">
-		 		<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
-		 	</div>
-      </div>
-    
-			<%@ include file="share/footer.jsp"%>
-     <!-- /container -->
+		<div class="jumbotron">
+
+			<div class="alert alert-error">
+				<h3>Errors:</h3>
+				<ul>
+					<% for(String msg: errorMsgs) { %>
+					<li><%=msg %></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class="form-action">
+				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+			</div>
 		</div>
 
-    <!-- Le javascript
+		<%@ include file="share/footer.jsp"%>
+		<!-- /container -->
+	</div>
+
+	<!-- Le javascript
     ================================================== -->
-    <!-- Placed at the end of the document so the pages load faster -->
-    
+	<!-- Placed at the end of the document so the pages load faster -->
 
 
-  </body>
-  
+
+</body>
+
 
 </html>
 
-	
-		
+
+
 <% 
 }
-%>  
+%>
 
