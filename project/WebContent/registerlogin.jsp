@@ -34,7 +34,11 @@
 	if (errorMsgs.size() == 0) {
 	try {
 		
-		Class.forName("com.mysql.jdbc.Driver");
+		try{
+			Class.forName("com.mysql.jdbc.Driver");
+			}catch(ClassNotFoundException e){
+				e.printStackTrace();
+			}
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid =?");
 		stmt.setString(1, userid);
@@ -107,41 +111,41 @@
 
 		<div class="jumbotron">
 
-				<div class="alert alert-error">
- 				<h3>Errors:</h3>
- 				<ul>
- 					<% for(String msg: errorMsgs) { %>
- 						<li><%=msg %></li>
- 					<% } %>
- 				</ul>
- 			</div>
-		 	<div class="form-action">
-		 		<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
-		 	</div>
-      </div>
-
-			
-		
-		
-
-		<jsp:include page="share/footer.jsp"></jsp:include>
+			<div class="alert alert-error">
+				<h3>Errors:</h3>
+				<ul>
+					<% for(String msg: errorMsgs) { %>
+					<li><%=msg %></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class="form-action">
+				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+			</div>
 		</div>
 
-		<% //if (session.getAttribute("userid") == null) %>
 
 
-		<% //if (session.getAttribute("userid") == null) { %>
-		<% //<jsp:forward page="login.jsp"></jsp:forward> %>
 
-		<% //} else { %>
-		<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-		<%//<jsp:forward page="index.jsp"></jsp:forward>
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
+	</div>
+
+	<% //if (session.getAttribute("userid") == null) %>
+
+
+	<% //if (session.getAttribute("userid") == null) { %>
+	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
+
+	<% //} else { %>
+	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
+	<%//<jsp:forward page="index.jsp"></jsp:forward>
 		//}%>
 
-		<%//}%>
+	<%//}%>
 
 
-		<%
+	<%
 			/*
     if (request.getMethod().equals("POST")) {
 	  //String id = request.getParameter("userid");
@@ -156,18 +160,18 @@
   %>
 
 
-		<!-- /container -->
+	<!-- /container -->
 
-		<!-- Le javascript
+	<!-- Le javascript
     ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
-	
+	<!-- Placed at the end of the document so the pages load faster -->
+
 </body>
 </html>
 
 
 
-		<%
+<%
 	}
 		
 		%>

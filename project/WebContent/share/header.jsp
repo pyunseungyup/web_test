@@ -34,30 +34,28 @@
 */
 
 %>
-  <div class="masthead">
-        <ul class="nav nav-pills pull-right">
-          <li><a href="room.jsp">방올리기</a></li>
-          <li><a href="join.jsp">회원가입</a></li>
-          <%
+<div class="masthead">
+	<ul class="nav nav-pills pull-right">
+		<li><a href="room.jsp">방올리기</a></li>
+		<li><a href="join.jsp">회원가입</a></li>
+		<%
           if (session.getAttribute("s_userid")==null) {
           %>
-          <li><a href="login.jsp">login</a></li>
-          <% } 
+		<li><a href="login.jsp">login</a></li>
+		<% } 
           else {   	         
-        	  %>             
-          <li class="dropdown item">
-	      		<a href="#" class="dropdown-toggle item" data-toggle="dropdown">
-	            		  안녕하세요, <%=session.getAttribute("s_name")%>님
-	          	<span style="font-size:6px;">▼</span>
-	        	</a>
-	        	<ul class="dropdown-menu">
-	            <li><a href="update.jsp">회원정보</a></li>
-	            <li><a href="#">my page</a></li>
-	            <li class="divider"></li>
-	            <li><a href="logout.jsp">로그아웃</a></li>            
-	          </ul>    	
-	      	</li>
-      <%    
+        	  %>
+		<li class="dropdown item"><a href="#"
+			class="dropdown-toggle item" data-toggle="dropdown"> 안녕하세요, <%=session.getAttribute("s_name")%>님
+				<span style="font-size: 6px;">▼</span>
+		</a>
+			<ul class="dropdown-menu">
+				<li><a href="update.jsp">회원정보</a></li>
+				<li><a href="#">my page</a></li>
+				<li class="divider"></li>
+				<li><a href="logout.jsp">로그아웃</a></li>
+			</ul></li>
+		<%    
           /*  }catch (SQLException e){
   			errorMsgs.add("SQL 에러: " + e.getMessage());
   		}finally {
@@ -68,15 +66,16 @@
   		} 
       */
 	}	
-  		%>  
-  
-        </ul>
-        <h3><a href ="index.jsp" class="muted">BnB UN</a></h3>   
- </div>
- 
- 
+  		%>
 
- 
+	</ul>
+	<h3>
+		<a href="index.jsp" class="muted">BnB UN</a>
+	</h3>
+</div>
 
- 
- 
+
+
+
+
+

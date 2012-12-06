@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    import="org.apache.commons.lang3.StringUtils"%>
+	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"
+	import="org.apache.commons.lang3.StringUtils"%>
 <%
 	// DB 접속을 위한 준비
 	Connection conn = null;
@@ -26,10 +26,11 @@
 	}
 	
 	
-	if (pwd == null || pwd.length() < 6 || pwd != pwd_confirm) {
+	if (pwd == null || pwd.length() < 6 || pwd.equals("pwd")!=pwd_confirm.equals("pwd_confirm")) {
 		
 		errorMsgs.add("비밀번호는 다시 입력해주세요.");
 	} 
+	
 	
 	if (name == null || name.trim().length() == 0) {
 		errorMsgs.add("Name 반드시 입력해주세요.");
@@ -48,6 +49,11 @@
 	
 
 		try {
+			try{
+				Class.forName("com.mysql.jdbc.Driver");
+				}catch(ClassNotFoundException e){
+					e.printStackTrace();
+				}
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
 					"INSERT INTO users(userid, pwd, name, phonenumber) " +
@@ -62,13 +68,9 @@
 			
 
 			if (result == 0) {
-				%>
-				<jsp:forward page="join.jsp"></jsp:forward>
-				<%
+				response.sendRedirect("join.jsp");
 	    }else{
-				%>
-				<jsp:forward page="index.jsp"></jsp:forward>
-				<%
+	    	response.sendRedirect("index.jsp");
 			}
 		 
 		} finally {
@@ -81,9 +83,9 @@
 	else
 	{
 		%>
-		
-		
-		
+
+
+
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -124,41 +126,41 @@
 
 		<div class="jumbotron">
 
-				<div class="alert alert-error">
- 				<h3>Errors:</h3>
- 				<ul>
- 					<% for(String msg: errorMsgs) { %>
- 						<li><%=msg %></li>
- 					<% } %>
- 				</ul>
- 			</div>
-		 	<div class="form-action">
-		 		<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
-		 	</div>
-      </div>
-
-			
-		
-		
-
-		<jsp:include page="share/footer.jsp"></jsp:include>
+			<div class="alert alert-error">
+				<h3>Errors:</h3>
+				<ul>
+					<% for(String msg: errorMsgs) { %>
+					<li><%=msg %></li>
+					<% } %>
+				</ul>
+			</div>
+			<div class="form-action">
+				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+			</div>
 		</div>
 
-		<% //if (session.getAttribute("userid") == null) %>
 
 
-		<% //if (session.getAttribute("userid") == null) { %>
-		<% //<jsp:forward page="login.jsp"></jsp:forward> %>
 
-		<% //} else { %>
-		<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-		<%//<jsp:forward page="index.jsp"></jsp:forward>
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
+	</div>
+
+	<% //if (session.getAttribute("userid") == null) %>
+
+
+	<% //if (session.getAttribute("userid") == null) { %>
+	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
+
+	<% //} else { %>
+	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
+	<%//<jsp:forward page="index.jsp"></jsp:forward>
 		//}%>
 
-		<%//}%>
+	<%//}%>
 
 
-		<%
+	<%
 			/*
     if (request.getMethod().equals("POST")) {
 	  //String id = request.getParameter("userid");
@@ -173,18 +175,18 @@
   %>
 
 
-		<!-- /container -->
+	<!-- /container -->
 
-		<!-- Le javascript
+	<!-- Le javascript
     ================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
+	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 </html>
-		
-		
-		
-		
-	<%	
+
+
+
+
+<%	
 	}
-%>    
+%>
