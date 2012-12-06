@@ -269,8 +269,7 @@
 					<label>소개</label>
 					<div>
 						<textarea rows="5" name="description"
-							placeholder="방을 멋지게 소개 해주세요.">
-        </textarea>
+							placeholder="방을 멋지게 소개 해주세요."></textarea>
 					</div>
 				</div>
 
