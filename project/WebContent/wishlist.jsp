@@ -44,10 +44,7 @@
 			dlocation =rs.getString("location");
 		  dphoto = rs.getString("photo"); 
 		}
-		System.out.println(dwishid);
-		System.out.println(dname);
-		System.out.println(dlocation);
-		System.out.println(dphoto);
+		
 	
 		stmt = conn.prepareStatement(
 				"INSERT INTO wish(wishid,name,location,photo) " +

@@ -256,7 +256,7 @@
 
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px">방 상세정보</h3>
+					<h3 style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information">
@@ -313,15 +313,15 @@
 
 				</div>
 				
-				<div id='previewId'
- 				style = "margin : 30px 50px;"
- >
-				
-				</div>
+			
 				
 
 				<div class="basic_information">
-					<label>사진 올리기</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
+					<div id='previewId'
+ 				style = "padding : 30px  70px;"
+				 >
+				</div>
+					<label>사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
 				</div>
 
 				<div class="basic_information">
