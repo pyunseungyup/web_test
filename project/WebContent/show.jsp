@@ -115,10 +115,10 @@
 		stmt.setString(1, dbuserid);
 		
 		rs= stmt.executeQuery();
-		rs.next();
+		if(rs.next()){
 		username = rs.getString("name");
 		userphon = rs.getString("phonenumber");
-		
+		}
 		%>
 
 <!DOCTYPE html>

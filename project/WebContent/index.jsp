@@ -17,7 +17,7 @@
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
 	String stringdistance="";
-	int distance =0; // 도보거리 기준 
+	int distance =0;	 // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -233,7 +233,7 @@
 
 				<li class="span3" style="width: 210px">
 					<div class="thumbnails">
-						<a href="show.jsp?roomid=<%=roomid%>">
+						<a href="show.jsp?roomid=<%=roomid%> ">
 						<img src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
 							width="150" height="200"></a>
 						<h3><%=location%></h3>
