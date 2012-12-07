@@ -74,7 +74,7 @@
 							<tr>
 
 
-								<th class="contlor-label" for="userid">e-mail</th>
+								<th class="contlor-label" >e-mail</th>
 
 
 								<td><input type="email" name="userid" value="<%=userid%>" />

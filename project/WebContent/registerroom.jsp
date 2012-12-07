@@ -10,7 +10,7 @@
 
   
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
-	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"euc-kr");
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"utf-8");
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -29,11 +29,9 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-<<<<<<< HEAD
-	int distance = 0; // 도보거리 기준 
-=======
-	int distance =0; // 도보거리 기준 
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
+
+	String distance = ""; // 도보거리 기준 
+
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -46,7 +44,7 @@
   userid=session.getAttribute("s_userid").toString();
 	location =multi.getParameter("location");
 	name = multi.getParameter("name");
-	distance = (int)multi.getParameter("distance");
+	distance = multi.getParameter("distance");
 	type = multi.getParameter("type");
 	kind = multi.getParameter("kind");
 	price = multi.getParameter("price");
@@ -64,6 +62,8 @@
 	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
 	 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
 	 
+	 
+	
 	int result = 0;
 
 	List<String> errorMsgs = new ArrayList<String>(); 
@@ -78,7 +78,7 @@
 		errorMsgs.add("Room kind을 선택해 주세요.");
 	}
 
-	if(distance == null || !(distance==5 || distance==10|| distance==20|| distance==30 ) ){
+	if(distance == null){
 		errorMsgs.add("거리을 다시 선택해 주세요.");
 	}
 	if (price == null || price.trim().length() == 0) {
@@ -92,7 +92,7 @@
 		errorMsgs.add("주소를 입력해주세요.");
 	}
 	
-	
+	 int int_distan = Integer.parseInt(distance);
 	
 	if (errorMsgs.size() == 0) {
 		try {
@@ -120,7 +120,7 @@
 			stmt.setString(1,  userid);
 			stmt.setString(2,  name);
 			stmt.setString(3,  location);
-			stmt.setInt(4,  distance);
+			stmt.setInt(4,  int_distan);
 			stmt.setString(5,  type);
 			stmt.setString(6,  kind);
 			stmt.setString(7,  price);

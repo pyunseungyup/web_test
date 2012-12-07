@@ -33,7 +33,7 @@
       function initialize() {
         var mapOptions = {
           center: new google.maps.LatLng(-33.8688, 151.2195),
-          zoom: 8,
+          zoom: 17,
           mapTypeId: google.maps.MapTypeId.ROADMAP
         };
         var map = new google.maps.Map(document.getElementById('map_canvas'),
@@ -152,12 +152,9 @@
 						type="radio" name="distance" value="5">5분 이내 <input
 						type="radio" name="distance" value="10">10분 이내 <input
 						type="radio" name="distance" value="20">20분 이내 <input
-<<<<<<< HEAD
-						type="radio" name="distance" value="30">30분 이내 <input
-						type="radio" name="distance" value="">30분 이상
-=======
 						type="radio" name="distance" value="30">30분 이내 
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
+			
+
 				</div>
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <select
@@ -188,7 +185,7 @@
 						<tr>
 							<td><input type='checkbox'></td>
 							<td><input type="button" id="price-btn" value="보증금">
-							<input style="display:none" type="text" id='price_'></td> // 보증금
+							<input style="display:none" type="text" id='price_'></td>
 							<td id="price_add"></td>
 							<td><input type="text" name="price"
 								placeholder="가격을 입력해 주세요">만원</td>

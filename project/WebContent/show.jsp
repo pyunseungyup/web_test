@@ -350,11 +350,9 @@
 				
 				<%if(dbuserid.equals(userid)){%>
 				  <a href="updateroom.jsp?id=<%=roomid %>" class="btn btn-mini">update</a>
-<<<<<<< HEAD
-					<a href="delete.jsp?id=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
-=======
+
 					<a href="roomdelete.jsp?id=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
+
 				<%} %>
 				
 				</div>

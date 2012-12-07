@@ -67,20 +67,19 @@
 				<fieldset>
 					<table class="body_imfor">
 						<tr>
-								<th class="contlor-label" for="userid">e-mail</th>
-							<td colspan="3"><input type="text" name="userid"
-								value="<%=userid%>" /></td>
+								<th class="contlor-label" >e-mail</th>
+							<td colspan="3"><input type=email name="userid"
+								 /></td>
 						</tr>
 						<tr>
 							<th>비밀번호</th>
-							<td><input type="password" name="pwd" value="<%=pwd %>" /></td>
+							<td><input type="password" name="pwd" /></td>
 						</tr>
 
 
 					</table>
 
-					<input type="checkbox" name="email_check">e-mail 저장 <input
-						type="submit" value="로그인" />
+				<input type="submit" value="로그인" />
 				</fieldset>
 			</form>
 

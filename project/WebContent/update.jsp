@@ -87,7 +87,7 @@
 						<table class="body_imfor">
 							<tr>
 								<th>e-mail</th>
-								<td><input type="text" name="userid" value="<%=userid%>" />
+								<td><input type="email" name="userid" value="<%=userid%>" />
 								</td>
 
 							</tr>
