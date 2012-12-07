@@ -23,9 +23,11 @@
 
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
 
 <meta charset="utf-8">
+<title>로그인</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -33,7 +35,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -43,9 +45,10 @@
 
 <!-- Fav and touch icons -->
 
-
-<title>Project Main</title>
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </head>
+
 
 <body>
 
@@ -59,13 +62,15 @@
 
 
 		<div class="jumbotron">
-
-			<h2>로그인</h2>
+		
+		 <h2>로그인</h2>
+  
+			 <div class="basic_information">
 
 
 			<form action="registerlogin.jsp" method="post">
 				<fieldset>
-					<table class="body_imfor">
+						<table class="body_imfor">
 						<tr>
 								<th class="contlor-label" >e-mail</th>
 							<td colspan="3"><input type=email name="userid"
@@ -79,12 +84,12 @@
 
 					</table>
 
-				<input type="submit" value="로그인" />
+				<input class="btn btn-mini disabled" type="submit" value="로그인" />
 				</fieldset>
 			</form>
 
-			<a href="">비밀번호 찾기</a><br />
 
+ </div>
 
 		</div>
 
