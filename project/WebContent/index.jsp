@@ -16,7 +16,8 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-	String distance = ""; // 도보거리 기준 
+	String stringdistance="";
+	int distance =0; // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -180,7 +181,7 @@
 					roomname = rs.getString("name");
 					userid = rs.getString("userid");
 				  location = rs.getString("location");
-					distance = rs.getString("distance");
+					distance = rs.getInt("distance");
 					type = rs.getString("type");
 					kind = rs.getString("kind");
 					price = rs.getString("price");
@@ -218,18 +219,14 @@
 					}
 
 					
-					if(distance.equals("one")){
-						distance = "5분 이내";
-					}else if (distance.equals("two" )){
-						distance = "10분 이내";
-					}else if (distance.equals("three" )){
-						distance = "20분 이내";
-					}else if (distance.equals("four" )){
-						distance = "30분 이내";
-					}else if (distance.equals("five" )){
-						distance = "30분 이상";
+					if(distance==5){
+						stringdistance = "5분 이내";
+					}else if (distance==10){
+						stringdistance = "10분 이내";
+					}else if (distance==20){
+						stringdistance = "20분 이내";
 					}else{
-						distance = "기타";
+						stringdistance = "30분 이내";
 					}
        
        %>
@@ -242,7 +239,7 @@
 						<h3><%=location%></h3>
 						<p>
 							방이름:<%=roomname%><br /> 학교에서의 거리:
-							<%=distance%><br /> 방 종류:
+							<%=stringdistance%><br /> 방 종류:
 							<%=type%>
 						</p>
 					</div>

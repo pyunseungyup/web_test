@@ -44,12 +44,15 @@
 		String dbUser = "bnb";
 		String dbPassword = "bnbun";
 		
-		List<String> errorMsgs = new ArrayList<String>();		
-	
+		List<String> errorMsgs = new ArrayList<String>();	
+		
+		
+		int roomid =0;
 		String userid="";
 		String roomname = "" ; // 방이름 
 		String location = ""; // 대학별 위치
 		int distance = 0; // 도보거리 기준 
+		String stringdistance="";
 		String type = "" ; // 자취하숙등 타입
 		String kind = "" ; // 원룸투룸등
 		String price = "" ; // 가격
@@ -95,7 +98,8 @@ try {
 			<ul class="thumbnails">
 
 				<%while(rs.next()){		
-			
+					
+				int dbroomid =rs.getInt("roomid");
 				String dbuserid=rs.getString("userid");
 				String dbroomname = rs.getString("name");
 				String dblocation = rs.getString("location");
@@ -108,6 +112,45 @@ try {
 				String dbdescription = rs.getString("description");
 				String dbphoto = rs.getString("photo");			
 				
+				if(dblocation.equals("Seoul_Un")){
+					dblocation = "서울대";
+				}else if (dblocation.equals("Yonsei_Un" )){
+					dblocation = "연세대";
+				}else if (dblocation.equals("Myongji_Un" )){
+					dblocation = "명지대";
+				}else{
+					dblocation = "기타";
+				}
+				
+				if(dbtype.equals("rented room")){
+					dbtype = "자취";
+				}else if (type.equals("boarding house" )){
+					dbtype = "하숙";
+				}else{
+					dbtype = "기타";
+				}
+				
+				if(dbkind.equals("officetel")){
+					dbkind = "오피스텔";
+				}else if (kind.equals("one_room" )){
+					dbkind = "원룸";
+				}else if (kind.equals("two_room" )){
+					dbkind = "투룸";
+				}else{
+					dbkind = "기타";
+				}
+
+				
+				if(dbdistance==5){
+					stringdistance = "5분 이내";
+				}else if (dbdistance==10){
+					stringdistance = "10분 이내";
+				}else if (dbdistance==20){
+					stringdistance = "20분 이내";
+				}else{
+					stringdistance = "30분 이내";
+				}
+				
 			
 				%>
 
@@ -115,12 +158,14 @@ try {
 				<li class="span3">
 					<div class="thumbnails">
 
-						<img src="http://placehold.it/300x200" alt="">
+					<a href="show.jsp?roomid=<%=roomid%>">
+						<img src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
+							width="150" height="200"></a>
 						<h3><%=dblocation %></h3>
 						<p>
 							방이름:
 							<%= dbroomname %><br /> 학교에서의 거리:
-							<%=dbdistance%><br /> 방 종류:
+							<%=stringdistance%><br /> 방 종류:
 							<%=dbkind%>
 						</p>
 
