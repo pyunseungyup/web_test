@@ -185,5 +185,10 @@
 
 
 <%	
+	} finally {
+		// 무슨 일이 있어도 리소스를 제대로 종료
+		if (rs != null) try{rs.close();} catch(SQLException e) {}
+		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
+		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
 %>

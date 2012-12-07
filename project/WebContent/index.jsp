@@ -197,8 +197,7 @@
 				rs.close();
 				stmt.close();
 
-				stmt = conn
-						.prepareStatement("SELECT * FROM rooms ORDER BY roomid DESC LIMIT "
+				stmt = conn.prepareStatement("SELECT * FROM rooms ORDER BY roomid DESC LIMIT "
 								+ startPos + ", " + numInPage);
 				rs = stmt.executeQuery();
 				

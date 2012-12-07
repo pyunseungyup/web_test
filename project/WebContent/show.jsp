@@ -251,7 +251,7 @@
 				<div class="main_title">
 					<h3 style="padding-left: 20px">판매자 정보</h3>
 				</div>
-
+        	
 				<div class="basic_information">
 					<label>판매자 이름<strong style="color: red"> *</strong><%=username%></label>
 			
@@ -284,11 +284,11 @@
 				</div>
 
 				<div class="basic_information">
-<<<<<<< HEAD
+
 					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
 						
 		
-=======
+
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
@@ -307,7 +307,7 @@
 				<%=price %> 만원
 					</span>
 
->>>>>>> 2eae5517978bc12ecf9a772310c21396ffd6ba45
+
 
 				</div>
 
@@ -366,9 +366,9 @@
 				
 				<%if(dbuserid.equals(userid)){%>
 				  
-				  <a href="fixed.jsp?roomid=<%=roomid %>" class="btn btn-mini">wishlist</a>
+				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn-mini">wishlist</a>
 				  
-				  <a href="updateroom.jsp?roomid=<%=roomid %>" class="btn btn-mini">update</a>
+				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn-mini">update</a>
 
 					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
 
@@ -382,7 +382,7 @@
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
-	</div>
+	
 	<!-- /container -->
 
 	<!-- Le javascript
