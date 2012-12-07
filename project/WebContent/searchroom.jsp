@@ -16,7 +16,7 @@
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
-
+<link href="css/showroom.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -30,10 +30,115 @@
 </head>
 
 <body>
+	<div class="container-narrow">
+
+		<%@ include file="share/header.jsp"%>
+
+ 
+
+		<div class="jumbotron">
 
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
+		
+			<div class="jumbotron">
+			
+			<form action="searchroom.jsp" method="post">
+				<div class="btn-group">
+					<select name="school" id="select">
+						<option value="">학교</option>		
+						
+						<!-- 대학순위별 1위~60위 sort -->
+						
+						<option value="seoul">서울대</option>
+						<option value="kaist">카이스트</option>
+						<option value="pohang">포항공대</option>
+						<option value="yonsei">연세대</option>
+						<option value="koryo">고려대</option>
+						<option value="seogang">서강대</option>
+						<option value="seonggyun">성균관대</option>
+						<option value="hanyang">한양대</option>
+						<option value="foreign">한국외국어대</option>
+						<option value="ehwa">이화여대</option>
+						<option value="sirip">서울시립대</option>
+						<option value="jungang">중앙대</option>
+						<option value="kyunghye">경희대</option>
+						<option value="busan">부산대</option>
+						<option value="gyungbuk">경북대</option>
+						<option value="inha">인하대</option>
+						<option value="aju">아주대</option>
+						<option value="gundae">건국대</option>
+						<option value="dongkuc">동국대</option>
+						<option value="hongdae">홍익대</option>
+						<option value="junnam">전남대</option>
+						<option value="kyowon">한국교원대</option>
+						<option value="sucdae">숙명여대</option>
+						<option value="kucmin">국민대</option>
+						<option value="sungsil">숭실대</option>
+						<option value="dandae">단국대</option>
+						<option value="hangong">한국항공대</option>
+						<option value="sejong">세종대</option>
+						<option value="gwangun">광운대</option>
+						<option value="chungnam">충남대</option>
+						<option value="kadae">가톨릭대</option>
+						<option value="myungji">명지대</option>
+						<option value="sanmyung">상명대</option>
+						<option value="chungbuk">충북대</option>					
+						<option value="jungbuk">전북대</option>
+						<option value="sungsin">성신여대</option>
+						<option value="handong">한동대</option>
+						<option value="seosan">서울산업대</option>
+						<option value="yesul">한국예술종합대</option>
+						<option value="ducsung">덕성여대</option>
+						<option value="ulsan">울산대</option>
+						<option value="haeyang">한국해양대</option>
+						<option value="kangwon">강원대</option>
+						<option value="incheon">인천대</option>
+						<option value="dongduc">동덕여대</option>
+						<option value="seoulyeo">서울여대</option>
+						<option value="bukyung">부경대</option>
+						<option value="yeongnam">영남대</option>					
+						<option value="jaeju">제주대</option>
+						<option value="kyungsang">경상대</option>
+						<option value="josun">조선대</option>
+						<option value="donga">동아대</option>
+						<option value="gongju">공주대</option>
+						<option value="hanbac">한밭대</option>
+						<option value="gisul">한국기술교육대</option>
+						<option value="kyunggi">경기대</option>
+						<option value="hansung">한성대</option>
+						<option value="kyungwon">경원대</option>					
+						<option value="hangyung">한경대</option>
+						<option value="seogyung">서경대</option>
+						<option value="other">기타</option>
+						
+						
+					</select>  <select name="kind" id="select">
+						<option value="">방구조</option>
+						<option value="one_room">원룸</option>
+						<option value="two_room">투룸</option>
+						<option value="officetel">오피스텔</option>
+						<option value="other">기타</option>
+					</select>
+					
+					
+					<select name="distance" id="select">
+						<option value="">거리</option>
+						<option value="5">5분이내</option>
+						<option value="10">10분이내</option>
+						<option value="20">20분이내</option>
+						<option value="30">30분이내</option>
+						
+						
+					</select>
+					
+					
+				</div>
+				<input type="submit" class="btn btn-large btn-success" value="검색" />
+			</form>
+		</div>
+		<hr>
 
 		<%
 		Connection conn = null;
@@ -63,24 +168,134 @@
 		
 		int numItems=0;
 		int startnum=1;
-
-		
-		location=request.getParameter("school");
 	
-		distance=Integer.parseInt(request.getParameter("distance"));
+		String serchdistance = "";	
+		
+		serchdistance = request.getParameter("distance");
+		location=request.getParameter("school");	
+		
+		
+		if(!serchdistance.equals("")){
+		distance=Integer.parseInt(serchdistance);
+		}
 		kind=request.getParameter("kind");
+		
+	
 		
 try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			
-			stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? and distance <= ? and kind = ? ;");			
-			stmt.setString(1,location);
-			stmt.setInt(2,distance);
-			stmt.setString(3,kind);
+			if(!serchdistance.equals("")){
+				
 			
-			rs=stmt.executeQuery();			
+				if(!location.equals("") && distance!=0   && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? and distance <=? and kind =? ;");	
+					stmt.setString(1,location);
+					stmt.setInt(2,distance);
+					stmt.setString(3,kind);
+					rs = stmt.executeQuery();
+				}else if(location.equals("") && distance==0  && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE kind =? ;");	
+					stmt.setString(1,kind);
+					rs = stmt.executeQuery();
+				}
+				
+				else if(location.equals("") && distance!=0 && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE distance <=? and kind =? ;");	
+					stmt.setInt(1,distance);
+					stmt.setString(2,kind);
+					rs = stmt.executeQuery();
+				}
+				
+				else if(!location.equals("") && distance!=0   && kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? ;");	
+					stmt.setString(1,location);
+					rs = stmt.executeQuery();
+					
+				}
+				else if(!location.equals("") && distance!=0   && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? and kind =? ;");	
+					stmt.setString(1,location);
+					stmt.setString(2,kind);
+					rs = stmt.executeQuery();
+				}
+				else if(location.equals("") && distance!=0   && kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE distance <=? ;");	
+					stmt.setInt(1,distance);
+				
+					rs = stmt.executeQuery();
+				}
+				else if(!location.equals("") && distance!=0  && kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? and distance <=? ;");	
+					stmt.setString(1,location);
+					stmt.setInt(2,distance);
+					rs = stmt.executeQuery();
+				}
+				
+				else {
+				%>
+					
+					<h1>  검색결과가없습니다.</h1>
+					<h2 > 다시검색해주세요</h2>
+					
+					<div class="form-action">
+					<a href="index.jsp" class="btn btn-mini disabled" >뒤로 돌아가기</a>
+					</div>
+				<%
+
+				stmt = conn.prepareStatement("SELECT * FROM rooms");			
+				rs = stmt.executeQuery();
+				}	
+			}else {
+		
+				
+				if(!location.equals("") && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? and kind =? ;");	
+					stmt.setString(1,location);
+					stmt.setString(2,kind);
+					rs = stmt.executeQuery();
+				}else if(location.equals("") && !kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE kind =? ;");	
+					stmt.setString(1,kind);
+					rs = stmt.executeQuery();
+				}
+				
+				else if(!location.equals("")  && kind.equals("") ){
+					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? ;");	
+					stmt.setString(1,location);
+					rs = stmt.executeQuery();
+					
+				}else {
+					
+					%>
+						
+						<h1>  검색결과가없습니다.</h1>
+						<h2 > 다시검색해주세요</h2>
+						
+						<div class="form-action">
+						<a href="index.jsp" class="btn btn-mini disabled" >뒤로 돌아가기</a>
+						</div>
+					<%
+
+					stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms");			
+					rs = stmt.executeQuery();
+					}
+					
+			}
+		
+			
+			
+			
+			
+			
+			
+			
+		
+			
+			
+			/*
 			rs.next();
 			numItems = rs.getInt(1);
 			
@@ -93,8 +308,10 @@ try {
 			stmt.setInt(2,distance);
 			stmt.setString(3,kind);
 			rs = stmt.executeQuery();
+			*/
+			%>
 			
-			%><div class="row-fluid marketing">
+			<div class="row-fluid marketing">
 
 			<ul class="thumbnails">
 
@@ -113,12 +330,126 @@ try {
 				String dbdescription = rs.getString("description");
 				String dbphoto = rs.getString("photo");			
 				
-				if(dblocation.equals("Seoul_Un")){
+				if(dblocation.equals("seoul")){
 					dblocation = "서울대";
-				}else if (dblocation.equals("Yonsei_Un" )){
+				}	else if(dblocation.equals("kaist")){
+					dblocation = "카이스트";
+				}else if (dblocation.equals("pohang" )){
+					dblocation = "포항공대";
+				}else if (dblocation.equals("yonsei" )){
 					dblocation = "연세대";
-				}else if (dblocation.equals("Myongji_Un" )){
+				}else if (dblocation.equals("koryo" )){
+					dblocation = "고려대";
+				}else if (dblocation.equals("seogang" )){
+					dblocation = "서강대";
+				}else if (dblocation.equals("seonggyun" )){
+					dblocation = "성균관대";
+				}else if (dblocation.equals("hanyang" )){
+					dblocation = "한양대";
+				}else if (dblocation.equals("foreign" )){
+					dblocation = "한국외국어대";
+				}else if (dblocation.equals("ehwa" )){
+					dblocation = "이화여대";
+				}else if (dblocation.equals("sirip" )){
+					dblocation = "서울시립대";
+				}else if (dblocation.equals("jungang" )){
+					dblocation = "중앙대";
+				}else if (dblocation.equals("kyunghye" )){
+					dblocation = "경희대";
+				}else if (dblocation.equals("busan" )){
+					dblocation = "부산대";
+				}else if (dblocation.equals("gyungbuk" )){
+					dblocation = "경북대";
+				}else if (dblocation.equals("inha" )){
+					dblocation = "인하대";
+				}else if (dblocation.equals("aju" )){
+					dblocation = "아주대";
+				}else if (dblocation.equals("gundae" )){
+					dblocation = "건국대";
+				}else if (dblocation.equals("dongkuc" )){
+					dblocation = "동국대";
+				}else if (dblocation.equals("hongdae" )){
+					dblocation = "홍익대";
+				}else if (dblocation.equals("junnam" )){
+					dblocation = "전남대";
+				}else if (dblocation.equals("kyowon" )){
+					dblocation = "한국교원대";
+				}else if (dblocation.equals("sucdae" )){
+					dblocation = "숙명여대";
+				}else if (dblocation.equals("kucmin" )){
+					dblocation = "국민대";
+				}else if (dblocation.equals("sungsil" )){
+					dblocation = "숭실대";
+				}else if (dblocation.equals("dandae" )){
+					dblocation = "단국대";
+				}else if (dblocation.equals("hangong" )){
+					dblocation = "한국항공대";
+				}else if (dblocation.equals("sejong" )){
+					dblocation = "세종대";
+				}else if (dblocation.equals("gwangun" )){
+					dblocation = "광운대";
+				}else if (dblocation.equals("chungnam" )){
+					dblocation = "충남대";
+				}else if (dblocation.equals("kadae" )){
+					dblocation = "가톨릭대";
+				}else if (dblocation.equals("myungji" )){
 					dblocation = "명지대";
+				}else if (dblocation.equals("sanmyung" )){
+					dblocation = "상명대";
+				}else if (dblocation.equals("chungbuk" )){
+					dblocation = "충북대";
+				}else if (dblocation.equals("jungbuk" )){
+					dblocation = "전북대";
+				}else if (dblocation.equals("sungsin" )){
+					dblocation = "성신여대";
+				}else if (dblocation.equals("handong" )){
+					dblocation = "한동대";
+				}else if (dblocation.equals("seosan" )){
+					dblocation = "서울산업대";
+				}else if (dblocation.equals("yesul" )){
+					dblocation = "한국예술종합대";
+				}else if (dblocation.equals("ducsung" )){
+					dblocation = "덕성여대";
+				}else if (dblocation.equals("ulsan" )){
+					dblocation = "울산대";
+				}else if (dblocation.equals("haeyang" )){
+					dblocation = "한국해양대";
+				}else if (dblocation.equals("kangwon" )){
+					dblocation = "강원대";
+				}else if (dblocation.equals("incheon" )){
+					dblocation = "인천대";
+				}else if (dblocation.equals("dongduc" )){
+					dblocation = "동덕여대";
+				}else if (dblocation.equals("seoulyeo" )){
+					dblocation = "서울여대";
+				}else if (dblocation.equals("bukyung" )){
+					dblocation = "부경대";
+				}else if (dblocation.equals("yeongnam" )){
+					dblocation = "영남대";
+				}else if (dblocation.equals("jaeju" )){
+					dblocation = "제주대";
+				}else if (dblocation.equals("kyungsang" )){
+					dblocation = "경상대";
+				}else if (dblocation.equals("josun" )){
+					dblocation = "조선대";
+				}else if (dblocation.equals("donga" )){
+					dblocation = "동아대";
+				}else if (dblocation.equals("gongju" )){
+					dblocation = "공주대";
+				}else if (dblocation.equals("hanbac" )){
+					dblocation = "한밭대";
+				}else if (dblocation.equals("gisul" )){
+					dblocation = "한국기술교육대";
+				}else if (dblocation.equals("kyunggi" )){
+					dblocation = "경기대";
+				}else if (dblocation.equals("hansung" )){
+					dblocation = "한성대";
+				}else if (dblocation.equals("kyungwon" )){
+					dblocation = "경원대";
+				}else if (dblocation.equals("hangyung" )){
+					dblocation = "한경대";
+				}else if (dblocation.equals("seogyung" )){
+					dblocation = "서경대";
 				}else{
 					dblocation = "기타";
 				}
@@ -178,7 +509,8 @@ try {
       }%>
 
 			</ul>
-
+	</div>
+	</div>
 		</div>
 
 		<%}catch (SQLException e){

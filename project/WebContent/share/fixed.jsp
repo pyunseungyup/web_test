@@ -17,7 +17,7 @@
 	<body>
 		<table class="table table-bordered" style="text-align: center;width:130px;height:10px; position: fixed; top:40px; left:1000px;" >
 			<tr class="success">
-				<th class="info">그림</th><th>소개</th>
+				<th colspan="2" class="info"> 최근 본 목록</th>
 			</tr>
 			<tr>
 				<td rowspan="2"></td>

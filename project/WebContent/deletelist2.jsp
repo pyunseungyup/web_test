@@ -10,12 +10,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	request.setCharacterEncoding("utf-8");	
-	
-	String dbcode = session.getAttribute("s_userid").toString();
-
-	
-	  
-	
+	//String dbcode = session.getAttribute("s_userid").toString();
 	  String wishid="";
 		String name = "" ; // 방이름 
 		String location = ""; // 대학별 위치
@@ -67,7 +62,7 @@ try{
    conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
    stmt = conn.prepareStatement("SELECT * FROM wish WHERE wishid=?");
    
-	 stmt.setString(1, dbcode);
+	 stmt.setString(1, wishid);
    rs = stmt.executeQuery();   
    
    %>
@@ -93,7 +88,7 @@ try{
 				<p>
 					방이름:<%=name%><br /> 학교에서의 거리:
 					<%=location%><br /> 
-				<a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
+				<a href="deletelist.jsp?wishid=<%=wishid%>" class="btn btn-mini">삭제</a>
 				
 				</p>
 		  	</li>
@@ -112,7 +107,7 @@ try{
    %>
 
 
-</div>
 
+</div>
 </body>
 </html>

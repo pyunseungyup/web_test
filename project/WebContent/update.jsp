@@ -49,7 +49,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -63,6 +63,49 @@
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
+<style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #fff;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 30px auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    
+     <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
+
 
 <title>update</title>
 </head>
@@ -75,53 +118,22 @@
 
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-		<div class="jumbotron">
+			<form class ="form-signin" action="userupdate.jsp" method="post">
+			<h2 class="form-signin-heading">정보수정</h2>
+				<input type="text" class="input-block-level" placeholder="Email address" name="userid" value="<%=userid%>">
+        <input type="password" class="input-block-level" placeholder="Password" name="pwd">
+        <input type="password" class="input-block-level" placeholder="Password 확인" name="pwd_confirm">
+        <input type="text" class="input-block-level" placeholder="이름" name="name"value="<%=name%>">
+        <input type="text" class="input-block-level" placeholder="핸드폰 번호" name="phonenumber"value="<%=phonenumber%>">
+        <button class="btn btn-large btn-primary" type="submit">정보수정</button> 
+   	    <a href="delete.jsp"class="btn btn-large btn-primary" >탈   퇴 </a>
 
-			<h2>정보수정</h2>
-
-
-
-			<div class="basic_information">
-				<form action="userupdate.jsp" method="post">
-					<fieldset>
-						<table class="body_imfor">
-							<tr>
-								<th>e-mail</th>
-								<td><input type="email" name="userid" value="<%=userid%>" />
-								</td>
-
-							</tr>
-							<tr>
-								<th>비밀번호</th>
-								<td colspan="2"><input type="password" name="pwd"
-									value="<%=pwd%>"></td>
-							</tr>
-							<tr>
-								<th>확인</th>
-								<td colspan="2"><input type="password" name="pwd_confirm"
-									value="<%=pwd%>" /></td>
-							</tr>
-							<tr>
-								<th>이름</th>
-								<td colspan="2"><input type="text" name="name"
-									value="<%=name%>" /></td>
-							</tr>
-							<tr>
-								<th>PHONE-NUMBER</th>
-								<td colspan="2"><input type="text" name=phonenumber
-									value="<%=phonenumber%>" /></td>
-							</tr>
-						</table>
-						
-						<input type="submit" class="btn btn-mini disabled" value="정보수정" />
-				    <a href="delete.jsp"class="btn btn-mini disabled" >탈   퇴 </a>
-					</fieldset>
 				</form>
 				 
-			</div>
 
 
-		</div>
+
+
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
