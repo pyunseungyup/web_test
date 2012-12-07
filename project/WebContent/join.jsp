@@ -1,28 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
 	import="org.apache.commons.lang3.StringUtils"%>
-<%
 
-
-	// DB 접속을 위한 준비
-	Connection conn = null;
-	PreparedStatement stmt = null;
-	ResultSet rs = null;
-
-	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
-	String dbUser = "bnb";
-	String dbPassword = "bnbun";
-	
-	// 사용자 정보를 위한 변수 초기화
-	String userid = "";
-	String pwd = "";
-	String name = "";
-	String phonenumber = "";
-	
-
-
-	
-%>
 <!DOCTYPE html>
 <html lang="ko">
 <head>
