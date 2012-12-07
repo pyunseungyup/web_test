@@ -28,6 +28,7 @@
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
+	String deposit = "";
 	String address = ""; // 주소
 	String lat = "";
 	String lng = "";
@@ -65,6 +66,7 @@
 		type = rs.getString("type");
 		kind = rs.getString("kind");
 		price = rs.getString("price");
+		deposit = rs.getString("deposit");
 		address = rs.getString("address");
 		String facility= rs.getString("facility");
 		description = rs.getString("description");
@@ -287,8 +289,22 @@
 				</div>
 
 				<div class="basic_information">
+			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
-						<%=price %> 만원
+					<%
+					if(!deposit.equals("")){
+						
+					%>
+						
+						보증금 <%=deposit%> 만원
+						
+						
+					<%						
+					}
+				
+					%>	
+				
+				<%=price %> 만원
 					</span>
 
 

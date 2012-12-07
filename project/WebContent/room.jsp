@@ -183,24 +183,16 @@
 
 					<table id="tab">
 						<tr>
-							<td><input type='checkbox'></td>
 							<td><input type="button" id="price-btn" value="보증금">
-							<input style="display:none" type="text" id='price_'></td>
+							<input style="display:none" type="text" id='price_'  placeholder="보증금 입력해 주세요" name ="deposit"></td>
 							<td id="price_add"></td>
 							<td><input type="text" name="price"
 								placeholder="가격을 입력해 주세요">만원</td>
 						</tr>
 					</table>
 
-					<div id="price_" style="display: none">
-						<table>
-							<tr>
-								<th>보증금</th>
-								<td><input type='text' size='15' placeholder="보증금 입력해 주세요"></td>
-							</tr>
-						</table>
-					</div>
-
+				
+					
 				</div>
 
 
@@ -306,12 +298,12 @@ $(function() {
 		if($("#price_").css('display')=='none')
 			{
 		$("#price_").toggle('show',function(){
-			$("#price-btn").val("-");
+			$("#price-btn").val("보증금 없음");
 			
 		});
 			}else{
 		$("#price_").toggle('hide',function(){
-			$("#price-btn").val("+");
+			$("#price-btn").val("보증금 ");
 			$("#price_").val("");
 			
 		});

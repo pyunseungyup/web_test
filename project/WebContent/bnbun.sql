@@ -8,6 +8,7 @@ CREATE TABLE `rooms` (
   `type` varchar(100) DEFAULT '',
   `kind` varchar(100) DEFAULT '',
   `price` varchar(100) DEFAULT '',
+  `deposit` varcher(100) DEFAULT null,
   `address` varchar(255) DEFAULT '',
   `lat` varchar(100) DEFAULT '',
   `lng` varchar(255) DEFAULT '',
