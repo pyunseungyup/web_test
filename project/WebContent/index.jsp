@@ -77,8 +77,6 @@
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-    <%@ include file="share/fixed.jsp"%>
- 
 
 		<div class="jumbotron">
 			<h2>당신이원하는자취방</h2>

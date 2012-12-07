@@ -139,6 +139,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/showroom.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -242,24 +243,16 @@
 <div class="container-narrow">
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
-				<h2>방 상세보기</h2>
-	     <div class="">
-=======
-		
+	     <div class="picture">			
+	     	<h2>방상세보기</h2>	
 
-				<h2>상세dS1보d121기</h2>
-
-				
-
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
 		    </div>
 
       
 				<div class="main_title">
-					<h3 style="padding-left: 20px">판매자 정보</h3>
+					<h3 style="padding-left: 20px">판매자정보</h3>
 				</div>
 
 				<div class="basic_information">
@@ -272,7 +265,7 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px;">방 기본정보</h3>
+					<h3 style="padding-left: 20px;">방기본정보</h3>
 				</div>
 
 
@@ -293,15 +286,10 @@
 						
 				</div>
 
-<<<<<<< HEAD
+
 				<div class="basic_information">
 
 					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
-						
-		
-=======
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
-
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
@@ -327,7 +315,7 @@
 
 
 				<div class="main_title_1">
-					<h3 style="padding-left: 20px">방 상세정보</h3>
+					<h3 style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information_1">
@@ -358,14 +346,13 @@
 
 				</div>
 
-<<<<<<< HEAD
 				<div class="basic_information_1">
 					<label>시설 = <%=facility%></label> 
-=======
-				<div class="basic_information">
+				</div>
+
+				<div class="basic_information_1">
 					<label>시설  
-					<%=	facility
-					%>
+					<%=	facility%>
 					<%
 					/*
 					for (int i = 0 ; i < facilities.length ; i++){
@@ -379,7 +366,6 @@
 				
 						
 				 %></label> 
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 				</div>
 
 
@@ -387,15 +373,8 @@
 					<label>소개</label>
 					<fieldset>
 						<%=description%></fieldset>
-
 				</div>
 				
-				
-				
-<<<<<<< HEAD
-=======
-				
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 
 
 				<div style="margin : 50px 0 0 500px">
@@ -410,23 +389,12 @@
 
 				<%} %>
 				</div>
-<<<<<<< HEAD
-				
+
 						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 </div>
-	
-=======
 
-	
-
-
-
-		<jsp:include page="share/footer.jsp"></jsp:include>
-
-
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 	<!-- /container -->
 
 	<!-- Le javascript
