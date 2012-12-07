@@ -39,9 +39,9 @@
 	}
 
 	 		
-	 		if(result!=0){
+	 	
 	 			response.sendRedirect("index.jsp");
-	 		}
+	 	
 			
 			
 			%>

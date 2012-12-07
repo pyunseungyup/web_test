@@ -10,7 +10,6 @@
 	ResultSet rs = null;
 	
 	
-	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
@@ -24,10 +23,11 @@
 	String username = "" ; // 유저 네임 저장
 	String userphon = "";
 	int distance = 0; // 도보거리 기준 
-	String stringdistance="";
+	String stringdistance = "";
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
+	String deposit = "";
 	String address = ""; // 주소
 	String lat = "";
 	String lng = "";
@@ -65,6 +65,7 @@
 		type = rs.getString("type");
 		kind = rs.getString("kind");
 		price = rs.getString("price");
+		deposit = rs.getString("deposit");
 		address = rs.getString("address");
 		String facility= rs.getString("facility");
 		description = rs.getString("description");
@@ -110,6 +111,7 @@
 		}else{
 			stringdistance = "30분 이내";
 		}
+		
 		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
 		stmt.setString(1, dbuserid);
@@ -235,15 +237,15 @@
 
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-		<div class="jumbotron">
+		
 			<fieldset>
 
-				<h2>상세보기</h2>
-			
+				<h2>상세dS1보d121기</h2>
+
 				
 
-				<img src="./upload/<%=photo%>" width="400px" height="500px"
-					alt="http://placehold.it/300x200">
+				<img src="./upload/<%=photo%>" width="340px" height="100px" 
+					alt="http://placehold.it/300x200" style = "float : left">
 
 
 				<div class="main_title">
@@ -251,13 +253,12 @@
 				</div>
 
 				<div class="basic_information">
-					<label>판매자 이름<strong style="color: red"> *</strong></label> <span>
-						<%=username%></span>
+					<label>판매자 이름<strong style="color: red"> *</strong><%=username%></label>
+			
 				</div>
 				
 				<div class="basic_information">
-					<label>판매자 전화번호<strong style="color: red"> *</strong></label> <span>
-						<%=userphon%></span>
+					<label>판매자 전화번호<strong style="color: red"> *</strong><%=userphon%></label> 
 				</div>
 
 				<div class="main_title">
@@ -267,29 +268,46 @@
 
 				<div class="basic_information">
 
-					<label>인근 대학<strong style="color: red"> *</strong></label> <span>
-						<%=location %></span>
+					<label>인근 대학<strong style="color: red"> *</strong><%=location %></label> 
 
 				</div>
 
 				<div class="basic_information">
-					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <span>
-						<%=stringdistance %></span>
+					<label>거리(도보 기준) <strong style="color: red"> *</strong>	<%=stringdistance %></label> 
 				</div>
 				<div class="basic_information">
-					<label>객실 타입<strong style="color: red"> *</strong></label> <span>
-						<%=type %></span>
+					<label>객실 타입<strong style="color: red"> *</strong>	<%=type %></label> 
 				</div>
 				<div class="basic_information">
-					<label>객실 종류<strong style="color: red"> *</strong></label> <span>
-						<%=kind %></span>
+					<label>객실 종류<strong style="color: red"> *</strong><%=kind %></label> 
+						
 				</div>
 
 				<div class="basic_information">
+<<<<<<< HEAD
+					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
+						
+		
+=======
+			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
-						<%=price %> 만원
+					<%
+					if(!deposit.equals("")){
+						
+					%>
+						
+						보증금 <%=deposit%> 만원
+						
+						
+					<%						
+					}
+				
+					%>	
+				
+				<%=price %> 만원
 					</span>
 
+>>>>>>> 2eae5517978bc12ecf9a772310c21396ffd6ba45
 
 				</div>
 
@@ -300,14 +318,13 @@
 				</div>
 
 				<div class="basic_information">
-					<label>방 이름<strong style="color: red"> *</strong></label> <span>
-						<%=name%></span>
+					<label>방 이름<strong style="color: red"> *</strong>	<%=name%></label> 
 
 				</div>
 
 				<div class="basic_information">
-					<label>주소<strong style="color: red"> *</strong></label> <span>
-						<%=address%></span>
+					<label>주소<strong style="color: red"> *</strong><%=address%></label>
+						
 
 					<div id="container">
 
@@ -319,7 +336,7 @@
 
 
 						<div id="map_canvas"
-							style="height: 250px; width: 450px; margin: 0 0 0 130px"></div>
+							style="height: 250px; width: 450px; margin: 0 0 0 20px"></div>
 
 
 
@@ -329,7 +346,7 @@
 				</div>
 
 				<div class="basic_information">
-					<label>시설</label> <span> <%=facility%></span>
+					<label>시설 = <%=facility%></label> 
 				</div>
 
 

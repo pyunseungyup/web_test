@@ -83,35 +83,31 @@
 		<div class="jumbotron">
 			<h2>당신이원하는자취방</h2>
 			<h1>검색하나로!!</h1>
-			<form action="searchroom.jsp" method="post"
-				enctype="multipart/form-data	">
+			<form action="searchroom.jsp" method="post">
 				<div class="btn-group">
 					<select name="school" id="select">
-						<option value="school">학교</option>
+						<option value="">학교</option>
 						<option value="Seoul_Un">서울대</option>
 						<option value="Yonsei_Un">연세대</option>
 						<option value="Myongji_Un">명지대</option>
 						<option value="other">등등 더추가</option>
 					</select> <select name="distance" id="select">
-						<option value="distance">거리</option>
+						<option value="">거리</option>
 						<option value="5">5분이내</option>
 						<option value="10">10분이내</option>
 						<option value="20">20분이내</option>
 						<option value="30">30분이내</option>
 					</select> <select name="kind" id="select">
-						<option value="kind">방구조</option>
+						<option value="">방구조</option>
 						<option value="one_room">원룸</option>
 						<option value="two_room">투룸</option>
 						<option value="officetel">오피스텔</option>
 						<option value="other">기타</option>
 					</select>
-
 				</div>
 				<input type="submit" class="btn btn-large btn-success" value="검색" />
 			</form>
-
 		</div>
-
 		<hr>
 
 
