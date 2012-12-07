@@ -1,5 +1,7 @@
 @CHARSET "UTF-8";
-
+div.picture{
+	padding-top:50px;
+} 
 div.main_title {
 	margin-top: 10px;
 	margin-left: 350px;
