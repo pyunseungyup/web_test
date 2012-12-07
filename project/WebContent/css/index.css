@@ -1,5 +1,15 @@
 @CHARSET "UTF-8";
 
+<!-- login -->
+#login {
+	margin: 0 auto;
+	padding: 100px 0 0 100px;
+	overflow: auto;
+}
+
+<!-- main -->
+
+
 body {
 	padding-top: 20px;
 	padding-bottom: 40px;
@@ -66,4 +76,56 @@ div.footer {
 
 .body_imfor {
 	margin: 30px 0 0 150px;
+}
+
+
+<!-- room -->
+
+
+
+div.main_title {
+	margin-top: 10px;
+	padding: 0 0 0 50px;
+	background-color: #DFFFFF;
+	color: #555;
+}
+
+div.basic_information {
+	padding: 0 0 0 100px;
+	background-color: #eeeeee;
+	overflow: auto;
+}
+
+td.facilities_item {
+	padding: 0 80px 0 0;
+}
+
+span.facilities {
+	position: relative;
+	left: 50px;
+	overflow: auto;
+}
+
+
+<!-- showroom -->
+
+div.main_title {
+	margin-top: 10px;
+	background-color: #DFFFFF;
+	color: #555;
+}
+
+div.basic_information {
+	background-color: #eeeeee;
+	overflow: auto;
+}
+
+td.facilities_item {
+	padding: 0 80px 0 0;
+}
+
+span.facilities {
+	position: relative;
+	left: 50px;
+	overflow: auto;
 }

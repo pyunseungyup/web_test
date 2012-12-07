@@ -17,7 +17,7 @@
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
 	String stringdistance="";
-	int distance =0; // 도보거리 기준 
+	int distance =0;	 // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -58,7 +58,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -77,8 +77,8 @@
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-
-
+    <%@ include file="share/fixed.jsp"%>
+ 
 
 		<div class="jumbotron">
 			<h2>당신이원하는자취방</h2>
