@@ -149,11 +149,10 @@
 
 				<div class="basic_information">
 					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <input
-						type="radio" name="distance" value="one">5분 이내 <input
-						type="radio" name="distance" value="two">10분 이내 <input
-						type="radio" name="distance" value="three">20분 이내 <input
-						type="radio" name="distance" value="four">30분 이내 <input
-						type="radio" name="distance" value="five">30분 이상
+						type="radio" name="distance" value="5">5분 이내 <input
+						type="radio" name="distance" value="10">10분 이내 <input
+						type="radio" name="distance" value="20">20분 이내 <input
+						type="radio" name="distance" value="30">30분 이내 
 				</div>
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <select

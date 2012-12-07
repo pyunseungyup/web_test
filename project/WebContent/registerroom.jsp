@@ -29,7 +29,7 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-	String distance = ""; // 도보거리 기준 
+	int distance =0; // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -72,7 +72,7 @@
 		errorMsgs.add("Room kind을 선택해 주세요.");
 	}
 
-	if(distance == null || !(distance.equals("one") || distance.equals("two")|| distance.equals("three")|| distance.equals("four")|| distance.equals("five")) ){
+	if(distance == null || !(distance==5 || distance==10|| distance==20|| distance==30 ) ){
 		errorMsgs.add("거리을 다시 선택해 주세요.");
 	}
 	if (price == null || price.trim().length() == 0) {
@@ -114,7 +114,7 @@
 			stmt.setString(1,  userid);
 			stmt.setString(2,  name);
 			stmt.setString(3,  location);
-			stmt.setString(4,  distance);
+			stmt.setInt(4,  distance);
 			stmt.setString(5,  type);
 			stmt.setString(6,  kind);
 			stmt.setString(7,  price);

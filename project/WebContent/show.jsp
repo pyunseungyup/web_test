@@ -23,7 +23,8 @@
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
 	String userphon = "";
-	String distance = ""; // 도보거리 기준 
+	int distance = 0; // 도보거리 기준 
+	String stringdistance="";
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -60,7 +61,7 @@
 		name = rs.getString("name");
 		dbuserid = rs.getString("userid");
 	  location = rs.getString("location");
-		distance = rs.getString("distance");
+		distance = rs.getInt("distance");
 		type = rs.getString("type");
 		kind = rs.getString("kind");
 		price = rs.getString("price");
@@ -100,18 +101,14 @@
 		}
 
 		
-		if(distance.equals("one")){
-			distance = "5분 이내";
-		}else if (distance.equals("two" )){
-			distance = "10분 이내";
-		}else if (distance.equals("three" )){
-			distance = "20분 이내";
-		}else if (distance.equals("four" )){
-			distance = "30분 이내";
-		}else if (distance.equals("five" )){
-			distance = "30분 이상";
+		if(distance==5){
+			stringdistance = "5분 이내";
+		}else if (distance==10){
+			stringdistance = "10분 이내";
+		}else if (distance==20){
+			stringdistance = "20분 이내";
 		}else{
-			distance = "기타";
+			stringdistance = "30분 이내";
 		}
 		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
@@ -277,7 +274,7 @@
 
 				<div class="basic_information">
 					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <span>
-						<%=distance %></span>
+						<%=stringdistance %></span>
 				</div>
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <span>
