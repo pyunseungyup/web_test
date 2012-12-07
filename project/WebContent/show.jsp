@@ -72,6 +72,10 @@
 		photo = rs.getString("photo");
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
+		
+		
+		
+		String[] facilities = facility.split(",");
   	
 		if(location.equals("Seoul_Un")){
 			location = "서울대";
@@ -238,7 +242,6 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 		
-			<fieldset>
 
 				<h2>상세dS1보d121기</h2>
 
@@ -283,12 +286,7 @@
 						
 				</div>
 
-				<div class="basic_information">
-<<<<<<< HEAD
-					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
-						
-		
-=======
+
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
@@ -307,7 +305,7 @@
 				<%=price %> 만원
 					</span>
 
->>>>>>> 2eae5517978bc12ecf9a772310c21396ffd6ba45
+
 
 				</div>
 
@@ -346,7 +344,22 @@
 				</div>
 
 				<div class="basic_information">
-					<label>시설 = <%=facility%></label> 
+					<label>시설  
+					<%=	facility
+					%>
+					<%
+					/*
+					for (int i = 0 ; i < facilities.length ; i++){
+									
+						facilities[i];
+					}
+					*/
+					
+				
+					
+				
+						
+				 %></label> 
 				</div>
 
 
@@ -360,7 +373,7 @@
 				
 				
 				
-			</fieldset>
+
 
 				<div style="margin : 50px 0 0 500px">
 				
@@ -376,13 +389,13 @@
 				
 				</div>
 
-		</div>
+	
 
 
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
-	</div>
+
 	<!-- /container -->
 
 	<!-- Le javascript

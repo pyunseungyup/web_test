@@ -226,7 +226,7 @@
 							<td class="facilities_item"><span class="facilities"><input
 									type="checkbox" name="facility" value="internet">인터넷</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility" value="gas range">가스렌지</span>
+									type="checkbox" name="facility" value="gasrange">가스렌지</span>
 							</td>
 						</tr>
 
