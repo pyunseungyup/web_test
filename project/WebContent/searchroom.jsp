@@ -209,7 +209,7 @@ try {
 					rs = stmt.executeQuery();
 				}
 				
-				else if(!location.equals("") && distance!=0   && kind.equals("") ){
+				else if(!location.equals("") && distance==0   && kind.equals("") ){
 					stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location =? ;");	
 					stmt.setString(1,location);
 					rs = stmt.executeQuery();

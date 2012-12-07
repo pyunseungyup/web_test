@@ -254,7 +254,7 @@
 				<div class="main_title">
 					<h3 style="padding-left: 20px">판매자정보</h3>
 				</div>
-
+        	
 				<div class="basic_information">
 					<label>판매자 이름<strong style="color: red"> *</strong><%=username%></label>
 			
@@ -289,22 +289,16 @@
 
 				<div class="basic_information">
 
-				
+
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
-					if(!deposit.equals("")){
-						
+					if(!deposit.equals("")){	
 					%>
-						
 						보증금 <%=deposit%> 만원
-						
-						
 					<%						
 					}
-				
 					%>	
-				
 				<%=price %> 만원
 					</span>
 
@@ -381,9 +375,9 @@
 				
 				<%if(dbuserid.equals(userid)){%>
 				  
-				  <a href="fixed.jsp?roomid=<%=roomid %>" class="btn btn-mini">wishlist</a>
+				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn-mini">wishlist</a>
 				  
-				  <a href="updateroom.jsp?roomid=<%=roomid %>" class="btn btn-mini">update</a>
+				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn-mini">update</a>
 
 					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
 

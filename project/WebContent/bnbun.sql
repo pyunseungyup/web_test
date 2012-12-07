@@ -14,10 +14,19 @@ CREATE TABLE `rooms` (
   `facility` varchar(255) DEFAULT '',
   `description` varchar(500) DEFAULT '',
   `photo` varchar(100) DEFAULT '',
+<<<<<<< HEAD
+   PRIMARY KEY (`roomid`)
+
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+
+
+=======
   PRIMARY KEY (`roomid`)
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
 
 
+>>>>>>> 24335b32ee19548c10365498ab9e82b69e042f30
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(100) NOT NULL DEFAULT '',
@@ -25,6 +34,13 @@ CREATE TABLE `users` (
   `name` varchar(100) NOT NULL DEFAULT '',
   `phonenumber` varchar(100) NOT NULL DEFAULT '',
   PRIMARY KEY (`id`)
+<<<<<<< HEAD
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+
+
+
+=======
 
 ) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8;
+>>>>>>> 24335b32ee19548c10365498ab9e82b69e042f30
 
