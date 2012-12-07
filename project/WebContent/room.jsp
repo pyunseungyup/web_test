@@ -152,8 +152,12 @@
 						type="radio" name="distance" value="5">5분 이내 <input
 						type="radio" name="distance" value="10">10분 이내 <input
 						type="radio" name="distance" value="20">20분 이내 <input
+<<<<<<< HEAD
 						type="radio" name="distance" value="30">30분 이내 <input
 						type="radio" name="distance" value="">30분 이상
+=======
+						type="radio" name="distance" value="30">30분 이내 
+>>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
 				</div>
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <select
