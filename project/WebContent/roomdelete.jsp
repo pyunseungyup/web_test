@@ -18,17 +18,18 @@
 	request.setCharacterEncoding("utf-8");
 
 	// Request로 ID가 있는지 확인
-	int id = 0;
+	int roomid = 0;
+
 	try {
-		id = Integer.parseInt(request.getParameter("roomid"));
+		roomid = Integer.parseInt(request.getParameter("roomid"));
 	} catch (Exception e) {}
 	
 	try {
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 		stmt = conn.prepareStatement("DELETE FROM rooms WHERE roomid=?");
-		stmt.setInt(1,  id);
+		stmt.setInt(1,  roomid);
 		
-		 stmt.executeUpdate();
+		result=stmt.executeUpdate();
 	
 	} finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
@@ -38,8 +39,9 @@
 	}
 
 	 		
-	 		
-			response.sendRedirect("index.jsp");
+	 		if(result!=0){
+	 			response.sendRedirect("index.jsp");
+	 		}
 			
 			
 			%>
