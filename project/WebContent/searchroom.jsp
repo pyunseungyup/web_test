@@ -66,6 +66,7 @@
 
 		
 		location=request.getParameter("school");
+	
 		distance=Integer.parseInt(request.getParameter("distance"));
 		kind=request.getParameter("kind");
 		

@@ -10,7 +10,7 @@
 
   
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
-	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"utf-8");
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"utf-8" , new DefaultFileRenamePolicy());
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;

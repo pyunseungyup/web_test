@@ -183,7 +183,7 @@
 
 					<table id="tab">
 						<tr>
-							<td><input type="button" id="price-btn" value="보증금">
+							<td><input type="button" id="price-btn" value="보증금 여부">
 							<input style="display:none" type="text" id='price_'  placeholder="보증금 입력해 주세요" name ="deposit"></td>
 							<td id="price_add"></td>
 							<td><input type="text" name="price"
@@ -298,12 +298,12 @@ $(function() {
 		if($("#price_").css('display')=='none')
 			{
 		$("#price_").toggle('show',function(){
-			$("#price-btn").val("보증금 없음");
+			$("#price-btn").val("보증금 있음");
 			
 		});
 			}else{
 		$("#price_").toggle('hide',function(){
-			$("#price-btn").val("보증금 ");
+			$("#price-btn").val("보증금 없음 ");
 			$("#price_").val("");
 			
 		});

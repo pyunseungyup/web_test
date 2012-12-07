@@ -10,7 +10,6 @@
 	ResultSet rs = null;
 	
 	
-	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
@@ -24,7 +23,7 @@
 	String username = "" ; // 유저 네임 저장
 	String userphon = "";
 	int distance = 0; // 도보거리 기준 
-	String stringdistance="";
+	String stringdistance = "";
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -112,6 +111,7 @@
 		}else{
 			stringdistance = "30분 이내";
 		}
+		
 		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
 		stmt.setString(1, dbuserid);
