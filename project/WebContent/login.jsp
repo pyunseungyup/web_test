@@ -107,7 +107,7 @@
 
 			<form class ="form-signin" action="registerlogin.jsp" method="post">
 			<h2 class="form-signin-heading">로그인</h2>
-				<input type="text" class="input-block-level" placeholder="Email address" name="userid">
+				<input type="email" class="input-block-level" placeholder="Email address" name="userid">
         <input type="password" class="input-block-level" placeholder="Password" name="pwd">
         <label class="checkbox">
           <input type="checkbox" value="remember-me"> Remember me

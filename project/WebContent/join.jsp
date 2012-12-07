@@ -16,8 +16,7 @@
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
-<<<<<<< HEAD
-=======
+
 
 <style type="text/css">
       body {
@@ -60,7 +59,6 @@
     <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
     <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
     <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
->>>>>>> 24335b32ee19548c10365498ab9e82b69e042f30
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -82,28 +80,11 @@
 
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
-		<div class="jumbotron">
-
-			<h2>회원가입</h2>
-
-
-
-			<div class="basic_information">
-				<form action="register.jsp" method="post">
-					<fieldset>
-						<table class="body_imfor">
-							<tr>
-
-								<th class="contlor-label" >e-mail</th>
-
-=======
->>>>>>> 24335b32ee19548c10365498ab9e82b69e042f30
 
 
 				<form class ="form-signin" action="register.jsp" method="post">
 			<h2 class="form-signin-heading">회원가입</h2>
-				<input type="text" class="input-block-level" placeholder="Email address" name="userid">
+				<input type="email" class="input-block-level" placeholder="Email address" name="userid">
         <input type="password" class="input-block-level" placeholder="Password" name="pwd">
         <input type="password" class="input-block-level" placeholder="Password 확인" name="pwd_confirm">
         <input type="text" class="input-block-level" placeholder="이름" name="name">

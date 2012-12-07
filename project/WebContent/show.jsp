@@ -353,11 +353,6 @@
 					
 					<%
 					}
-					
-					
-				
-					
-				
 						
 				 %>
 				</div>
@@ -395,10 +390,8 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 
-
 </body>
 </html>
-
 <%
 	}finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
