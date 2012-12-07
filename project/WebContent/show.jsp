@@ -72,6 +72,10 @@
 		photo = rs.getString("photo");
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
+		
+		
+		
+		String[] facilities = facility.split(",");
   	
 		if(location.equals("kaist")){
 			location = "카이스트";
@@ -247,6 +251,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/showroom.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -343,25 +348,23 @@
 
 	
 
-	<div class="container-narrow">
+
+	  
 
 
-
+<div class="container-narrow">
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-		
-			<fieldset>
-
-				<h2>상세dS1보d121기</h2>
-
-				
+	     <div class="picture">			
+	     	<h2>방상세보기</h2>	
 
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
+		    </div>
 
-
+      
 				<div class="main_title">
-					<h3 style="padding-left: 20px">판매자 정보</h3>
+					<h3 style="padding-left: 20px">판매자정보</h3>
 				</div>
 
 				<div class="basic_information">
@@ -374,7 +377,7 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px;">방 기본정보</h3>
+					<h3 style="padding-left: 20px;">방기본정보</h3>
 				</div>
 
 
@@ -395,10 +398,16 @@
 						
 				</div>
 
+
 				<div class="basic_information">
 
+<<<<<<< HEAD
 
 
+=======
+					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
+			
+>>>>>>> df9c99fc42b83b5b2bbb7f0d95feb76aec7c2030
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
 					if(!deposit.equals("")){
@@ -416,21 +425,25 @@
 				<%=price %> 만원
 					</span>
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> df9c99fc42b83b5b2bbb7f0d95feb76aec7c2030
 
 				</div>
 
 
 
-				<div class="main_title">
-					<h3 style="padding-left: 20px">방 상세정보</h3>
+				<div class="main_title_1">
+					<h3 style="padding-left: 20px">방상세정보</h3>
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>방 이름<strong style="color: red"> *</strong>	<%=name%></label> 
 
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>주소<strong style="color: red"> *</strong><%=address%></label>
 						
 
@@ -453,22 +466,36 @@
 
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>시설 = <%=facility%></label> 
 				</div>
 
+				<div class="basic_information_1">
+					<label>시설  
+					<%=	facility%>
+					<%
+					/*
+					for (int i = 0 ; i < facilities.length ; i++){
+									
+						facilities[i];
+					}
+					*/
+					
+				
+					
+				
+						
+				 %></label> 
+				</div>
 
-				<div class="basic_information">
+
+				<div class="basic_information_1">
 					<label>소개</label>
 					<fieldset>
 						<%=description%></fieldset>
-
 				</div>
 				
-				
-				
-				
-			</fieldset>
+
 
 				<div style="margin : 50px 0 0 500px">
 				
@@ -481,14 +508,12 @@
 					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
 
 				<%} %>
-				
 				</div>
 
-		</div>
-
-
+						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
+</div>
 
 	<!-- /container -->
 

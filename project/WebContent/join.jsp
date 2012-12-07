@@ -28,6 +28,7 @@
 <head>
 
 <meta charset="utf-8">
+<title>로그인</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -35,7 +36,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -45,18 +46,14 @@
 
 <!-- Fav and touch icons -->
 
-
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
-
-
-<title>Project Main</title>
 </head>
 
 <body>
 
-	<div class="container-narrow">
 
+	<div class="container-narrow">
 
 
 		<jsp:include page="share/header.jsp"></jsp:include>
@@ -64,7 +61,6 @@
 		<div class="jumbotron">
 
 			<h2>회원가입</h2>
-
 
 
 			<div class="basic_information">
@@ -77,7 +73,7 @@
 								<th class="contlor-label" >e-mail</th>
 
 
-								<td><input type="email" name="userid" value="<%=userid%>" />
+								<td><input type="email" name="userid" />
 								</td>
 
 							</tr>
@@ -93,12 +89,12 @@
 							<tr>
 								<th>이름</th>
 								<td colspan="3"><input type="text" name="name"
-									value="<%=name %>" /></td>
+								/></td>
 							</tr>
 							<tr>
 								<th>PHONE-NUMBER</th>
 								<td colspan="3"><input type="text" name=phonenumber
-									value="<%=phonenumber%>" /></td>
+								/></td>
 							</tr>
 						</table>
 						<input class="btn btn-mini disabled" type="submit" value="회원가입" />
