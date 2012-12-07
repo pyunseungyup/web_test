@@ -65,8 +65,7 @@
 		int startnum=1;
 
 		
-		location=request.getParameter("school");
-	
+		location=request.getParameter("school");	
 		distance=Integer.parseInt(request.getParameter("distance"));
 		kind=request.getParameter("kind");
 		

@@ -232,23 +232,20 @@
 
 	
 
-	<div class="container-narrow">
+
+	  
 
 
-
+<div class="container-narrow">
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-		
-			<fieldset>
-
-				<h2>상세dS1보d121기</h2>
-
-				
-
+				<h2>방 상세보기</h2>
+	     <div class="">
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
+		    </div>
 
-
+      
 				<div class="main_title">
 					<h3 style="padding-left: 20px">판매자 정보</h3>
 				</div>
@@ -285,11 +282,11 @@
 				</div>
 
 				<div class="basic_information">
-<<<<<<< HEAD
+
 					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
 						
 		
-=======
+
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
@@ -308,22 +305,22 @@
 				<%=price %> 만원
 					</span>
 
->>>>>>> 2eae5517978bc12ecf9a772310c21396ffd6ba45
+
 
 				</div>
 
 
 
-				<div class="main_title">
+				<div class="main_title_1">
 					<h3 style="padding-left: 20px">방 상세정보</h3>
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>방 이름<strong style="color: red"> *</strong>	<%=name%></label> 
 
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>주소<strong style="color: red"> *</strong><%=address%></label>
 						
 
@@ -346,12 +343,12 @@
 
 				</div>
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>시설 = <%=facility%></label> 
 				</div>
 
 
-				<div class="basic_information">
+				<div class="basic_information_1">
 					<label>소개</label>
 					<fieldset>
 						<%=description%></fieldset>
@@ -360,8 +357,7 @@
 				
 				
 				
-				
-			</fieldset>
+
 
 				<div style="margin : 50px 0 0 500px">
 				
@@ -371,16 +367,13 @@
 					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
 
 				<%} %>
-				
 				</div>
-
-		</div>
-
-
+				
+						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
-
-	</div>
+</div>
+	
 	<!-- /container -->
 
 	<!-- Le javascript

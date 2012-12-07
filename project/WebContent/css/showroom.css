@@ -6,9 +6,18 @@ div.main_title {
 	background-color: #DFFFFF;
 	color: #555;
 }
+div.main_title_1 {
+	margin-top: 10px;
+	background-color: #DFFFFF;
+	color: #555;
+}
 
 div.basic_information {
 	margin-left: 350px;
+	background-color: #eeeeee;
+	overflow: auto;
+}
+div.basic_information_1 {
 	background-color: #eeeeee;
 	overflow: auto;
 }
