@@ -22,75 +22,32 @@
 
 CREATE TABLE `rooms` (
   `roomid` int(11) NOT NULL AUTO_INCREMENT,
-<<<<<<< HEAD
   `name` varchar(20) DEFAULT '',
   `userid` varchar(100) DEFAULT '',
   `location` varchar(100) DEFAULT '',
   `distance` int(11) DEFAULT '0',
-=======
   `userid` varchar(100) DEFAULT '',
   `name` varchar(20) DEFAULT NULL,
   `location` varchar(100) DEFAULT '',
   `distance` int(11) DEFAULT NULL,
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
   `type` varchar(100) DEFAULT '',
   `kind` varchar(100) DEFAULT '',
   `price` varchar(100) DEFAULT '',
   `address` varchar(255) DEFAULT '',
-<<<<<<< HEAD
   `lat` varchar(100) DEFAULT '',
   `lng` varchar(255) DEFAULT '',
   `facility` varchar(255) DEFAULT '',
   `description` varchar(500) DEFAULT '',
   `photo` varchar(100) DEFAULT '',
   PRIMARY KEY (`roomid`)
-) ENGINE=InnoDB AUTO_INCREMENT=75 DEFAULT CHARSET=utf8;
-
-#
-# Data for table "rooms"
-#
-
-
-#
-# Source for table "users"
-#
-
-=======
-  `facility` varchar(255) DEFAULT '',
-  `description` text,
-  `photo` varchar(100) DEFAULT '',
-  PRIMARY KEY (`roomid`)
-) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
-
-#
-# Source for table "users"
-#
-
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
+);
 CREATE TABLE `users` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `userid` varchar(100) NOT NULL DEFAULT '',
   `pwd` varchar(255) NOT NULL DEFAULT '',
   `name` varchar(100) NOT NULL DEFAULT '',
   `phonenumber` varchar(100) NOT NULL DEFAULT '',
-<<<<<<< HEAD
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=14 DEFAULT CHARSET=utf8;
-
-#
-# Data for table "users"
-#
+);
 
 INSERT INTO `users` VALUES (12,'a','112233','정경락','11231123'),(13,'a@a.a','112233','경락이','010-1111-1111');
-=======
-  PRIMARY KEY (`id`),
-  UNIQUE KEY `userid` (`userid`),
-  UNIQUE KEY `phonenumber` (`phonenumber`)
-) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=latin1;
->>>>>>> 351a986ba787c3c1f4b0b8a3e1eb3d7ac18baa99
-
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
