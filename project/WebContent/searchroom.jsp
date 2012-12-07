@@ -33,7 +33,7 @@
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-    <%@ include file="share/fixed.jsp"%>
+
  
 
 		<div class="jumbotron">

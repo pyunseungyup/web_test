@@ -1,6 +1,40 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"
 	import="org.apache.commons.lang3.StringUtils"%>
+
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="utf-8">
+<title>Project Main Window</title>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+
+<script src="js/jquery-1.8.2.min.js"></script>
+<script src="js/bootstrap.min.js"></script>
+
+
+</head>
+
+
+
+<body>
+
 <%	
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -45,48 +79,10 @@
 	request.setCharacterEncoding("utf-8");	
 
 %>
-<!DOCTYPE html>
-
-<head>
-
-<meta charset="utf-8">
-<title>Project Main Window</title>
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- Le styles -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/index.css" rel="stylesheet">
-
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
-
-<script src="js/jquery-1.8.2.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-
-
-</head>
-
-
-
-
-
-
-<body>
 
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-
-    <%@ include file="share/fixed.jsp"%>
-
 
 
 		<div class="jumbotron">
@@ -501,7 +497,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 
 
-</body>
+
 
 <%
  
@@ -512,4 +508,5 @@
 	if (conn != null) try{conn.close();} catch(SQLException e) {}
 }
  %>
+ </body>
 </html>

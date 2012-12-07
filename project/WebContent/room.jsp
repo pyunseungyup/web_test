@@ -18,6 +18,7 @@
 <link href="css/index.css" rel="stylesheet">
 
 
+
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
       <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
@@ -139,7 +140,8 @@
 
 					<label>인근 대학<strong style="color: red"> *</strong></label> <select
 						name="location">
-						<option value=""></option>
+						<!-- 대학순위별 1위~60위 sort -->
+						
 						<option value="seoul">서울대</option>
 						<option value="kaist">카이스트</option>
 						<option value="pohang">포항공대</option>
@@ -209,8 +211,7 @@
 						type="radio" name="distance" value="5">5분 이내 <input
 						type="radio" name="distance" value="10">10분 이내 <input
 						type="radio" name="distance" value="20">20분 이내 <input
-						type="radio" name="distance" value="30">30분 이내 
-			
+						type="radio" name="distance" value="30">30분 이내 			
 
 				</div>
 				<div class="basic_information">

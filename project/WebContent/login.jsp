@@ -37,6 +37,48 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
+<style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #fff;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 30px auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+    <link href="../assets/css/bootstrap-responsive.css" rel="stylesheet">
+    
+     <!-- Fav and touch icons -->
+    <link rel="shortcut icon" href="../assets/ico/favicon.ico">
+    <link rel="apple-touch-icon-precomposed" sizes="144x144" href="../assets/ico/apple-touch-icon-144-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="114x114" href="../assets/ico/apple-touch-icon-114-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" sizes="72x72" href="../assets/ico/apple-touch-icon-72-precomposed.png">
+    <link rel="apple-touch-icon-precomposed" href="../assets/ico/apple-touch-icon-57-precomposed.png">
+
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -61,37 +103,19 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 
-		<div class="jumbotron">
 		
-		 <h2>로그인</h2>
-  
-			 <div class="basic_information">
+
+			<form class ="form-signin" action="registerlogin.jsp" method="post">
+			<h2 class="form-signin-heading">로그인</h2>
+				<input type="text" class="input-block-level" placeholder="Email address" name="userid">
+        <input type="password" class="input-block-level" placeholder="Password" name="pwd">
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me"> Remember me
+        </label>
+        <button class="btn btn-large btn-primary" type="submit">Sign in</button>
+      </form>
 
 
-			<form action="registerlogin.jsp" method="post">
-				<fieldset>
-						<table class="body_imfor">
-						<tr>
-								<th class="contlor-label" >e-mail</th>
-							<td colspan="3"><input type=email name="userid"
-								 /></td>
-						</tr>
-						<tr>
-							<th>비밀번호</th>
-							<td><input type="password" name="pwd" /></td>
-						</tr>
-
-
-					</table>
-
-				<input class="btn btn-mini disabled" type="submit" value="로그인" />
-				</fieldset>
-			</form>
-
-
- </div>
-
-		</div>
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
@@ -123,6 +147,20 @@
   }
 			*/
   %>
+  
+    <script src="../assets/js/jquery.js"></script>
+    <script src="../assets/js/bootstrap-transition.js"></script>
+    <script src="../assets/js/bootstrap-alert.js"></script>
+    <script src="../assets/js/bootstrap-modal.js"></script>
+    <script src="../assets/js/bootstrap-dropdown.js"></script>
+    <script src="../assets/js/bootstrap-scrollspy.js"></script>
+    <script src="../assets/js/bootstrap-tab.js"></script>
+    <script src="../assets/js/bootstrap-tooltip.js"></script>
+    <script src="../assets/js/bootstrap-popover.js"></script>
+    <script src="../assets/js/bootstrap-button.js"></script>
+    <script src="../assets/js/bootstrap-collapse.js"></script>
+    <script src="../assets/js/bootstrap-carousel.js"></script>
+    <script src="../assets/js/bootstrap-typeahead.js"></script>
 
 
 	<!-- /container -->
