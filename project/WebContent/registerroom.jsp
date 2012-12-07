@@ -10,7 +10,7 @@
 
   
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
-	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"utf-8");
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"utf-8" , new DefaultFileRenamePolicy());
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -29,12 +29,13 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-
+	
 	String distance = ""; // 도보거리 기준 
 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
+	String deposit = null;
 	String address = ""; // 주소
 	String description = "" ; // 설명
 	String lat = ""; // google 맵 위도 정보
@@ -48,6 +49,7 @@
 	type = multi.getParameter("type");
 	kind = multi.getParameter("kind");
 	price = multi.getParameter("price");
+	deposit = multi.getParameter("deposit");
 	address = multi.getParameter("address");
 	description = multi.getParameter("description");
 	lat = multi.getParameter("lat");
@@ -56,8 +58,7 @@
 	String[] facility = multi.getParameterValues("facility");
 	
 	String favoriteStr = StringUtils.join(facility, ",");
-	System.out.println("favorit string " +favoriteStr);
-	
+
    Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
 	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
 	 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
@@ -112,8 +113,8 @@
 			
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"INSERT INTO rooms(userid, name, location, distance,type,kind, price,address, lat , lng ,facility , description , photo) " +
-					"VALUES(?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)"
+					"INSERT INTO rooms(userid, name, location, distance,type,kind, price,deposit,address, lat , lng ,facility , description , photo) " +
+					"VALUES(?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)"
 					);
 					
 			
@@ -124,12 +125,13 @@
 			stmt.setString(5,  type);
 			stmt.setString(6,  kind);
 			stmt.setString(7,  price);
-			stmt.setString(8,  address);
-			stmt.setString(9,  lat);
-			stmt.setString(10, lng);
-			stmt.setString(11, favoriteStr);
-			stmt.setString(12, description);
-			stmt.setString(13, fileName);
+			stmt.setString(8, deposit);
+			stmt.setString(9,  address);
+			stmt.setString(10,  lat);
+			stmt.setString(11, lng);
+			stmt.setString(12, favoriteStr);
+			stmt.setString(13, description);
+			stmt.setString(14, fileName);
 			
 		
 			result = stmt.executeUpdate();

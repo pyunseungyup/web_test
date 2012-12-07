@@ -10,7 +10,6 @@
 	ResultSet rs = null;
 	
 	
-	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
@@ -24,10 +23,11 @@
 	String username = "" ; // 유저 네임 저장
 	String userphon = "";
 	int distance = 0; // 도보거리 기준 
-	String stringdistance="";
+	String stringdistance = "";
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
+	String deposit = "";
 	String address = ""; // 주소
 	String lat = "";
 	String lng = "";
@@ -65,6 +65,7 @@
 		type = rs.getString("type");
 		kind = rs.getString("kind");
 		price = rs.getString("price");
+		deposit = rs.getString("deposit");
 		address = rs.getString("address");
 		String facility= rs.getString("facility");
 		description = rs.getString("description");
@@ -110,6 +111,7 @@
 		}else{
 			stringdistance = "30분 이내";
 		}
+		
 		
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid=?");
 		stmt.setString(1, dbuserid);
@@ -283,9 +285,30 @@
 				</div>
 
 				<div class="basic_information">
+<<<<<<< HEAD
 					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
 						
 		
+=======
+			
+					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
+					<%
+					if(!deposit.equals("")){
+						
+					%>
+						
+						보증금 <%=deposit%> 만원
+						
+						
+					<%						
+					}
+				
+					%>	
+				
+				<%=price %> 만원
+					</span>
+
+>>>>>>> 2eae5517978bc12ecf9a772310c21396ffd6ba45
 
 				</div>
 
@@ -343,9 +366,9 @@
 				<div style="margin : 50px 0 0 500px">
 				
 				<%if(dbuserid.equals(userid)){%>
-				  <a href="updateroom.jsp?id=<%=roomid %>" class="btn btn-mini">update</a>
+				  <a href="updateroom.jsp?roomid=<%=roomid %>" class="btn btn-mini">update</a>
 
-					<a href="roomdelete.jsp?id=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
+					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
 
 				<%} %>
 				

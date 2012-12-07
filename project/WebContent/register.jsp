@@ -26,7 +26,7 @@
 	}
 	
 	
-	if (pwd == null || pwd.length() < 6 || pwd.equals("pwd")!=pwd_confirm.equals("pwd_confirm")) {
+	if (pwd == null || pwd.length() < 6 || !pwd.equals(pwd_confirm)) {
 		
 		errorMsgs.add("비밀번호는 다시 입력해주세요.");
 	} 
@@ -42,9 +42,6 @@
 
 	if (errorMsgs.size() == 0) {
 		
-		
-	
-
   int result = 0;
 	
 

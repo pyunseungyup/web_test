@@ -41,7 +41,7 @@
 		errorMsgs.add("아이디를 다시  입력해주세요.");
 	}
 	
-	if (pwd == null  || pwd_confirm == null  || pwd.trim().length() == 0 || pwd_confirm.trim().length() == 0) {
+	if (pwd == null  || pwd_confirm == null  || !pwd.equals(pwd_confirm)) {
 		errorMsgs.add("패스워드을 다시  입력해주세요.");
 	}
 	

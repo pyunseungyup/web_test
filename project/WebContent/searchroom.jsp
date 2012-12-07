@@ -66,6 +66,7 @@
 
 		
 		location=request.getParameter("school");
+	
 		distance=Integer.parseInt(request.getParameter("distance"));
 		kind=request.getParameter("kind");
 		
@@ -158,8 +159,8 @@ try {
 				<li class="span3">
 					<div class="thumbnails">
 
-					<a href="show.jsp?roomid=<%=roomid%>">
-						<img src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
+					<a href="show.jsp?roomid=<%=dbroomid%>">
+						<img src="./upload/<%=dbphoto%>" alt="http://placehold.it/300x200"
 							width="150" height="200"></a>
 						<h3><%=dblocation %></h3>
 						<p>
