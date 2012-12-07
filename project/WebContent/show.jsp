@@ -140,6 +140,7 @@
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
+<link href="css/showroom.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -233,26 +234,18 @@
 
 <body>
 
-	
-
-
-	  
-
 
 <div class="container-narrow">
 		<jsp:include page="share/header.jsp"></jsp:include>
 
-<<<<<<< HEAD
+
 				<h2>방 상세보기</h2>
 	     <div class="">
-=======
-		
 
-				<h2>상세dS1보d121기</h2>
 
 				
 
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
+
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
 		    </div>
@@ -293,14 +286,7 @@
 						
 				</div>
 
-<<<<<<< HEAD
-				<div class="basic_information">
 
-					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
-						
-		
-=======
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
@@ -322,7 +308,7 @@
 
 
 
-				</div>
+				
 
 
 
@@ -358,10 +344,6 @@
 
 				</div>
 
-<<<<<<< HEAD
-				<div class="basic_information_1">
-					<label>시설 = <%=facility%></label> 
-=======
 				<div class="basic_information">
 					<label>시설  
 					<%=	facility
@@ -373,13 +355,9 @@
 						facilities[i];
 					}
 					*/
-					
-				
-					
-				
 						
 				 %></label> 
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
+
 				</div>
 
 
@@ -392,10 +370,7 @@
 				
 				
 				
-<<<<<<< HEAD
-=======
-				
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
+
 
 
 				<div style="margin : 50px 0 0 500px">
@@ -410,23 +385,15 @@
 
 				<%} %>
 				</div>
-<<<<<<< HEAD
+
 				
 						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 </div>
-	
-=======
-
-	
 
 
 
-		<jsp:include page="share/footer.jsp"></jsp:include>
-
-
->>>>>>> 9707b27b99c471cf6af5239a07df4a251d57a933
 	<!-- /container -->
 
 	<!-- Le javascript

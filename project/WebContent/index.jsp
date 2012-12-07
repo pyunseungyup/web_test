@@ -153,7 +153,16 @@
 						<option value="other">기타</option>
 						
 						
-					</select> <select name="distance" id="select">
+					</select>  <select name="kind" id="select">
+						<option value="">방구조</option>
+						<option value="one_room">원룸</option>
+						<option value="two_room">투룸</option>
+						<option value="officetel">오피스텔</option>
+						<option value="other">기타</option>
+					</select>
+					
+					
+					<select name="distance" id="select">
 						<option value="">거리</option>
 						<option value="5">5분이내</option>
 						<option value="10">10분이내</option>
@@ -161,13 +170,9 @@
 						<option value="30">30분이내</option>
 						
 						
-					</select> <select name="kind" id="select">
-						<option value="">방구조</option>
-						<option value="one_room">원룸</option>
-						<option value="two_room">투룸</option>
-						<option value="officetel">오피스텔</option>
-						<option value="other">기타</option>
 					</select>
+					
+					
 				</div>
 				<input type="submit" class="btn btn-large btn-success" value="검색" />
 			</form>

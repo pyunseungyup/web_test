@@ -30,10 +30,115 @@
 </head>
 
 <body>
+	<div class="container-narrow">
+
+		<%@ include file="share/header.jsp"%>
+    <%@ include file="share/fixed.jsp"%>
+ 
+
+		<div class="jumbotron">
 
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
+		
+			<div class="jumbotron">
+			
+			<form action="searchroom.jsp" method="post">
+				<div class="btn-group">
+					<select name="school" id="select">
+						<option value="">학교</option>		
+						
+						<!-- 대학순위별 1위~60위 sort -->
+						
+						<option value="seoul">서울대</option>
+						<option value="kaist">카이스트</option>
+						<option value="pohang">포항공대</option>
+						<option value="yonsei">연세대</option>
+						<option value="koryo">고려대</option>
+						<option value="seogang">서강대</option>
+						<option value="seonggyun">성균관대</option>
+						<option value="hanyang">한양대</option>
+						<option value="foreign">한국외국어대</option>
+						<option value="ehwa">이화여대</option>
+						<option value="sirip">서울시립대</option>
+						<option value="jungang">중앙대</option>
+						<option value="kyunghye">경희대</option>
+						<option value="busan">부산대</option>
+						<option value="gyungbuk">경북대</option>
+						<option value="inha">인하대</option>
+						<option value="aju">아주대</option>
+						<option value="gundae">건국대</option>
+						<option value="dongkuc">동국대</option>
+						<option value="hongdae">홍익대</option>
+						<option value="junnam">전남대</option>
+						<option value="kyowon">한국교원대</option>
+						<option value="sucdae">숙명여대</option>
+						<option value="kucmin">국민대</option>
+						<option value="sungsil">숭실대</option>
+						<option value="dandae">단국대</option>
+						<option value="hangong">한국항공대</option>
+						<option value="sejong">세종대</option>
+						<option value="gwangun">광운대</option>
+						<option value="chungnam">충남대</option>
+						<option value="kadae">가톨릭대</option>
+						<option value="myungji">명지대</option>
+						<option value="sanmyung">상명대</option>
+						<option value="chungbuk">충북대</option>					
+						<option value="jungbuk">전북대</option>
+						<option value="sungsin">성신여대</option>
+						<option value="handong">한동대</option>
+						<option value="seosan">서울산업대</option>
+						<option value="yesul">한국예술종합대</option>
+						<option value="ducsung">덕성여대</option>
+						<option value="ulsan">울산대</option>
+						<option value="haeyang">한국해양대</option>
+						<option value="kangwon">강원대</option>
+						<option value="incheon">인천대</option>
+						<option value="dongduc">동덕여대</option>
+						<option value="seoulyeo">서울여대</option>
+						<option value="bukyung">부경대</option>
+						<option value="yeongnam">영남대</option>					
+						<option value="jaeju">제주대</option>
+						<option value="kyungsang">경상대</option>
+						<option value="josun">조선대</option>
+						<option value="donga">동아대</option>
+						<option value="gongju">공주대</option>
+						<option value="hanbac">한밭대</option>
+						<option value="gisul">한국기술교육대</option>
+						<option value="kyunggi">경기대</option>
+						<option value="hansung">한성대</option>
+						<option value="kyungwon">경원대</option>					
+						<option value="hangyung">한경대</option>
+						<option value="seogyung">서경대</option>
+						<option value="other">기타</option>
+						
+						
+					</select>  <select name="kind" id="select">
+						<option value="">방구조</option>
+						<option value="one_room">원룸</option>
+						<option value="two_room">투룸</option>
+						<option value="officetel">오피스텔</option>
+						<option value="other">기타</option>
+					</select>
+					
+					
+					<select name="distance" id="select">
+						<option value="">거리</option>
+						<option value="5">5분이내</option>
+						<option value="10">10분이내</option>
+						<option value="20">20분이내</option>
+						<option value="30">30분이내</option>
+						
+						
+					</select>
+					
+					
+				</div>
+				<input type="submit" class="btn btn-large btn-success" value="검색" />
+			</form>
+		</div>
+		<hr>
 
 		<%
 		Connection conn = null;
@@ -63,23 +168,90 @@
 		
 		int numItems=0;
 		int startnum=1;
-
+	
+		String serchdistance = "";
 		
+		serchdistance = request.getParameter("distance");
 		location=request.getParameter("school");	
-		distance=Integer.parseInt(request.getParameter("distance"));
+		if(!serchdistance.equals("")){
+		distance=Integer.parseInt(serchdistance);
+		}
 		kind=request.getParameter("kind");
+		System.out.println("serchdistance" + serchdistance + "distance" + distance + "kind"+ kind );
 		
 try {
 			
 			Class.forName("com.mysql.jdbc.Driver");
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			
-			stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? and distance <= ? and kind = ? ;");			
-			stmt.setString(1,location);
-			stmt.setInt(2,distance);
-			stmt.setString(3,kind);
 			
-			rs=stmt.executeQuery();			
+			if(!serchdistance.equals("") && distance !=0  && !kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? and distance <= ? and kind =? ;");	
+				stmt.setString(1,location);
+				stmt.setInt(2,distance);
+				stmt.setString(3,kind);
+				rs = stmt.executeQuery();
+			}else if(serchdistance.equals("") && distance ==0  && !kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE kind = ? ;");	
+				stmt.setString(1,kind);
+				rs = stmt.executeQuery();
+			}
+			
+			else if(serchdistance.equals("") && distance !=0  && !kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE distance <= ? and kind = ? ;");	
+				stmt.setInt(1,distance);
+				stmt.setString(2,kind);
+				rs = stmt.executeQuery();
+			}
+			
+			else if(!serchdistance.equals("") && distance ==0  && kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? ;");	
+				stmt.setString(1,location);
+				rs = stmt.executeQuery();
+				
+			}
+			else if(!serchdistance.equals("") && distance ==0  && !kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? and kind =? ;");	
+				stmt.setString(1,location);
+				stmt.setString(2,kind);
+				rs = stmt.executeQuery();
+			}
+			else if(!serchdistance.equals("") && distance !=0  && kind.equals("") ){
+				stmt = conn.prepareStatement("SELECT COUNT(*) FROM rooms WHERE location = ? and distance <=? ;");	
+				stmt.setString(1,location);
+				stmt.setInt(2,distance);
+				rs = stmt.executeQuery();
+			}
+			else {
+			
+			%>
+				
+				<h1>  검색결과가없습니다.</h1>
+				<h2 > 다시검색해주세요</h2>
+				
+				<div class="form-action">
+				<a href="index.jsp" class="btn btn-mini disabled" >뒤로 돌아가기</a>
+				</div>
+				
+				
+				
+				
+				
+			<%
+			
+			}
+			
+		
+			
+			
+			
+			
+			
+			
+		
+			
+			
+			/*
 			rs.next();
 			numItems = rs.getInt(1);
 			
@@ -92,8 +264,10 @@ try {
 			stmt.setInt(2,distance);
 			stmt.setString(3,kind);
 			rs = stmt.executeQuery();
+			*/
+			%>
 			
-			%><div class="row-fluid marketing">
+			<div class="row-fluid marketing">
 
 			<ul class="thumbnails">
 
@@ -177,7 +351,8 @@ try {
       }%>
 
 			</ul>
-
+	</div>
+	</div>
 		</div>
 
 		<%}catch (SQLException e){
