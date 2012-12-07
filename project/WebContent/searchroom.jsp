@@ -113,12 +113,124 @@ try {
 				String dbdescription = rs.getString("description");
 				String dbphoto = rs.getString("photo");			
 				
-				if(dblocation.equals("Seoul_Un")){
-					dblocation = "서울대";
-				}else if (dblocation.equals("Yonsei_Un" )){
+				if(dblocation.equals("kaist")){
+					dblocation = "카이스트";
+				}else if (dblocation.equals("pohang" )){
+					dblocation = "포항공대";
+				}else if (dblocation.equals("yonsei" )){
 					dblocation = "연세대";
-				}else if (dblocation.equals("Myongji_Un" )){
+				}else if (dblocation.equals("koryo" )){
+					dblocation = "고려대";
+				}else if (dblocation.equals("seogang" )){
+					dblocation = "서강대";
+				}else if (dblocation.equals("seonggyun" )){
+					dblocation = "성균관대";
+				}else if (dblocation.equals("hanyang" )){
+					dblocation = "한양대";
+				}else if (dblocation.equals("foreign" )){
+					dblocation = "한국외국어대";
+				}else if (dblocation.equals("ehwa" )){
+					dblocation = "이화여대";
+				}else if (dblocation.equals("sirip" )){
+					dblocation = "서울시립대";
+				}else if (dblocation.equals("jungang" )){
+					dblocation = "중앙대";
+				}else if (dblocation.equals("kyunghye" )){
+					dblocation = "경희대";
+				}else if (dblocation.equals("busan" )){
+					dblocation = "부산대";
+				}else if (dblocation.equals("gyungbuk" )){
+					dblocation = "경북대";
+				}else if (dblocation.equals("inha" )){
+					dblocation = "인하대";
+				}else if (dblocation.equals("aju" )){
+					dblocation = "아주대";
+				}else if (dblocation.equals("gundae" )){
+					dblocation = "건국대";
+				}else if (dblocation.equals("dongkuc" )){
+					dblocation = "동국대";
+				}else if (dblocation.equals("hongdae" )){
+					dblocation = "홍익대";
+				}else if (dblocation.equals("junnam" )){
+					dblocation = "전남대";
+				}else if (dblocation.equals("kyowon" )){
+					dblocation = "한국교원대";
+				}else if (dblocation.equals("sucdae" )){
+					dblocation = "숙명여대";
+				}else if (dblocation.equals("kucmin" )){
+					dblocation = "국민대";
+				}else if (dblocation.equals("sungsil" )){
+					dblocation = "숭실대";
+				}else if (dblocation.equals("dandae" )){
+					dblocation = "단국대";
+				}else if (dblocation.equals("hangong" )){
+					dblocation = "한국항공대";
+				}else if (dblocation.equals("sejong" )){
+					dblocation = "세종대";
+				}else if (dblocation.equals("gwangun" )){
+					dblocation = "광운대";
+				}else if (dblocation.equals("chungnam" )){
+					dblocation = "충남대";
+				}else if (dblocation.equals("kadae" )){
+					dblocation = "가톨릭대";
+				}else if (dblocation.equals("myungji" )){
 					dblocation = "명지대";
+				}else if (dblocation.equals("sanmyung" )){
+					dblocation = "상명대";
+				}else if (dblocation.equals("chungbuk" )){
+					dblocation = "충북대";
+				}else if (dblocation.equals("jungbuk" )){
+					dblocation = "전북대";
+				}else if (dblocation.equals("sungsin" )){
+					dblocation = "성신여대";
+				}else if (dblocation.equals("handong" )){
+					dblocation = "한동대";
+				}else if (dblocation.equals("seosan" )){
+					dblocation = "서울산업대";
+				}else if (dblocation.equals("yesul" )){
+					dblocation = "한국예술종합대";
+				}else if (dblocation.equals("ducsung" )){
+					dblocation = "덕성여대";
+				}else if (dblocation.equals("ulsan" )){
+					dblocation = "울산대";
+				}else if (dblocation.equals("haeyang" )){
+					dblocation = "한국해양대";
+				}else if (dblocation.equals("kangwon" )){
+					dblocation = "강원대";
+				}else if (dblocation.equals("incheon" )){
+					dblocation = "인천대";
+				}else if (dblocation.equals("dongduc" )){
+					dblocation = "동덕여대";
+				}else if (dblocation.equals("seoulyeo" )){
+					dblocation = "서울여대";
+				}else if (dblocation.equals("bukyung" )){
+					dblocation = "부경대";
+				}else if (dblocation.equals("yeongnam" )){
+					dblocation = "영남대";
+				}else if (dblocation.equals("jaeju" )){
+					dblocation = "제주대";
+				}else if (dblocation.equals("kyungsang" )){
+					dblocation = "경상대";
+				}else if (dblocation.equals("josun" )){
+					dblocation = "조선대";
+				}else if (dblocation.equals("donga" )){
+					dblocation = "동아대";
+				}else if (dblocation.equals("gongju" )){
+					dblocation = "공주대";
+				}else if (dblocation.equals("hanbac" )){
+					dblocation = "한밭대";
+				}else if (dblocation.equals("gisul" )){
+					dblocation = "한국기술교육대";
+				}else if (dblocation.equals("kyunggi" )){
+					dblocation = "경기대";
+				}else if (dblocation.equals("hansung" )){
+					dblocation = "한성대";
+				}else if (dblocation.equals("kyungwon" )){
+					dblocation = "경원대";
+				}else if (dblocation.equals("hangyung" )){
+					dblocation = "한경대";
+				}else if (dblocation.equals("seogyung" )){
+					dblocation = "서경대";
 				}else{
 					dblocation = "기타";
 				}
