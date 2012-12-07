@@ -149,11 +149,11 @@
 
 				<div class="basic_information">
 					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> <input
-						type="radio" name="distance" value="one">5분 이내 <input
-						type="radio" name="distance" value="two">10분 이내 <input
-						type="radio" name="distance" value="three">20분 이내 <input
-						type="radio" name="distance" value="four">30분 이내 <input
-						type="radio" name="distance" value="five">30분 이상
+						type="radio" name="distance" value="5">5분 이내 <input
+						type="radio" name="distance" value="10">10분 이내 <input
+						type="radio" name="distance" value="20">20분 이내 <input
+						type="radio" name="distance" value="30">30분 이내 <input
+						type="radio" name="distance" value="">30분 이상
 				</div>
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <select
@@ -183,7 +183,8 @@
 					<table id="tab">
 						<tr>
 							<td><input type='checkbox'></td>
-							<td><input type="button" id="price" value="보증금"></td>
+							<td><input type="button" id="price-btn" value="보증금">
+							<input style="display:none" type="text" id='price_'></td> // 보증금
 							<td id="price_add"></td>
 							<td><input type="text" name="price"
 								placeholder="가격을 입력해 주세요">만원</td>
@@ -228,34 +229,34 @@
 					<table>
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="tv">TV</span></td>
+									type="checkbox" name="facility" value="tv">TV</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="internet">인터넷</span></td>
+									type="checkbox" name="facility" value="internet">인터넷</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="gas range">가스렌지</span>
+									type="checkbox" name="facility" value="gas range">가스렌지</span>
 							</td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="air_conditioner">
+									type="checkbox" name="facility" value="air_conditioner">
 									에어컨 </span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="refrigerator">냉장고
+									type="checkbox" name="facility" value="refrigerator">냉장고
 							</span></td>
 							<td class="facilities_item"><span class="facilities">
-									<input type="checkbox" name="facility " value="washing_machine">세탁기
+									<input type="checkbox" name="facility" value="washing_machine">세탁기
 							</span></td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="drying_rack">건조대</span>
+									type="checkbox" name="facility" value="drying_rack">건조대</span>
 							</td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="parking">주차장</span></td>
+									type="checkbox" name="facility" value="parking">주차장</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="bathtub">욕조</span></td>
+									type="checkbox" name="facility" value="bathtub">욕조</span></td>
 						</tr>
 					</table>
 
@@ -269,8 +270,7 @@
 					<label>소개</label>
 					<div>
 						<textarea rows="5" name="description"
-							placeholder="방을 멋지게 소개 해주세요.">
-        </textarea>
+							placeholder="방을 멋지게 소개 해주세요."></textarea>
 					</div>
 				</div>
 
@@ -301,13 +301,20 @@
 <script type="text/javascript">
 
 $(function() {
-	
-	$('#price').click(function() {
-			$("tr input[type='checkbox']").each(function() {
-				if ($(this).attr('checked')) {
-					$("#tab").find("#price_add").append("<tr>"+$('#price_').find('tr').html()+"</tr>");
-				}
-			});
+	$("#price-btn").click(function(){
+		if($("#price_").css('display')=='none')
+			{
+		$("#price_").toggle('show',function(){
+			$("#price-btn").val("-");
+			
+		});
+			}else{
+		$("#price_").toggle('hide',function(){
+			$("#price-btn").val("+");
+			$("#price_").val("");
+			
+		});
+			}
 	});
 });
 </script>

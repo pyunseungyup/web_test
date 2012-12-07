@@ -10,7 +10,7 @@
 
   
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
-	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"UTF-8");
+	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit,"euc-kr");
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
@@ -29,7 +29,7 @@
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-	String distance = ""; // 도보거리 기준 
+	int distance = 0; // 도보거리 기준 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -42,7 +42,7 @@
   userid=session.getAttribute("s_userid").toString();
 	location =multi.getParameter("location");
 	name = multi.getParameter("name");
-	distance = multi.getParameter("distance");
+	distance = (int)multi.getParameter("distance");
 	type = multi.getParameter("type");
 	kind = multi.getParameter("kind");
 	price = multi.getParameter("price");
@@ -52,7 +52,9 @@
 	lng = multi.getParameter("lng");
 	String photo = multi.getParameter("photo"); // 파일의 url
 	String[] facility = multi.getParameterValues("facility");
+	
 	String favoriteStr = StringUtils.join(facility, ",");
+	System.out.println("favorit string " +favoriteStr);
 	
    Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
 	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
@@ -114,7 +116,7 @@
 			stmt.setString(1,  userid);
 			stmt.setString(2,  name);
 			stmt.setString(3,  location);
-			stmt.setString(4,  distance);
+			stmt.setInt(4,  distance);
 			stmt.setString(5,  type);
 			stmt.setString(6,  kind);
 			stmt.setString(7,  price);
@@ -125,7 +127,7 @@
 			stmt.setString(12, description);
 			stmt.setString(13, fileName);
 			
-			
+		
 			result = stmt.executeUpdate();
 			
 

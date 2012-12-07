@@ -114,7 +114,7 @@
 						</table>
 						
 						<input type="submit" class="btn btn-mini disabled" value="정보수정" />
-				    <a href="delete.jsp?id=<%=id%>"class="btn btn-mini disabled" >탈 퇴 </a>
+				    <a href="delete.jsp?id=<%=id%>"class="btn btn-mini disabled" >탈   퇴 </a>
 					</fieldset>
 				</form>
 				 
