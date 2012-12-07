@@ -18,15 +18,13 @@
 	request.setCharacterEncoding("utf-8");
 
 	// Request로 ID가 있는지 확인
-	int id = 0;
-	try {
-		id = Integer.parseInt(request.getParameter("id"));
-	} catch (Exception e) {}
+	String userid = session.getAttribute("s_userid").toString();
 	
+
 	try {
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-		stmt = conn.prepareStatement("DELETE FROM users WHERE id=?");
-		stmt.setInt(1,  id);
+		stmt = conn.prepareStatement("DELETE FROM users WHERE userid=?");
+		stmt.setString(1,  userid);
 		
 		 stmt.executeUpdate();
 	
@@ -42,4 +40,4 @@
 			response.sendRedirect("index.jsp");
 			
 			
-			%>
+	%>
