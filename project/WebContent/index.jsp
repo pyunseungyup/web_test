@@ -384,7 +384,6 @@
 						location = "기타";
 					}
 					
-
 					
 					if(type.equals("rented room")){
 						type = "자취";

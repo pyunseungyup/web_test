@@ -289,7 +289,7 @@
 
 				<div class="basic_information">
 
-					<label>가격 정보<strong style="color: red"> *</strong><%=price %> 만원</label> 
+				
 			
 					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
 					<%
@@ -347,25 +347,25 @@
 				</div>
 
 				<div class="basic_information_1">
-					<label>시설 = <%=facility%></label> 
-				</div>
-
-				<div class="basic_information_1">
-					<label>시설  
-					<%=	facility%>
+					<label>시설</label> 
+		
+					
+					
+					
 					<%
-					/*
-					for (int i = 0 ; i < facilities.length ; i++){
-									
-						facilities[i];
+					for (String arr : facilities ){
+									%>
+						<span class="label label-info"><%=arr%></span>
+					
+					<%
 					}
-					*/
+					
 					
 				
 					
 				
 						
-				 %></label> 
+				 %>
 				</div>
 
 
