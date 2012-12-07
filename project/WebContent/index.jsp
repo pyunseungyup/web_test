@@ -58,7 +58,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
@@ -77,8 +77,8 @@
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-
-
+    <%@ include file="share/fixed.jsp"%>
+ 
 
 		<div class="jumbotron">
 			<h2>당신이원하는자취방</h2>
@@ -233,7 +233,7 @@
 
 				<li class="span3" style="width: 210px">
 					<div class="thumbnails">
-						<a href="show.jsp?roomid=<%=roomid%> ">
+						<a href="show.jsp?roomid=<%=roomid%>">
 						<img src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
 							width="150" height="200"></a>
 						<h3><%=location%></h3>

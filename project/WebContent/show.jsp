@@ -133,8 +133,7 @@
 
 <!-- Le styles -->
 <link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/main.css" rel="stylesheet">
-<link href="css/showroom.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -349,6 +348,9 @@
 				<div style="margin : 50px 0 0 500px">
 				
 				<%if(dbuserid.equals(userid)){%>
+				  
+				  <a href="fixed.jsp?roomid=<%=roomid %>" class="btn btn-mini">wishlist</a>
+				  
 				  <a href="updateroom.jsp?roomid=<%=roomid %>" class="btn btn-mini">update</a>
 
 					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
