@@ -51,7 +51,7 @@
 		</a>
 			<ul class="dropdown-menu">
 				<li><a href="update.jsp">회원정보</a></li>
-				<li><a href="wishlist.jsp">my page</a></li>
+				<li><a href="showlist.jsp">my page</a></li>
 				<li class="divider"></li>
 				<li><a href="logout.jsp">로그아웃</a></li>
 			</ul></li>

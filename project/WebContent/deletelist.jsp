@@ -41,7 +41,7 @@
 
 	 		
 	 	
-	 			response.sendRedirect("deletelist2.jsp");
+	 			response.sendRedirect("showlist.jsp");
 	 	
 			
 			

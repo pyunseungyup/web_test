@@ -92,7 +92,7 @@
 
 		<%@ include file="share/header.jsp"%>
    
-
+   <center><h3> wish list</h3></center>
  <%
    
 try{
@@ -163,9 +163,12 @@ try{
    %>
 		
 		
-		<jsp:include page="share/footer.jsp"></jsp:include>
+	
 
 	</div>
+			<div style="position:fixed; top:490px; height:500px; left:500px;">
+			<jsp:include page="share/footer.jsp" ></jsp:include>
+			</div>
 	<!-- /container -->
 
 	<!-- Le javascript
