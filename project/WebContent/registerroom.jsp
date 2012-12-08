@@ -121,7 +121,7 @@ String favoriteStr = StringUtils.join(facility, ",");
 	}
 
 	
-	if(facility!=(null)){
+	if(distance!=(null)){
 		int_distan = Integer.parseInt(distance); 
 	}
 	
@@ -175,7 +175,10 @@ String favoriteStr = StringUtils.join(facility, ",");
 			
 			
 		
-		} finally {
+		} catch (SQLException e) {
+			errorMsgs.add("SQL 에러: " + e.getMessage());
+		}
+		finally {
 			// 무슨 일이 있어도 리소스를 제대로 종료
 			if (rs != null) try{rs.close();} catch(SQLException e) {}
 			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
@@ -281,7 +284,7 @@ if (request.getMethod().equals("POST")) {
 	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
-</html>
+
 
 
 
@@ -290,4 +293,4 @@ if (request.getMethod().equals("POST")) {
 	
 	%>
 
-
+</html>

@@ -40,7 +40,7 @@
 
 	<div class="container-narrow">
 
-		<%@ include file="share/header.jsp"%>
+	
 		
 			<div class="jumbotron">
 			
@@ -241,7 +241,7 @@ try {
 				else {
 				%>
 					
-					<h1>  검색결과가없습니다.</h1>
+			
 					<h2 > 다시검색해주세요</h2>
 					
 					<div class="form-action">
@@ -275,7 +275,7 @@ try {
 					
 					%>
 						
-						<h1>  검색결과가없습니다.</h1>
+				
 						<h2 > 다시검색해주세요</h2>
 						
 						<div class="form-action">
@@ -471,10 +471,18 @@ try {
 			}
 			
 			%>
+			<div class="alert alert-info">
+		
+ <span class="label label-info" style = " margin: 0 5px">검색 결과   </span> 
+  <span class="label label-info" style = " margin: 0 5px">  대학별   : </span> <%=location%>
+   <span class="label label-info" style = " margin: 0 5px">  타입별   : </span> <%=kind%> 
+   <span class="label label-info" style = " margin: 0 5px">  거리별   : </span>  <%=serchdistance%>
+
 			
-			<div>
-			검색 결과 : <%=location%><%=kind%><%=serchdistance%>
+	
 			</div>
+		
+			<hr>
 
 			<ul class="thumbnails">
 

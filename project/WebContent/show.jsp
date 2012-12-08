@@ -17,6 +17,10 @@
 	// 사용자 정보를 위한 변수 초기화
 	
 	String roomid= "";
+	 roomid = request.getParameter("roomid");
+	 
+	 
+	 
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
@@ -36,12 +40,8 @@
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
 	String dbuserid = "";
-  roomid = request.getParameter("roomid");
-  
-  if (session.getAttribute("s_userid")!=null) {
-		userid = session.getAttribute("s_userid").toString();
-  }
-
+ 
+	userid = session.getAttribute("s_userid").toString();
 
   try {
 	  
@@ -73,7 +73,8 @@
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
 		
-		
+		rs.close();
+		stmt.close();
 		
 		String[] facilities = facility.split(",");
   	
@@ -402,7 +403,6 @@
 
 				<div class="basic_information">
 
-
 			
 					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong><span>
 					<%
@@ -505,7 +505,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
-</html>
+
 <%
 	}finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
@@ -514,3 +514,4 @@
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
 %>
+</html>

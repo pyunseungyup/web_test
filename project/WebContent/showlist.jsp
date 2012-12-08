@@ -364,9 +364,10 @@ try{
 						방이름:<%=name%><br /> 지역:
 						<%=location%><br />
 					</p>
-					<a href="deletelist.jsp?id=<%=rs.getInt("id")%>"
-						class="btn btn-mini">삭제</a> <a href="show.jsp?roomid=<%=roomid%>"
+					<a href="show.jsp?roomid=<%=roomid%>"
 						class="btn btn-mini">보기</a>
+					<a href="deletelist.jsp?id=<%=rs.getInt("id")%>"
+						class="btn btn-mini">삭제</a> 
 				</div>
 			</li>
 

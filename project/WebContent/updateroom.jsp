@@ -191,7 +191,11 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 
+	<%
+	try{
+		
 	
+	%>
 
 		<form action="roomDBupdate.jsp" method="post"
 			enctype="multipart/form-data">
@@ -350,34 +354,34 @@
 					<table>
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="tv">TV</span></td>
+									type="checkbox" name="facility" value="tv">TV</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="internet">인터넷</span></td>
+									type="checkbox" name="facility" value="internet">인터넷</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="gas range">가스렌지</span>
+									type="checkbox" name="facility" value="gasrange">가스렌지</span>
 							</td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="air_conditioner">
+									type="checkbox" name="facility" value="air_conditioner">
 									에어컨 </span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="refrigerator">냉장고
+									type="checkbox" name="facility" value="refrigerator">냉장고
 							</span></td>
 							<td class="facilities_item"><span class="facilities">
-									<input type="checkbox" name="facility " value="washing_machine">세탁기
+									<input type="checkbox" name="facility" value="washing_machine">세탁기
 							</span></td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="drying_rack">건조대</span>
+									type="checkbox" name="facility" value="drying_rack">건조대</span>
 							</td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="parking">주차장</span></td>
+									type="checkbox" name="facility" value="parking">주차장</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="bathtub">욕조</span></td>
+									type="checkbox" name="facility" value="bathtub">욕조</span></td>
 						</tr>
 					</table>
 
@@ -408,7 +412,7 @@
 					<input type="hidden" name="lng" id="lng" value ="<%=lng%>" />
 				<input type ="hidden" name="lat" id="lat" value ="<%=lat%>" />
 			  	<input type ="hidden" name="roomid" id="roomid" value ="<%=roomid%>" />
-			<input type="submit" class="btn btn-mini disabled" value="정보수정" />
+			<input type="submit" class="btn btn disabled" value="정보수정" />
 			</fieldset>
 			
 		</form>
@@ -425,6 +429,10 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 
+<%}
+	
+	
+%>
 
 </body>
 
@@ -539,6 +547,7 @@ $(function() {
 		
 	
 		$('input:radio[name="distance"][value=<%=distance%>]').attr('checked', true);
+		
 		$('#price').click(
 				function() {
 					$("tr input[type='checkbox']").each(
