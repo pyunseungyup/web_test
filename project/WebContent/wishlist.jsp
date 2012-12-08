@@ -61,6 +61,7 @@
 		stmt.setString(5,  droomid);
 		
 		stmt.executeUpdate();
+		
 	}
  finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료

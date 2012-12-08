@@ -92,7 +92,7 @@
 
 		<%@ include file="share/header.jsp"%>
    
-   <center><h3> wish list</h3></center>
+   <h3> wish list</h3>
  <%
    
 try{
