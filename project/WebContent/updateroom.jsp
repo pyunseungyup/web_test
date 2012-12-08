@@ -199,13 +199,13 @@
 			<fieldset>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px; margin-top: 50px">방기본정보</h3>
+					<h3 class="btn btn-large btn-success"  style="padding-left: 20px; margin-top: 50px">방기본정보</h3>
 				</div>
 
 
 				<div class="basic_information">
 
-						<label>인근 대학<strong style="color: red"> *</strong></label> <select
+						<label class="btn btn-small btn-primary disabled">인근 대학<strong style="color: red"> *</strong></label> <select
 						name="location">
 						<option value=""></option>
 						<option value="seoul">서울대</option>
@@ -273,7 +273,7 @@
 				</div>
 
 				<div class="basic_information">
-					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> 
+					<label class="btn btn-small btn-primary disabled">거리(도보 기준) <strong style="color: red"> *</strong></label> 
 				
 					<input type="radio" name="distance" value="5">5분 이내 <input
 						type="radio" name="distance" value="10">10분 이내 <input
@@ -281,7 +281,7 @@
 						type="radio" name="distance" value="30">30분 이내
 				</div>
 				<div class="basic_information">
-					<label>객실 타입<strong style="color: red"> *</strong></label> <select
+					<label class="btn btn-small btn-primary disabled">객실 타입<strong style="color: red"> *</strong></label> <select
 						name="type">
 						<option value=""></option>
 						<option value="rented room">자취</option>
@@ -290,7 +290,7 @@
 					</select>
 				</div>
 				<div class="basic_information">
-					<label>객실 종류<strong style="color: red"> *</strong></label> <select
+					<label class="btn btn-small btn-primary disabled">객실 종류<strong style="color: red"> *</strong></label> <select
 						name="kind">
 						<option value=""></option>
 						<option value="officetel">오피스텔</option>
@@ -303,7 +303,7 @@
 				
 
 				<div class="basic_information">
-					<label>가격 정보<strong style="color: red"> *</strong></label>
+					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong></label>
 
 	<table id="tab">
 						<tr>
@@ -326,17 +326,17 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px">방 상세정보</h3>
+					<h3 class="btn btn-large btn-success"  style="padding-left: 20px">방 상세정보</h3>
 				</div>
 
 				<div class="basic_information">
-					<label>방 이름<strong style="color: red"> *</strong></label> <input
+					<label class="btn btn-small btn-primary disabled">방 이름<strong style="color: red"> *</strong></label> <input
 						type="text" name="name" value=<%=name %>>
 
 				</div>
 
 				<div class="basic_information">
-					<label>주소<strong style="color: red"> *</strong></label>
+					<label class="btn btn-small btn-primary disabled">주소<strong style="color: red"> *</strong></label>
 					<div id="container">
 						<input id="searchTextField" name="address" value="<%=address%>" style="width: 80%;"
 							title="목적지를 입력해주세요." />
@@ -346,7 +346,7 @@
 				</div>
 
 				<div class="basic_information">
-					<label>시설</label>
+					<label class="btn btn-small btn-primary disabled">시설</label>
 					<table>
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
@@ -390,11 +390,15 @@
  				style = "padding : 30px  70px;"
 				 >
 				</div>
+<<<<<<< HEAD
 					<label>사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
+=======
+					<label class="btn btn-small btn-primary disabled">사진 올리기</label> <input type="File" name="photo"  />
+>>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
 				</div>
 
 				<div class="basic_information">
-					<label>소개</label>
+					<label class="btn btn-small btn-primary disabled">소개</label>
 					<div>
 						<textarea rows="5" name="description"  ><%=description %></textarea>
 					</div>

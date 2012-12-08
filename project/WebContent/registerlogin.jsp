@@ -3,6 +3,35 @@
 	import="org.apache.commons.lang3.StringUtils"%>
 
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<!-- Le styles -->
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+
+
+<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
+<!--[if lt IE 9]>
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+
+<!-- Fav and touch icons -->
+
+
+
+<title>Errors</title>
+</head>
+
+<body>
+
 <%
 	// DB 접속을 위한 준비
 	Connection conn = null;
@@ -43,12 +72,16 @@
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid =?");
 		stmt.setString(1, userid);
 		rs= stmt.executeQuery();
-		rs.next();
-		
-		dbuserid=rs.getString("userid");
-		dbpwd=rs.getString("pwd");
-		dbname=rs.getString("name");		
-		int dbid = rs.getInt("id"); 
+		if(rs.next()){
+			dbuserid=rs.getString("userid");
+			dbpwd=rs.getString("pwd");
+			dbname=rs.getString("name");		
+			int dbid = rs.getInt("id"); 
+		}else{%>
+			<h2>입력하신 정보가 없습니다!!!</h2>
+			<% 
+			response.sendRedirect("login.jsp");
+		}
 	
 		if(dbpwd.equals(pwd) && dbuserid.equals(userid)){
 			session.setAttribute("s_userid", userid);	
@@ -71,34 +104,7 @@
 	else{
 		%>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
 
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- Le styles -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/index.css" rel="stylesheet">
-
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
-
-
-
-<title>Errors</title>
-</head>
-
-<body>
 
 
 
