@@ -43,6 +43,8 @@
   }
 
 
+	
+
   try {
 	  
 	
@@ -73,12 +75,9 @@
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
 		
-		git 
 		
+		String[] facilities =  facility.split(",");
 		
-		if(facility != ""){
-		String[] facilities = facility.split(",");
-		}
 		if(location.equals("seoul")){
 			location = "서울대";
 		}	else if(location.equals("kaist")){
@@ -462,13 +461,15 @@
 					
 					
 					<%
+					
+					
 					for (String arr : facilities ){
 									%>
 						<span class="label label-info"><%=arr%></span>
 					
 					<%
+					
 					}
-						
 				 %>
 				</div>
 

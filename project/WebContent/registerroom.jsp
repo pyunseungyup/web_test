@@ -116,9 +116,15 @@ String favoriteStr = StringUtils.join(facility, ",");
 		errorMsgs.add("주소를 입력해주세요.");
 	}
 	
-	if(distance!=(null)){
+	if(favoriteStr == null){
+		errorMsgs.add("시설을 선택해 주세요.");
+	}
+
+	
+	if(facility!=(null)){
 		int_distan = Integer.parseInt(distance); 
 	}
+	
 	
 	if (errorMsgs.size() == 0) {
 		try {

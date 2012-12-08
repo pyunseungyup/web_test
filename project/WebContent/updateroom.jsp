@@ -304,19 +304,19 @@
 				<div class="basic_information">
 					<label>가격 정보<strong style="color: red"> *</strong></label>
 
-
+	<table id="tab">
+						<tr>
 
 				
 								<%
 								if(!deposit.equals("")){	
 								%>
-							
-							
-							<%} %>
-						<table id="tab">
-						<tr>
 							<td><input type="button" id="price-btn" value="보증금 여부">
 							<input style="display:none" type="text" id='price_'  placeholder="보증금 입력해 주세요" name ="deposit"  value = "<%=deposit %>"></td>
+							
+							<%} %>
+					
+							
 							<td id="price_add"></td>
 							<td><input type="text" name="price" value ="<%=price %>"
 								placeholder="가격을 입력해 주세요">만원</td>
