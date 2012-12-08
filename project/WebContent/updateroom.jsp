@@ -390,11 +390,11 @@
  				style = "padding : 30px  70px;"
 				 >
 				</div>
-<<<<<<< HEAD
-					<label>사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
-=======
-					<label class="btn btn-small btn-primary disabled">사진 올리기</label> <input type="File" name="photo"  />
->>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
+
+					<label class="btn btn-small btn-primary disabled">사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
+
+			
+
 				</div>
 
 				<div class="basic_information">

@@ -36,23 +36,24 @@
 	List<String> errorMsgs = new ArrayList<String>();
 	
 	int result = 0;
-	
 	if (userid == null || userid.trim().length() == 0) {
-		errorMsgs.add("아이디를 다시  입력해주세요.");
+		errorMsgs.add("ID 반드시 입력해주세요.");
 	}
 	
-	if (pwd == null  || pwd_confirm == null  || !pwd.equals(pwd_confirm)) {
-		errorMsgs.add("패스워드을 다시  입력해주세요.");
-	}
+	
+	if (pwd == null || pwd.length() < 6 || !pwd.equals(pwd_confirm)) {
+		
+		errorMsgs.add("비밀번호는 다시 입력해주세요.");
+	} 
+	
 	
 	if (name == null || name.trim().length() == 0) {
-		errorMsgs.add("이름을 다시  입력해주세요.");
+		errorMsgs.add("Name 반드시 입력해주세요.");
 	}
 	
 	if (phonenumber == null || phonenumber.trim().length() == 0) {
-		errorMsgs.add("전화 번호을 다시  입력해주세요.");
+		errorMsgs.add("Phonenumber 반드시 입력해주세요.");
 	}
-
 	if (errorMsgs.size() == 0) {
   
   try {

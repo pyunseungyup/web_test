@@ -89,11 +89,10 @@ body {
 </head>
 <body>
 
-<div class="container-narrow">
+	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
 
-<<<<<<< HEAD
 
 		<div class="jumbotron">
 		
@@ -193,15 +192,13 @@ body {
 				<input type="submit" class="btn btn-large btn-success" value="검색" />
 			</form>
 		</div>
+		
+		
    
-   <center><h3> wish list</h3></center>
+    <h3 style = "text-align: center;"> wish list</h3>
    <div class="row-fluid marketing">
  <%
-=======
-		<h3>wish list</h3>
-		<ul>
-			<%
->>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
+
    
 try{
  try {
@@ -217,7 +214,7 @@ try{
    
    %>
 
-
+		<ul>
 
 			<%
    while(rs.next()){
@@ -355,36 +352,7 @@ try{
 			
 	
     	   %>
-<<<<<<< HEAD
-    	  <table class="tables" style="width: 232px">
-    	  <tr> 
-    	  <td class="span3" style="width: 220px">
-			 
-			  <center>	  
-				<a href="show.jsp?roomid=<%=roomid%>">
-			 	<img src="./upload/<%=photo%>"  alt="http://placehold.it/300x200"
-					width="150" height="200" ></a></center></td>	</div>
-				
-				
-				<tr>
-					 	<td><center>이름:<%=name%> </center>	</td>
-				</tr>
-				
-				<tr>
-					<td><center>지역:<%=location%></center></td> 
-				</tr> 
-			 
-			  <tr>
-			  <center>
-			      <td><center><a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
-			      <a href="show.jsp?roomid=<%=roomid%>" class="btn btn-mini">보기</a></center>	</td>
-			  </center>
-			  </tr>
-				 </table> 
 		
-		 
-		<%
-=======
 
 			<li class="span3" style="width: 210px">
 				<div class="thumbnails">
@@ -402,43 +370,29 @@ try{
 				</div>
 			</li>
 
-			<%
->>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
-		
-   }
-   %>
-		</ul>
-
 		<%	
-}
-   finally {
+
+		%>	</ul><%
+   }
+}finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
    %>
-<<<<<<< HEAD
-		
-			<jsp:include page="share/footer.jsp" ></jsp:include>
-	
-=======
->>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
+
 
 
 
 
 	</div>
-	<div style="position: fixed; top: 490px; height: 500px; left: 500px;">
+	
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
-<<<<<<< HEAD
-		
-		
-		
-		
-=======
->>>>>>> c548fa94ff8eb4647b21d9fdfdc8d6af8f5ebdab
+	
+
+
 	<!-- /container -->
 
 	<!-- Le javascript
