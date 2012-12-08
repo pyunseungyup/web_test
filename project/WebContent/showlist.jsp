@@ -93,6 +93,7 @@
 		<%@ include file="share/header.jsp"%>
    
    <h3> wish list</h3>
+   <ul>
  <%
    
 try{
@@ -120,37 +121,27 @@ try{
     	   photo=rs.getString("photo");
     	   roomid=rs.getString("roomid");
     	   %>
-    	  <table class="tables" style="width: 232px">
-    	  <tr> 
-    	  <td class="span3" style="width: 220px">
-			  <div class="thumbnails">
-			  <center>	  
-				<a href="show.jsp?roomid=<%=roomid%>">
-			 	<img src="./upload/<%=photo%>"  alt="http://placehold.it/300x200"
-					width="150" height="200" ></a></center>	</div><td>
-				
-				
-				<tr>
-					 	<td><center>이름:<%=name%> </center>	</td>
-				</tr>
-				
-				<tr>
-					<td>	<center>지역:<%=location%></center>	</td> 
-				</tr> 
-			 
-			  <tr>
-			  <center>
-			      <td><center><a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
-			      <a href="show.jsp?roomid=<%=roomid%>" class="btn btn-mini">보기</a></center>	</td>
-			  </center>
-			  </tr>
-				
-				 </table> 
-		  	
+    	   
+    	   	<li class="span3" style="width: 210px">
+					<div class="thumbnails">
+						<a href="show.jsp?roomid=<%=roomid%>">
+						<img src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
+							width="150" height="200"></a>
+						<h3><%=location%></h3>
+						<p>
+							방이름:<%=name%><br /> 지역:
+							<%=location%><br />
+						</p>
+						<a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
+			      <a href="show.jsp?roomid=<%=roomid%>" class="btn btn-mini">보기</a>
+					</div>
+				</li>    	  
+	
 		<%
 		
    }
    %>
+   </ul>
 
    <%	
 }
