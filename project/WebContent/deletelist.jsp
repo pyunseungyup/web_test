@@ -16,19 +16,21 @@
 	String dbPassword = "bnbun";
 	
 	request.setCharacterEncoding("utf-8");
-
+ 
 	// Request로 ID가 있는지 확인
-	int wishid = 0;
+	int id = 0;
 
 	try {
-		wishid = Integer.parseInt(request.getParameter("wishid"));
+		id = Integer.parseInt(request.getParameter("id"));
+	  System.out.println(id);
 	} catch (Exception e) {}
 	
 	try {
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
-		stmt = conn.prepareStatement("DELETE FROM wish WHERE wishid=?");
-		stmt.setInt(1,  wishid);
-    stmt.executeUpdate();
+		stmt = conn.prepareStatement("DELETE FROM wish WHERE id=?");
+		stmt.setInt(1,  id);
+    
+		stmt.executeUpdate();
 	  
 	} finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
@@ -39,7 +41,7 @@
 
 	 		
 	 	
-	 			response.sendRedirect("delete2.jsp");
+	 			response.sendRedirect("deletelist2.jsp");
 	 	
 			
 			

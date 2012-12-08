@@ -10,11 +10,25 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	request.setCharacterEncoding("utf-8");	
-	//String dbcode = session.getAttribute("s_userid").toString();
+	
+	String dbcode = session.getAttribute("s_userid").toString();
+	  System.out.println(dbcode);
 	  String wishid="";
 		String name = "" ; // 방이름 
 		String location = ""; // 대학별 위치
 		String photo = ""; // 유저 아이디 저장
+		String roomid= "";
+		int id = 0;
+	
+	//try {
+	//	id = Integer.parseInt(request.getParameter("id"));
+	//	} catch (NumberFormatException e) {
+	//		id = -1;
+			
+	//	}
+
+
+
 %>	
 
 <!DOCTYPE html>
@@ -22,7 +36,7 @@
 <head>
 
 <meta charset="utf-8">
-<title>Project Main Window</title>
+<title>마이페이지</title>
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta name="description" content="">
@@ -32,6 +46,42 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
+
+<style type="text/css">
+      body {
+        padding-top: 40px;
+        padding-bottom: 40px;
+        background-color: #fff;
+      }
+
+      .form-signin {
+        max-width: 300px;
+        padding: 19px 29px 29px;
+        margin: 30px auto 20px;
+        background-color: #fff;
+        border: 1px solid #e5e5e5;
+        -webkit-border-radius: 5px;
+           -moz-border-radius: 5px;
+                border-radius: 5px;
+        -webkit-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+           -moz-box-shadow: 0 1px 2px rgba(0,0,0,.05);
+                box-shadow: 0 1px 2px rgba(0,0,0,.05);
+      }
+      .form-signin .form-signin-heading,
+      .form-signin .checkbox {
+        margin-bottom: 10px;
+      }
+      .form-signin input[type="text"],
+      .form-signin input[type="password"] {
+        font-size: 16px;
+        height: auto;
+        margin-bottom: 15px;
+        padding: 7px 9px;
+      }
+
+    </style>
+     <!-- Fav and touch icons -->
+ 
 
 <!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
 <!--[if lt IE 9]>
@@ -49,7 +99,7 @@
 	<div class="container-narrow">
 
 		<%@ include file="share/header.jsp"%>
-    <%@ include file="share/fixed.jsp"%>
+    
 
  <%
    
@@ -62,7 +112,7 @@ try{
    conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
    stmt = conn.prepareStatement("SELECT * FROM wish WHERE wishid=?");
    
-	 stmt.setString(1, wishid);
+	 stmt.setString(1,dbcode);
    rs = stmt.executeQuery();   
    
    %>
@@ -76,26 +126,41 @@ try{
     	   name=rs.getString("name");
     	   location=rs.getString("location");
     	   photo=rs.getString("photo");
+    	   roomid=rs.getString("roomid");
     	   %>
     	   
-    	  <li class="span3" style="width: 210px">
-			<div class="thumbnails">
-				<a href="#">
+ <table class="tables" style="width: 232px">
+    	  <tr> 
+    	  <td class="span3" style="width: 220px">
+			  <div class="thumbnails">
+			  <center>	  
+				<a href="show.jsp?roomid=<%=roomid%>">
 			 	<img src="./upload/<%=photo%>"  alt="http://placehold.it/300x200"
-					width="150" height="200"></a></div>
+					width="150" height="200" ></a></center>	</div><td>
 				
-				<h3><%=location%></h3>
-				<p>
-					방이름:<%=name%><br /> 학교에서의 거리:
-					<%=location%><br /> 
-				<a href="deletelist.jsp?wishid=<%=wishid%>" class="btn btn-mini">삭제</a>
 				
-				</p>
-		  	</li>
+				<tr>
+					 	<td><center>이름:<%=name%> </center>	</td>
+				</tr>
+				
+				<tr>
+					<td>	<center>지역:<%=location%></center>	</td> 
+				</tr> 
+			 
+			  <tr>
+			  <center>
+			      <td><center><a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
+			      <a href="show.jsp?roomid=<%=roomid%>" class="btn btn-mini">보기</a></center>	</td>
+			  </center>
+			  </tr>
+				
+				 </table> 
+		  	
 		<%
-    }
+		
+   }
    %>
-   </ul>
+
    <%	
 }
    finally {
@@ -105,9 +170,16 @@ try{
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
    %>
+		
+		
+		<jsp:include page="share/footer.jsp"></jsp:include>
 
+	</div>
+	<!-- /container -->
 
+	<!-- Le javascript
+    ================================================== -->
+	<!-- Placed at the end of the document so the pages load faster -->
 
-</div>
 </body>
 </html>

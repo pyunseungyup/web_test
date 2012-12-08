@@ -21,13 +21,13 @@
 	String dname = "" ; // 방이름 
 	String dlocation = ""; // 대학별 위치
 	String dphoto = ""; // 유저 아이디 저장
-	int roomid = 0;
+	String droomid = "";
 	
 	
 	try {
-	roomid = Integer.parseInt(request.getParameter("roomid"));
+	droomid = request.getParameter("roomid");
 	} catch (NumberFormatException e) {
-		roomid = -1;
+	
 		
 	}
 
@@ -35,25 +35,31 @@
 		
 		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);		
 		stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomid =?");
-		stmt.setInt(1, roomid);
+		stmt.setString(1, droomid);
 		rs = stmt.executeQuery();
 		
 		if (rs.next()) {
 			dwishid=rs.getString("userid");
 			dname = rs.getString("name");
 			dlocation =rs.getString("location");
-		  dphoto = rs.getString("photo"); 
+		  dphoto = rs.getString("photo");
+		  droomid = rs.getString("roomid");
 		}
-		
+		System.out.println(dwishid);
+		System.out.println(dname);
+		System.out.println(dlocation);
+		System.out.println(dphoto);
 	
 		stmt = conn.prepareStatement(
-				"INSERT INTO wish(wishid,name,location,photo) " +
-				"VALUES(?, ?, ?, ?)"
+				"INSERT INTO wish(wishid,name,location,photo,roomid) " +
+				"VALUES(?, ?, ?, ?, ?)"
 				);
 		stmt.setString(1,  dwishid);
 		stmt.setString(2,  dname);
 		stmt.setString(3,  dlocation);
 		stmt.setString(4,  dphoto);
+		stmt.setString(5,  droomid);
+		
 		stmt.executeUpdate();
 	}
  finally {
