@@ -31,6 +31,7 @@
 	String lat = ""; // google 맵 위도 정보
 	String lng = ""; // google 맵 경도 정보
 	String deposit ="";
+	
 	int roomid = 0;
 	try {
 	roomid = Integer.parseInt(request.getParameter("roomid"));
@@ -38,7 +39,7 @@
 		roomid = -1;
 		
 	}
-
+	
  try {
 		
 	  
@@ -385,11 +386,11 @@
 					
 
 				<div class="basic_information">
-				<div id='previewId'
+					<div id='previewId'
  				style = "padding : 30px  70px;"
 				 >
 				</div>
-					<label>사진 올리기</label> <input type="File" name="photo"  />
+					<label>사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
 				</div>
 
 				<div class="basic_information">

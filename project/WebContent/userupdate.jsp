@@ -69,7 +69,7 @@
 		stmt = conn.prepareStatement(
 				"UPDATE users " +
 				"SET userid=?, pwd=?, name=?, phonenumber=?"+
-						"WHERE userid = ?");
+						"WHERE userid =?");
 		
 		stmt.setString(1,  userid);
 		stmt.setString(2,  pwd);

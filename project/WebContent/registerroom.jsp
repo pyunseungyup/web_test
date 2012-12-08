@@ -89,7 +89,7 @@ String favoriteStr = StringUtils.join(facility, ",");
 	List<String> errorMsgs = new ArrayList<String>(); 
 	
 	
-	System.out.println(location);
+
 	
 	
 	if(location.equals("not")){

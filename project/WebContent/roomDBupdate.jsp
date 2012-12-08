@@ -8,8 +8,6 @@
 	
 	String path= getServletContext().getRealPath("./upload");
 
-
-  
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
 	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, "utf-8" , new DefaultFileRenamePolicy());
 	
@@ -42,13 +40,15 @@
 	String lat = ""; // google 맵 위도 정보
 	String lng = ""; // google 맵 경도 정보
 
+	String Stroomid = "";
+	int int_distan = 0;
+	int result = 0;
 	int roomid = 0;
-	try {
-	roomid = Integer.parseInt(request.getParameter("roomid"));
-	} catch (NumberFormatException e) {
-		roomid = -1;
-		
-		
+
+	roomid = Integer.parseInt(multi.getParameter("roomid").toString());
+
+	
+																								
 	
   userid=session.getAttribute("s_userid").toString();
 	location =multi.getParameter("location");
@@ -66,30 +66,15 @@
 	String[] facility = multi.getParameterValues("facility");
 	
 	String favoriteStr = StringUtils.join(facility, ",");
-	/*
-multi.setCharacterEncoding("euc-kr");
-location= new String(multi.getParameter("location").getBytes("EUC-KR"),"UTF-8"));
-name= new String(multi.getParameter("name").getBytes("EUC-KR"),"UTF-8"));
-distance= new String(multi.getParameter("distance").getBytes("EUC-KR"),"UTF-8"));
-type= new String(multi.getParameter("type").getBytes("EUC-KR"),"UTF-8"));
-price= new String(multi.getParameter("price").getBytes("EUC-KR"),"UTF-8"));
-deposit= new String(multi.getParameter("deposit").getBytes("EUC-KR"),"UTF-8"));
-address= new String(multi.getParameter("address").getBytes("EUC-KR"),"UTF-8"));
-description= new String(multi.getParameter("description").getBytes("EUC-KR"),"UTF-8"));
-lat= new String(multi.getParameter("lat").getBytes("EUC-KR"),"UTF-8"));
-lng= new String(multi.getParameter("lng").getBytes("EUC-KR"),"UTF-8"));
-photo= new String(multi.getParameter("photo").getBytes("EUC-KR"),"UTF-8"));
 
-String[] facility = multi.getParameterValues("facility");
 
-String favoriteStr = StringUtils.join(facility, ",");
-*/
-	 
+
 	
    Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
 	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
 	 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
 	
+	 List<String> errorMsgs = new ArrayList<String>(); 
 	
 
 		if(location.equals("not")){
@@ -129,17 +114,14 @@ String favoriteStr = StringUtils.join(facility, ",");
 			rs.next();
 			userid= rs.getString("userid");	
 			*/
-			
-			try{
+        																	
 				Class.forName("com.mysql.jdbc.Driver");
-				}catch(ClassNotFoundException e){
-					e.printStackTrace();
-				}
-			
+				
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-			"UPDATE rooms " +
-			"SET userid=?, name=?, location=?, distance=? ,type =?, kind=?,price=?,deposit=?,address=?,lat=?,lng=?,faility=?, description=?,photo =? "+"WHERE roomid = ?");
+			"UPDATE rooms" +
+			"SET userid=?, name=?, location=?, distance=? ,type =?, kind=?,price=?,deposit=?,address=?,lat=?,lng=?,faility=?, description=?,photo =? "
+			+"WHERE roomid=?");
 			
 			stmt.setString(1,  userid);
 			stmt.setString(2,  name);
@@ -150,15 +132,15 @@ String favoriteStr = StringUtils.join(facility, ",");
 			stmt.setString(7,  price);
 			stmt.setString(8, deposit);
 			stmt.setString(9,  address);
-			stmt.setString(10,  lat);
+			stmt.setString(10, lat);
 			stmt.setString(11, lng);
 			stmt.setString(12, favoriteStr);
 			stmt.setString(13, description);
 			stmt.setString(14, fileName);
-			stmt.setInt(15, roomid)
+			stmt.setInt(15, roomid);
 		
 			result = stmt.executeUpdate();
-			
+			 
 
 			if (result == 0) {
 				response.sendRedirect("room.jsp");
