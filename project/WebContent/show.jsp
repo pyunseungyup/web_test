@@ -37,13 +37,11 @@
   String phonenumber = ""; 
 	String dbuserid = "";
   roomid = request.getParameter("roomid");
-  String facility ="";
+  
   if (session.getAttribute("s_userid")!=null) {
 		userid = session.getAttribute("s_userid").toString();
   }
 
-
-	
 
   try {
 	  
@@ -69,15 +67,16 @@
 		price = rs.getString("price");
 		deposit = rs.getString("deposit");
 		address = rs.getString("address");
-		facility= rs.getString("facility");
+		String facility= rs.getString("facility");
 		description = rs.getString("description");
 		photo = rs.getString("photo");
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
 		
 		
-		String[] facilities =  facility.split(",");
 		
+		String[] facilities = facility.split(",");
+  	
 		if(location.equals("seoul")){
 			location = "서울대";
 		}	else if(location.equals("kaist")){
@@ -370,12 +369,12 @@
 				</div>
         	
 				<div class="basic_information">
-					<label>판매자 이름<strong style="color: red"> *</strong><%=username%></label>
+					<label class="btn btn-small btn-primary disabled">판매자 이름<strong style="color: red"> *</strong><%=username%></label>
 			
 				</div>
 				
 				<div class="basic_information">
-					<label>판매자 전화번호<strong style="color: red"> *</strong><%=userphon%></label> 
+					<label class="btn btn-small btn-primary disabled">판매자 전화번호<strong style="color: red"> *</strong><%=userphon%></label> 
 				</div>
 
 				<div class="main_title">
@@ -385,18 +384,18 @@
 
 				<div class="basic_information">
 
-					<label>인근 대학<strong style="color: red"> *</strong><%=location %></label> 
+					<label class="btn btn-small btn-primary disabled">인근 대학<strong style="color: red"> *</strong><%=location %></label> 
 
 				</div>
 
 				<div class="basic_information">
-					<label>거리(도보 기준) <strong style="color: red"> *</strong>	<%=stringdistance %></label> 
+					<label class="btn btn-small btn-primary disabled">거리(도보 기준) <strong style="color: red"> *</strong>	<%=stringdistance %></label> 
 				</div>
 				<div class="basic_information">
-					<label>객실 타입<strong style="color: red"> *</strong>	<%=type %></label> 
+					<label class="btn btn-small btn-primary disabled">객실 타입<strong style="color: red"> *</strong>	<%=type %></label> 
 				</div>
 				<div class="basic_information">
-					<label>객실 종류<strong style="color: red"> *</strong><%=kind %></label> 
+					<label class="btn btn-small btn-primary disabled">객실 종류<strong style="color: red"> *</strong><%=kind %></label> 
 						
 				</div>
 
@@ -405,11 +404,12 @@
 
 
 			
-					<label>가격 정보<strong style="color: red"> *</strong></label> <span>
+					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong><span>
 					<%
 					if(!deposit.equals("")){	
 					%>
-						보증금 <%=deposit%> 만원
+						보증금 <%=deposit%>
+						 만원
 					<%						
 					}
 					%>	
@@ -417,7 +417,7 @@
 					</span>
 
 
-
+					</label> 
 				</div>
 
 
@@ -427,19 +427,19 @@
 				</div>
 
 				<div class="basic_information_1">
-					<label>방 이름<strong style="color: red"> *</strong>	<%=name%></label> 
+					<label  class="btn btn-small btn-primary disabled">방 이름<strong style="color: red"> *</strong>	<%=name%></label> 
 
 				</div>
 
 				<div class="basic_information_1">
-					<label>주소<strong style="color: red"> *</strong><%=address%></label>
+					<label class="btn btn-small btn-primary disabled">주소<strong style="color: red"> *</strong><%=address%></label>
 						
 
 					<div id="container">
 
 
 
-						<label for="searchTextField">상세 위치정보</label> <input type ="hidden"
+						<label class="btn btn-small btn-primary disabled" for="searchTextField">상세 위치정보</label> <input type ="hidden"
 							id="searchTextField" name="searchTextField" title="상세 위치 정보"
 							style=" width: 50%;" value="<%=address%>" />
 
@@ -455,27 +455,25 @@
 				</div>
 
 				<div class="basic_information_1">
-					<label>시설</label> 
+					<label class="btn btn-small btn-primary disabled">시설</label> 
 		
 					
 					
 					
 					<%
-					
-					
 					for (String arr : facilities ){
 									%>
 						<span class="label label-info"><%=arr%></span>
 					
 					<%
-					
 					}
+						
 				 %>
 				</div>
 
 
 				<div class="basic_information_1">
-					<label>소개</label>
+					<label class="btn btn-small btn-primary disabled">소개</label>
 					<fieldset>
 						<%=description%></fieldset>
 				</div>
