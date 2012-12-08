@@ -31,7 +31,7 @@
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
 	
-	String distance =""; // 도보거리 기준 
+	String distance = ""; // 도보거리 기준 
 
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
@@ -42,6 +42,13 @@
 	String lat = ""; // google 맵 위도 정보
 	String lng = ""; // google 맵 경도 정보
 
+	int roomid = 0;
+	try {
+	roomid = Integer.parseInt(request.getParameter("roomid"));
+	} catch (NumberFormatException e) {
+		roomid = -1;
+		
+		
 	
   userid=session.getAttribute("s_userid").toString();
 	location =multi.getParameter("location");
@@ -78,49 +85,42 @@ String[] facility = multi.getParameterValues("facility");
 String favoriteStr = StringUtils.join(facility, ",");
 */
 	 
-	 
+	
    Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
 	 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
 	 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
 	
-	 int int_distan = 0;
-	int result = 0;
+	
 
-	List<String> errorMsgs = new ArrayList<String>(); 
-	
-	
-	System.out.println(location);
-	
-	
-	if(location.equals("not")){
-		errorMsgs.add("인근 대학을 선택해 주세요.");
-	}
-	if(type.equals("not")){
-		errorMsgs.add("Room type을 선택해 주세요.");
-	}
-	if(kind.equals("not")){
-		errorMsgs.add("Room kind을 선택해 주세요.");
-	}
+		if(location.equals("not")){
+			errorMsgs.add("인근 대학을 선택해 주세요.");
+		}
+		if(type.equals("not")){
+			errorMsgs.add("Room type을 선택해 주세요.");
+		}
+		if(kind.equals("not")){
+			errorMsgs.add("Room kind을 선택해 주세요.");
+		}
 
-	if(distance == null){
-		errorMsgs.add("거리을 다시 선택해 주세요.");
-	}
-	if (price == null || price.trim().length() == 0) {
-		errorMsgs.add("가격 정보를 입력해주세요.");
-	}
-	
-	if (name == null || name.trim().length() == 0) {
-		errorMsgs.add("방 이름을 입력해주세요.");
-	}
-	if (address == null || address.trim().length() == 0) {
-		errorMsgs.add("주소를 입력해주세요.");
-	}
-	
-	if(distance!=(null)){
-		int_distan = Integer.parseInt(distance); 
-	}
-	
-	if (errorMsgs.size() == 0) {
+		if(distance == null){
+			errorMsgs.add("거리을 다시 선택해 주세요.");
+		}
+		if (price == null || price.trim().length() == 0) {
+			errorMsgs.add("가격 정보를 입력해주세요.");
+		}
+		
+		if (name == null || name.trim().length() == 0) {
+			errorMsgs.add("방 이름을 입력해주세요.");
+		}
+		if (address == null || address.trim().length() == 0) {
+			errorMsgs.add("주소를 입력해주세요.");
+		}
+		
+		if(distance!=(null)){
+			int_distan = Integer.parseInt(distance); 
+		}
+		
+		if (errorMsgs.size() == 0) {
 		try {
 			/*
 			stmt = conn.prepareStatement("SELECT userid FROM users WHERE userid=?");
@@ -138,10 +138,8 @@ String favoriteStr = StringUtils.join(facility, ",");
 			
 			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
 			stmt = conn.prepareStatement(
-					"INSERT INTO rooms(userid, name, location, distance,type,kind, price,deposit,address, lat , lng ,facility , description , photo) " +
-					"VALUES(?, ?, ?, ? , ? , ? , ? , ? , ? , ? , ? , ? , ? , ?)"
-					);
-					
+			"UPDATE rooms " +
+			"SET userid=?, name=?, location=?, distance=? ,type =?, kind=?,price=?,deposit=?,address=?,lat=?,lng=?,faility=?, description=?,photo =? "+"WHERE roomid = ?");
 			
 			stmt.setString(1,  userid);
 			stmt.setString(2,  name);
@@ -157,7 +155,7 @@ String favoriteStr = StringUtils.join(facility, ",");
 			stmt.setString(12, favoriteStr);
 			stmt.setString(13, description);
 			stmt.setString(14, fileName);
-			
+			stmt.setInt(15, roomid)
 		
 			result = stmt.executeUpdate();
 			

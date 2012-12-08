@@ -141,7 +141,7 @@
 					<label>인근 대학<strong style="color: red"> *</strong></label> <select
 						name="location">
 						<!-- 대학순위별 1위~60위 sort -->
-						
+						<option value="not"></option>
 						<option value="seoul">서울대</option>
 						<option value="kaist">카이스트</option>
 						<option value="pohang">포항공대</option>
@@ -217,7 +217,7 @@
 				<div class="basic_information">
 					<label>객실 타입<strong style="color: red"> *</strong></label> <select
 						name="type">
-						<option value=""></option>
+						<option value="not"></option>
 						<option value="rented room">자취</option>
 						<option value="boarding house">하숙</option>
 						<option value="other">기타</option>
@@ -226,7 +226,7 @@
 				<div class="basic_information">
 					<label>객실 종류<strong style="color: red"> *</strong></label> <select
 						name="kind">
-						<option value=""></option>
+						<option value="not"></option>
 						<option value="officetel">오피스텔</option>
 						<option value="one_room">원룸</option>
 						<option value="two_room">투룸</option>

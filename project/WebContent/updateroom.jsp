@@ -30,6 +30,7 @@
 	String description = "" ; // 설명
 	String lat = ""; // google 맵 위도 정보
 	String lng = ""; // google 맵 경도 정보
+	String deposit ="";
 	int roomid = 0;
 	try {
 	roomid = Integer.parseInt(request.getParameter("roomid"));
@@ -58,6 +59,7 @@
 		lng = rs.getString("lng");
 		String photo = rs.getString("photo"); // 파일의 url
 		String facility = rs.getString("facility");
+		deposit = rs.getString("deposit");
 		}
 	}finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
@@ -188,14 +190,9 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 
-		<% if (session.getAttribute("s_userid") == null) { 
-		
-		 response.sendRedirect("login.jsp");
+	
 
- } else { %>
-
-
-		<form action="registerroom.jsp" method="post"
+		<form action="roomDBupdate.jsp" method="post"
 			enctype="multipart/form-data">
 
 			<fieldset>
@@ -301,34 +298,31 @@
 						<option value="other">기타</option>
 					</select>
 				</div>
+				
+				
 
 				<div class="basic_information">
 					<label>가격 정보<strong style="color: red"> *</strong></label>
 
 
 
-					<table id="tab">
+				
+								<%
+								if(!deposit.equals("")){	
+								%>
+							
+							
+							<%} %>
+						<table id="tab">
 						<tr>
-							<td><input type='checkbox'></td>
-							<td><input type="button" id="price" value="보증금"></td>
+							<td><input type="button" id="price-btn" value="보증금 여부">
+							<input style="display:none" type="text" id='price_'  placeholder="보증금 입력해 주세요" name ="deposit"  value = "<%=deposit %>"></td>
 							<td id="price_add"></td>
-							<td><input type="text" name="price" value="<%=price %>"
+							<td><input type="text" name="price" value ="<%=price %>"
 								placeholder="가격을 입력해 주세요">만원</td>
 						</tr>
 					</table>
-
-					<div id="price_" style="display: none">
-						<table>
-							<tr>
-								<th>보증금</th>
-								<td><input type='text' size='15' value=<%=price %>></td>
-							</tr>
-						</table>
-					</div>
-
 				</div>
-
-
 
 				<div class="main_title">
 					<h3 style="padding-left: 20px">방 상세정보</h3>
@@ -343,7 +337,7 @@
 				<div class="basic_information">
 					<label>주소<strong style="color: red"> *</strong></label>
 					<div id="container">
-						<input id="searchTextField" name="address" value="<%=address %>" style="width: 80%;"
+						<input id="searchTextField" name="address" value="<%=address%>" style="width: 80%;"
 							title="목적지를 입력해주세요." />
 						<div id="map_canvas"></div>
 
@@ -387,8 +381,14 @@
 					</table>
 
 				</div>
+				
+					
 
 				<div class="basic_information">
+				<div id='previewId'
+ 				style = "padding : 30px  70px;"
+				 >
+				</div>
 					<label>사진 올리기</label> <input type="File" name="photo"  />
 				</div>
 
@@ -399,12 +399,14 @@
 					</div>
 				</div>
 
-				<input type="hidden" name="lng" id="lng" /> <input type="hidden"
-					name="lat" id="lat" /> <input type="submit" value="방 등록 하기">
-			</fieldset>
+				
+					<input type="hidden" name="lng" id="lng" value ="<%=lng%>" />
+				<input type ="hidden" name="lat" id="lat" value ="<%=lat%>" />
+			  	<input type ="hidden" name="roomid" id="roomid" value ="<%=roomid%>" />
 			<input type="submit" class="btn btn-mini disabled" value="정보수정" />
+			</fieldset>
+			
 		</form>
-		<% } %>
 
 
 
@@ -420,7 +422,106 @@
 
 
 </body>
+
 <script type="text/javascript">
+       function previewImage(targetObj, previewId) {
+
+        var preview = document.getElementById(previewId); //div id   
+        var ua = window.navigator.userAgent;
+
+        if (ua.indexOf("MSIE") > -1) {//ie일때
+
+            targetObj.select();
+
+            try {
+                var src = document.selection.createRange().text; // get file full path 
+                var ie_preview_error = document
+                        .getElementById("ie_preview_error_" + previewId);
+
+                if (ie_preview_error) {
+                    preview.removeChild(ie_preview_error); //error가 있으면 delete
+                }
+
+                var img = document.getElementById(previewId); //이미지가 뿌려질 곳 
+
+                img.style.filter = "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='"
+                        + src + "', sizingMethod='scale')";
+            } catch (e) {
+                if (!document.getElementById("ie_preview_error_" + previewId)) {
+                    var info = document.createElement("<p>");
+                    info.id = "ie_preview_error_" + previewId;
+                    info.innerHTML = "a";
+                    preview.insertBefore(info, null);
+                }
+            }
+        } else { //ie가 아닐때
+            var files = targetObj.files;
+            for ( var i = 0; i < files.length; i++) {
+
+                var file = files[i];
+
+                var imageType = /image.*/; //이미지 파일일경우만.. 뿌려준다.
+                if (!file.type.match(imageType))
+                    continue;
+
+                var prevImg = document.getElementById("prev_" + previewId); //이전에 미리보기가 있다면 삭제
+                if (prevImg) {
+                    preview.removeChild(prevImg);
+                }
+
+                var img = document.createElement("img");
+                img.id = "prev_" + previewId;
+                img.classList.add("obj");
+                img.file = file;
+                img.style.width = '350px'; //기본설정된 div의 안에 뿌려지는 효과를 주기 위해서 div크기와 같은 크기를 지정해준다.
+                img.style.height = '200px';
+                
+                preview.appendChild(img);
+
+                if (window.FileReader) { // FireFox, Chrome, Opera 확인.
+                    var reader = new FileReader();
+                    reader.onloadend = (function(aImg) {
+                        return function(e) {
+                            aImg.src = e.target.result;
+                        };
+                    })(img);
+                    reader.readAsDataURL(file);
+                } else { // safari is not supported FileReader
+                    //alert('not supported FileReader');
+                    if (!document.getElementById("sfr_preview_error_"
+                            + previewId)) {
+                        var info = document.createElement("p");
+                        info.id = "sfr_preview_error_" + previewId;
+                        info.innerHTML = "not supported FileReader";
+                        preview.insertBefore(info, null);
+                    }
+                }
+            }
+        }
+    }
+</script>
+
+
+
+<script type="text/javascript">
+
+$(function() {
+	$("#price-btn").click(function(){
+		if($("#price_").css('display')=='none')
+			{
+		$("#price_").toggle('show',function(){
+			$("#price-btn").val("보증금 있음");
+			
+		});
+			}else{
+		$("#price_").toggle('hide',function(){
+			$("#price-btn").val("보증금 없음 ");
+			$("#price_").val("");
+			
+		});
+			}
+	});
+});
 
 	
 	
@@ -446,8 +547,10 @@
 							});
 				});
 	});
-</script>
-
+	
+	</script>
+	
+	
 </html>
 
 

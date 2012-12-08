@@ -37,7 +37,7 @@
   String phonenumber = ""; 
 	String dbuserid = "";
   roomid = request.getParameter("roomid");
-  
+  String facility ="";
   if (session.getAttribute("s_userid")!=null) {
 		userid = session.getAttribute("s_userid").toString();
   }
@@ -67,16 +67,18 @@
 		price = rs.getString("price");
 		deposit = rs.getString("deposit");
 		address = rs.getString("address");
-		String facility= rs.getString("facility");
+		facility= rs.getString("facility");
 		description = rs.getString("description");
 		photo = rs.getString("photo");
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
 		
+		git 
 		
 		
+		if(facility != ""){
 		String[] facilities = facility.split(",");
-  	
+		}
 		if(location.equals("seoul")){
 			location = "서울대";
 		}	else if(location.equals("kaist")){

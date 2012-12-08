@@ -33,6 +33,8 @@
 
 
 
+
+
 <body>
 
 <%	
@@ -44,6 +46,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
+
 	
 	int roomid =0;
 	String roomname = "" ; // 방이름 
