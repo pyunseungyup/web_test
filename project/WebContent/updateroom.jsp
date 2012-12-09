@@ -62,6 +62,10 @@
 		String facility = rs.getString("facility");
 		deposit = rs.getString("deposit");
 		}
+		
+		if (deposit == null){
+			deposit = "";
+		}
 	}finally {
 
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
@@ -332,7 +336,7 @@
 				<div class="basic_information">
 					<label class="btn btn-small btn-primary disabled">주소<strong style="color: red"> *</strong></label>
 					<div id="container">
-						<input id="searchTextField" name="address" value="<%=address%>" style="width: 80%;"
+						<input id="searchTextField" name="address"  style="width: 80%;"
 							title="목적지를 입력해주세요." />
 						<div id="map_canvas"></div>
 

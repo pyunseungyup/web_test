@@ -75,6 +75,17 @@
 		stmt.close();
 		
 		String[] facilities = facility.split(",");
+		
+		
+		
+
+		if(deposit ==null){	
+				deposit = "없음";
+		}
+		
+		
+		
+		
   	
 		if(location.equals("seoul")){
 			location = "서울대";
@@ -351,7 +362,7 @@
 
 	     <div class="picture">			
 	     
-	     <h2><%=name%>Room</h2>
+	     
 	
 	     	
 	     	<div style="width :230px ; padding : 50px 0 0 470px">
@@ -413,14 +424,10 @@
 
 			
 					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong><span>
-					<%
-					if(!deposit.equals("")){	
-					%>
+				
 						보증금 <%=deposit%>
-						 만원
-					<%						
-					}
-					%>	
+						
+				
 				<%=price %> 만원
 					</span>
 

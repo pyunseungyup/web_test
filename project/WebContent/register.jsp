@@ -87,8 +87,52 @@
 		stmt.setString(1,  userid);		
 		rs = stmt.executeQuery();
 		if(rs.next()){%>
-			  <h2>아이디가 중복입니다. 다른아이디를 입력해주세요!!!</h2>
-			  <a href="join.jsp" class ="btn btn-small btn-primary">회원가입 창으로</a>
+		
+		
+		
+		
+		
+		
+		
+		
+		
+	<div class="container-narrow">
+
+
+
+		<jsp:include page="share/header.jsp"></jsp:include>
+
+
+		<div class="jumbotron">
+
+			<div class="alert alert-error">
+				<h3>Errors:</h3>
+				<ul>
+					
+					<li style="list-style: none;">중복된 아이디를입력하셨습니다.</li>
+				
+				</ul>
+			</div>
+			<div class="form-action">
+				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+			</div>
+		</div>
+
+
+
+
+
+		<jsp:include page="share/footer.jsp"></jsp:include>
+	</div>
+		
+		
+		
+		
+		
+		
+		
+		
+		
 			<%rs.close();
 			  stmt.close();
 							

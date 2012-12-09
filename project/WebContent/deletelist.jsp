@@ -1,16 +1,21 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    %>
+	pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
+	import="org.apache.commons.lang3.StringUtils"%>
+
+
+
 <%
 
-	String errorMsg = null;
 
-	
+
+
+
+
 
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
-	
+	String errorMsg = null ;
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";

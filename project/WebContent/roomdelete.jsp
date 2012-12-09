@@ -1,11 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8" import="java.sql.*" import="java.util.*" 
-    %>
-<%
+	pageEncoding="UTF-8" import="java.util.*" import="java.sql.*"
+	import="org.apache.commons.lang3.StringUtils"%>
 
+
+<%
 	String errorMsg = null;
 	int result = 0;
-	
 
 	Connection conn = null;
 	PreparedStatement stmt = null;
