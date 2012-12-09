@@ -16,7 +16,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	// 사용자 정보를 위한 변수 초기화
+
 	
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
@@ -63,7 +63,7 @@
 		deposit = rs.getString("deposit");
 		}
 	}finally {
-		// 무슨 일이 있어도 리소스를 제대로 종료
+
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
@@ -83,12 +83,6 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -419,13 +413,7 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
+	
 
 </body>
 

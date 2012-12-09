@@ -8,15 +8,14 @@
 	
 	String path= getServletContext().getRealPath("./upload");
 
-	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
+	int sizeLimit = 5 * 1024 * 1024 ; 
 	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, "utf-8" , new DefaultFileRenamePolicy());
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	//multi.setCharacterEncoding("euc-kr");
-	
+
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
@@ -182,12 +181,6 @@
 <link href="css/index.css" rel="stylesheet">
 
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<!-- Fav and touch icons -->
 
 
 
@@ -216,7 +209,7 @@
 				<h3>Errors:</h3>
 				<ul>
 					<% for(String msg: errorMsgs) { %>
-					<li><%=msg %></li>
+					<li  style = " list-style: none;"><%=msg %></li>
 					<% } %>
 				</ul>
 			</div>
@@ -231,12 +224,6 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
 
-
-	<!-- /container -->
-
-	<!-- Le javascript
-================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 	

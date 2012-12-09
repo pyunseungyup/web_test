@@ -4,7 +4,6 @@
 
 
 <%
-	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -14,7 +13,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	// 사용자 정보를 위한 변수 초기화
+
 	
 	String roomid= "";
 	 roomid = request.getParameter("roomid");
@@ -253,17 +252,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/showroom.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 
 <script src="js/jquery-1.8.2.min.js"></script>

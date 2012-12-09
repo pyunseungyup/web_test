@@ -4,7 +4,7 @@
 <%
 
 
-	// DB 접속을 위한 준비
+
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -16,7 +16,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	// 사용자 정보를 위한 변수 초기화
+
 	String dwishid="";
 	String dname = "" ; // 방이름 
 	String dlocation = ""; // 대학별 위치
@@ -60,7 +60,7 @@
 		
 	}
  finally {
-		// 무슨 일이 있어도 리소스를 제대로 종료
+		
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}

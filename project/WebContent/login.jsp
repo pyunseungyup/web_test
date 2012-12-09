@@ -76,12 +76,6 @@
    
 
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -115,40 +109,8 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
-	<% //if (session.getAttribute("userid") == null) %>
 
 
-	<% //if (session.getAttribute("userid") == null) { %>
-	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
-
-	<% //} else { %>
-	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-	<%//<jsp:forward page="index.jsp"></jsp:forward>
-		//}%>
-
-	<%//}%>
-
-
-	<%
-			/*
-    if (request.getMethod().equals("POST")) {
-	  //String id = request.getParameter("userid");
-	  //String pwd = request.getParameter("pwd");
-    
-	  if (userid == null || pwd == null || userid.length() == 0 || pwd.length() == 0) {
-		  response.sendRedirect("login.jsp");
-	  }
-	  
-  }
-			*/
-  %>
-  
-
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 </html>

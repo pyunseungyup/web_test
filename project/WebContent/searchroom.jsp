@@ -18,12 +18,7 @@
 <link href="css/index.css" rel="stylesheet">
 <link href="css/showroom.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -297,22 +292,7 @@ try {
 			
 			
 		
-			
-			
-			/*
-			rs.next();
-			numItems = rs.getInt(1);
-			
-			rs.close();
-			stmt.close();
 
-			stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location = ? and distance <= ? and kind = ? " +
-					"ORDER BY roomid ");
-			stmt.setString(1,location);
-			stmt.setInt(2,distance);
-			stmt.setString(3,kind);
-			rs = stmt.executeQuery();
-			*/
 			%>
 			
 			<div class="row-fluid marketing">
@@ -696,11 +676,7 @@ try {
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+	
 
 </body>
 
