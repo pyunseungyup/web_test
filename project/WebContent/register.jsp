@@ -19,6 +19,10 @@
 	String name = request.getParameter("name");
 	String phonenumber = request.getParameter("phonenumber");
 	
+	LacalEncrypter encrypter = new LocalEncrypter();
+	
+	pwd = encrypter.returnDecryptCode(pwd);
+	
 	List<String> errorMsgs = new ArrayList<String>(); 
 	
 	if (userid == null || userid.trim().length() == 0) {
