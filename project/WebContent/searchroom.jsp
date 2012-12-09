@@ -18,12 +18,7 @@
 <link href="css/index.css" rel="stylesheet">
 <link href="css/showroom.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
 
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -40,7 +35,7 @@
 
 	<div class="container-narrow">
 
-		<%@ include file="share/header.jsp"%>
+	
 		
 			<div class="jumbotron">
 			
@@ -241,7 +236,7 @@ try {
 				else {
 				%>
 					
-					<h1>  검색결과가없습니다.</h1>
+			
 					<h2 > 다시검색해주세요</h2>
 					
 					<div class="form-action">
@@ -275,7 +270,7 @@ try {
 					
 					%>
 						
-						<h1>  검색결과가없습니다.</h1>
+				
 						<h2 > 다시검색해주세요</h2>
 						
 						<div class="form-action">
@@ -297,22 +292,7 @@ try {
 			
 			
 		
-			
-			
-			/*
-			rs.next();
-			numItems = rs.getInt(1);
-			
-			rs.close();
-			stmt.close();
 
-			stmt = conn.prepareStatement("SELECT * FROM rooms WHERE location = ? and distance <= ? and kind = ? " +
-					"ORDER BY roomid ");
-			stmt.setString(1,location);
-			stmt.setInt(2,distance);
-			stmt.setString(3,kind);
-			rs = stmt.executeQuery();
-			*/
 			%>
 			
 			<div class="row-fluid marketing">
@@ -471,10 +451,18 @@ try {
 			}
 			
 			%>
+			<div class="alert alert-info">
+		
+ <span class="label label-info" style = " margin: 0 10px">검색 결과    : </span> 
+  <span class="label label-info" style = " margin: 0 10px">  대학별   </span> <%=location%>
+   <span class="label label-info" style = " margin: 0 10px">  타입별    </span> <%=kind%> 
+   <span class="label label-info" style = " margin: 0 10px">  거리별    </span>  <%=serchdistance%>
+
 			
-			<div>
-			검색 결과 : <%=location%><%=kind%><%=serchdistance%>
+	
 			</div>
+		
+			<hr>
 
 			<ul class="thumbnails">
 
@@ -688,11 +676,7 @@ try {
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+	
 
 </body>
 

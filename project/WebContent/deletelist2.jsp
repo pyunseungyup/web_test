@@ -20,12 +20,6 @@
 		String roomid= "";
 		int id = 0;
 	
-	//try {
-	//	id = Integer.parseInt(request.getParameter("id"));
-	//	} catch (NumberFormatException e) {
-	//		id = -1;
-			
-	//	}
 
 
 
@@ -80,15 +74,6 @@
       }
 
     </style>
-     <!-- Fav and touch icons -->
- 
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -129,42 +114,32 @@ try{
     	   roomid=rs.getString("roomid");
     	   %>
     	   
- <table class="tables" style="width: 232px">
-    	  <tr> 
-    	  <td class="span3" style="width: 220px">
-			  <div class="thumbnails">
-			  <center>	  
-				<a href="show.jsp?roomid=<%=roomid%>">
-			 	<img src="./upload/<%=photo%>"  alt="http://placehold.it/300x200"
-					width="150" height="200" ></a></center>	</div><td>
-				
-				
-				<tr>
-					 	<td><center>이름:<%=name%> </center>	</td>
-				</tr>
-				
-				<tr>
-					<td>	<center>지역:<%=location%></center>	</td> 
-				</tr> 
-			 
-			  <tr>
-			  <center>
-			      <td><center><a href="deletelist.jsp?id=<%=rs.getInt("id")%>" class="btn btn-mini">삭제</a>
-			      <a href="show.jsp?roomid=<%=roomid%>" class="btn btn-mini">보기</a></center>	</td>
-			  </center>
-			  </tr>
-				
-				 </table> 
+ 	<li class="span3" style="width: 210px">
+				<div class="thumbnails">
+					<a href="show.jsp?roomid=<%=roomid%>"> <img
+						src="./upload/<%=photo%>" alt="http://placehold.it/300x200"
+						width="150" height="200"></a>
+					<h3><%=location%></h3>
+					<p>
+						방이름:<%=name%><br /> 지역:
+						<%=location%><br />
+					</p>
+					<a href="deletelist.jsp?id=<%=rs.getInt("id")%>"
+						class="btn btn-mini">삭제</a> <a href="show.jsp?roomid=<%=roomid%>"
+						class="btn btn-mini">보기</a>
+				</div>
+			</li>
 		  	
 		<%
 		
    }
    %>
+   </ul>
 
    <%	
 }
    finally {
-		// 무슨 일이 있어도 리소스를 제대로 종료
+
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
@@ -175,11 +150,7 @@ try{
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
+	
 
 </body>
 </html>

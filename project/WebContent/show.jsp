@@ -4,7 +4,6 @@
 
 
 <%
-	// DB 접속을 위한 준비
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -14,9 +13,13 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	// 사용자 정보를 위한 변수 초기화
+
 	
 	String roomid= "";
+	roomid = request.getParameter("roomid");
+	 
+	 
+	 
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
@@ -36,20 +39,15 @@
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
 	String dbuserid = "";
-  roomid = request.getParameter("roomid");
-  
-  if (session.getAttribute("s_userid")!=null) {
-		userid = session.getAttribute("s_userid").toString();
-  }
-
-
+ 
+	if(session.getAttribute("s_userid") != null ){
+	userid = session.getAttribute("s_userid").toString();
+	}
+	
   try {
 	  
 	
-		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);	
-		
-		
-		
+		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);			
 		
 		stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomid=?");
 		stmt.setString(1, roomid);
@@ -73,7 +71,8 @@
 		lat =rs.getString("lat");
 		lng =rs.getString("lng");
 		
-		
+		rs.close();
+		stmt.close();
 		
 		String[] facilities = facility.split(",");
   	
@@ -250,17 +249,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/showroom.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 
 <script src="js/jquery-1.8.2.min.js"></script>
@@ -357,7 +350,23 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 	     <div class="picture">			
-	     	<h2>방상세보기</h2>	
+	     
+	     <h2><%=name%>Room</h2>
+	
+	     	
+	     	<div style="width :230px ; padding : 50px 0 0 470px">
+				
+				<%if(dbuserid.equals(userid)){%>
+				  
+				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn">wishlist</a>
+				 
+				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn">update</a>
+
+					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn btn-danger" data-action="delete">delete</a>
+ 
+				<%} %>
+				</div>
+	     	
 
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
@@ -365,7 +374,7 @@
 
       
 				<div class="main_title">
-					<h3 style="padding-left: 20px">판매자정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px">판매자정보</h3>
 				</div>
         	
 				<div class="basic_information">
@@ -378,7 +387,7 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px;">방기본정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px;">방기본정보</h3>
 				</div>
 
 
@@ -402,7 +411,6 @@
 
 				<div class="basic_information">
 
-
 			
 					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong><span>
 					<%
@@ -423,7 +431,7 @@
 
 
 				<div class="main_title_1">
-					<h3 style="padding-left: 20px">방상세정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information_1">
@@ -480,19 +488,7 @@
 				
 
 
-				<div style="margin : 50px 0 0 500px">
-				
-				<%if(dbuserid.equals(userid)){%>
-				  
-				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn-mini">wishlist</a>
-				  
-				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn-mini">update</a>
-
-					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
-
-				<%} %>
-				</div>
-
+		
 						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
@@ -505,7 +501,7 @@
 	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
-</html>
+
 <%
 	}finally {
 		// 무슨 일이 있어도 리소스를 제대로 종료
@@ -514,3 +510,4 @@
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
 %>
+</html> 

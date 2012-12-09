@@ -3,6 +3,28 @@
 	import="org.apache.commons.lang3.StringUtils"%>
 
 
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+
+<meta charset="utf-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+
+<link href="css/bootstrap.css" rel="stylesheet">
+<link href="css/index.css" rel="stylesheet">
+
+
+
+
+
+<title>Errors</title>
+</head>
+
+<body>
+
 <%
 	// DB 접속을 위한 준비
 	Connection conn = null;
@@ -43,20 +65,49 @@
 		stmt = conn.prepareStatement("SELECT * FROM users WHERE userid =?");
 		stmt.setString(1, userid);
 		rs= stmt.executeQuery();
-		rs.next();
-		
-		dbuserid=rs.getString("userid");
-		dbpwd=rs.getString("pwd");
-		dbname=rs.getString("name");		
-		int dbid = rs.getInt("id"); 
+		if(rs.next()){
+			dbuserid=rs.getString("userid");
+			dbpwd=rs.getString("pwd");
+			dbname=rs.getString("name");		
+			int dbid = rs.getInt("id"); 
+		}
 	
-		if(dbpwd.equals(pwd) && dbuserid.equals(userid)){
+		
+		 if(dbpwd.equals(pwd) && dbuserid.equals(userid)){
 			session.setAttribute("s_userid", userid);	
 			session.setAttribute("s_name", dbname);	
 			response.sendRedirect("index.jsp");
-	}else{		
-			response.sendRedirect("login.jsp");		
-	}
+			
+		}else{		
+			%>
+			<div class="container-narrow">
+
+			<jsp:include page="share/header.jsp"></jsp:include>
+
+
+			<div class="jumbotron">
+
+				<div class="alert alert-error">
+					<h3>Errors:</h3>
+					<ul>
+					
+						<li  style = " list-style: none;">등록된 아이디가 없습니다.</li>
+					
+					</ul>
+				</div>
+				<div class="form-action">
+					<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
+				</div>
+			</div>
+
+
+
+
+
+			<jsp:include page="share/footer.jsp"></jsp:include>
+		</div>
+<%
+		}
 		
 			
 		}catch (SQLException e){
@@ -71,40 +122,8 @@
 	else{
 		%>
 
-<!DOCTYPE html>
-<html lang="ko">
-<head>
-
-<meta charset="utf-8">
-
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<meta name="description" content="">
-<meta name="author" content="">
-
-<!-- Le styles -->
-<link href="css/bootstrap.css" rel="stylesheet">
-<link href="css/index.css" rel="stylesheet">
-
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
-
-
-
-<title>Errors</title>
-</head>
-
-<body>
-
-
 
 	<div class="container-narrow">
-
-
 
 		<jsp:include page="share/header.jsp"></jsp:include>
 
@@ -115,7 +134,7 @@
 				<h3>Errors:</h3>
 				<ul>
 					<% for(String msg: errorMsgs) { %>
-					<li><%=msg %></li>
+					<li  style = " list-style: none;"><%=msg %></li>
 					<% } %>
 				</ul>
 			</div>
@@ -131,40 +150,6 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
 
-	<% //if (session.getAttribute("userid") == null) %>
-
-
-	<% //if (session.getAttribute("userid") == null) { %>
-	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
-
-	<% //} else { %>
-	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-	<%//<jsp:forward page="index.jsp"></jsp:forward>
-		//}%>
-
-	<%//}%>
-
-
-	<%
-			/*
-    if (request.getMethod().equals("POST")) {
-	  //String id = request.getParameter("userid");
-	  //String pwd = request.getParameter("pwd");
-    
-	  if (userid == null || pwd == null || userid.length() == 0 || pwd.length() == 0) {
-		  response.sendRedirect("login.jsp");
-	  }
-	  
-  }
-			*/
-  %>
-
-
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
 </html>
@@ -173,6 +158,5 @@
 
 <%
 	}
-		
 		%>
 

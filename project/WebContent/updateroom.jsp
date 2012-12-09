@@ -16,7 +16,7 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	// 사용자 정보를 위한 변수 초기화
+
 	
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
@@ -31,6 +31,7 @@
 	String lat = ""; // google 맵 위도 정보
 	String lng = ""; // google 맵 경도 정보
 	String deposit ="";
+	
 	int roomid = 0;
 	try {
 	roomid = Integer.parseInt(request.getParameter("roomid"));
@@ -38,7 +39,7 @@
 		roomid = -1;
 		
 	}
-
+	
  try {
 		
 	  
@@ -62,7 +63,7 @@
 		deposit = rs.getString("deposit");
 		}
 	}finally {
-		// 무슨 일이 있어도 리소스를 제대로 종료
+
 		if (rs != null) try{rs.close();} catch(SQLException e) {}
 		if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
@@ -82,12 +83,6 @@
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -178,7 +173,7 @@
 </script>
 
 
-<title>Project Main</title>
+<title>updateroom</title>
 </head>
 
 <body>
@@ -190,7 +185,7 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 
-	
+
 
 		<form action="roomDBupdate.jsp" method="post"
 			enctype="multipart/form-data">
@@ -198,13 +193,13 @@
 			<fieldset>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px; margin-top: 50px">방기본정보</h3>
+					<h3 class="btn btn-large btn-success"  style="padding-left: 20px; margin-top: 50px">방기본정보</h3>
 				</div>
 
 
 				<div class="basic_information">
 
-						<label>인근 대학<strong style="color: red"> *</strong></label> <select
+						<label class="btn btn-small btn-primary disabled">인근 대학<strong style="color: red"> *</strong></label> <select
 						name="location">
 						<option value=""></option>
 						<option value="seoul">서울대</option>
@@ -272,7 +267,7 @@
 				</div>
 
 				<div class="basic_information">
-					<label>거리(도보 기준) <strong style="color: red"> *</strong></label> 
+					<label class="btn btn-small btn-primary disabled">거리(도보 기준) <strong style="color: red"> *</strong></label> 
 				
 					<input type="radio" name="distance" value="5">5분 이내 <input
 						type="radio" name="distance" value="10">10분 이내 <input
@@ -280,7 +275,7 @@
 						type="radio" name="distance" value="30">30분 이내
 				</div>
 				<div class="basic_information">
-					<label>객실 타입<strong style="color: red"> *</strong></label> <select
+					<label class="btn btn-small btn-primary disabled">객실 타입<strong style="color: red"> *</strong></label> <select
 						name="type">
 						<option value=""></option>
 						<option value="rented room">자취</option>
@@ -289,7 +284,7 @@
 					</select>
 				</div>
 				<div class="basic_information">
-					<label>객실 종류<strong style="color: red"> *</strong></label> <select
+					<label class="btn btn-small btn-primary disabled">객실 종류<strong style="color: red"> *</strong></label> <select
 						name="kind">
 						<option value=""></option>
 						<option value="officetel">오피스텔</option>
@@ -302,7 +297,7 @@
 				
 
 				<div class="basic_information">
-					<label>가격 정보<strong style="color: red"> *</strong></label>
+					<label class="btn btn-small btn-primary disabled">가격 정보<strong style="color: red"> *</strong></label>
 
 	<table id="tab">
 						<tr>
@@ -325,17 +320,17 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px">방 상세정보</h3>
+					<h3 class="btn btn-large btn-success"  style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information">
-					<label>방 이름<strong style="color: red"> *</strong></label> <input
+					<label class="btn btn-small btn-primary disabled">방 이름<strong style="color: red"> *</strong></label> <input
 						type="text" name="name" value=<%=name %>>
 
 				</div>
 
 				<div class="basic_information">
-					<label>주소<strong style="color: red"> *</strong></label>
+					<label class="btn btn-small btn-primary disabled">주소<strong style="color: red"> *</strong></label>
 					<div id="container">
 						<input id="searchTextField" name="address" value="<%=address%>" style="width: 80%;"
 							title="목적지를 입력해주세요." />
@@ -345,38 +340,38 @@
 				</div>
 
 				<div class="basic_information">
-					<label>시설</label>
+					<label class="btn btn-small btn-primary disabled">시설</label>
 					<table>
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="tv">TV</span></td>
+									type="checkbox" name="facility" value="tv">TV</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="internet">인터넷</span></td>
+									type="checkbox" name="facility" value="internet">인터넷</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="gas range">가스렌지</span>
+									type="checkbox" name="facility" value="gasrange">가스렌지</span>
 							</td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="air_conditioner">
+									type="checkbox" name="facility" value="air_conditioner">
 									에어컨 </span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="refrigerator">냉장고
+									type="checkbox" name="facility" value="refrigerator">냉장고
 							</span></td>
 							<td class="facilities_item"><span class="facilities">
-									<input type="checkbox" name="facility " value="washing_machine">세탁기
+									<input type="checkbox" name="facility" value="washing_machine">세탁기
 							</span></td>
 						</tr>
 
 						<tr>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="drying_rack">건조대</span>
+									type="checkbox" name="facility" value="drying_rack">건조대</span>
 							</td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="parking">주차장</span></td>
+									type="checkbox" name="facility" value="parking">주차장</span></td>
 							<td class="facilities_item"><span class="facilities"><input
-									type="checkbox" name="facility " value="bathtub">욕조</span></td>
+									type="checkbox" name="facility" value="bathtub">욕조</span></td>
 						</tr>
 					</table>
 
@@ -385,15 +380,19 @@
 					
 
 				<div class="basic_information">
-				<div id='previewId'
+					<div id='previewId'
  				style = "padding : 30px  70px;"
 				 >
 				</div>
-					<label>사진 올리기</label> <input type="File" name="photo"  />
+
+					<label class="btn btn-small btn-primary disabled">사진</label> <input type="File" name="photo" onchange="previewImage(this,'previewId')">
+
+			
+
 				</div>
 
 				<div class="basic_information">
-					<label>소개</label>
+					<label class="btn btn-small btn-primary disabled">소개</label>
 					<div>
 						<textarea rows="5" name="description"  ><%=description %></textarea>
 					</div>
@@ -403,7 +402,7 @@
 					<input type="hidden" name="lng" id="lng" value ="<%=lng%>" />
 				<input type ="hidden" name="lat" id="lat" value ="<%=lat%>" />
 			  	<input type ="hidden" name="roomid" id="roomid" value ="<%=roomid%>" />
-			<input type="submit" class="btn btn-mini disabled" value="정보수정" />
+			<input type="submit"  class="btn btn-large btn-primary"  value="정보수정" />
 			</fieldset>
 			
 		</form>
@@ -414,12 +413,7 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
+	
 
 </body>
 
@@ -534,6 +528,7 @@ $(function() {
 		
 	
 		$('input:radio[name="distance"][value=<%=distance%>]').attr('checked', true);
+		
 		$('#price').click(
 				function() {
 					$("tr input[type='checkbox']").each(

@@ -10,14 +10,14 @@
 
 
   
-	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
+	int sizeLimit = 5 * 1024 * 1024 ;
 	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, "utf-8" , new DefaultFileRenamePolicy());
 	
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
 	
-	//multi.setCharacterEncoding("euc-kr");
+
 	
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun?characterEncoding=utf8";
 	String dbUser = "bnb";
@@ -59,24 +59,7 @@
 	String[] facility = multi.getParameterValues("facility");
 	
 	String favoriteStr = StringUtils.join(facility, ",");
-	/*
-multi.setCharacterEncoding("euc-kr");
-location= new String(multi.getParameter("location").getBytes("EUC-KR"),"UTF-8"));
-name= new String(multi.getParameter("name").getBytes("EUC-KR"),"UTF-8"));
-distance= new String(multi.getParameter("distance").getBytes("EUC-KR"),"UTF-8"));
-type= new String(multi.getParameter("type").getBytes("EUC-KR"),"UTF-8"));
-price= new String(multi.getParameter("price").getBytes("EUC-KR"),"UTF-8"));
-deposit= new String(multi.getParameter("deposit").getBytes("EUC-KR"),"UTF-8"));
-address= new String(multi.getParameter("address").getBytes("EUC-KR"),"UTF-8"));
-description= new String(multi.getParameter("description").getBytes("EUC-KR"),"UTF-8"));
-lat= new String(multi.getParameter("lat").getBytes("EUC-KR"),"UTF-8"));
-lng= new String(multi.getParameter("lng").getBytes("EUC-KR"),"UTF-8"));
-photo= new String(multi.getParameter("photo").getBytes("EUC-KR"),"UTF-8"));
 
-String[] facility = multi.getParameterValues("facility");
-
-String favoriteStr = StringUtils.join(facility, ",");
-*/
 	 
 	 
    Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
@@ -89,7 +72,7 @@ String favoriteStr = StringUtils.join(facility, ",");
 	List<String> errorMsgs = new ArrayList<String>(); 
 	
 	
-	System.out.println(location);
+
 	
 	
 	if(location.equals("not")){
@@ -119,23 +102,20 @@ String favoriteStr = StringUtils.join(facility, ",");
 	if(favoriteStr == null){
 		errorMsgs.add("시설을 선택해 주세요.");
 	}
-
+	if(fileName == null){
+		errorMsgs.add("사진을 선택해 주세요.");
+	}
 	
-	if(facility!=(null)){
+	
+	
+	if(distance!=(null)){
 		int_distan = Integer.parseInt(distance); 
 	}
 	
 	
 	if (errorMsgs.size() == 0) {
 		try {
-			/*
-			stmt = conn.prepareStatement("SELECT userid FROM users WHERE userid=?");
-			stmt.setString(1,userid);
-			rs= stmt.executeQuery();
-			rs.next();
-			userid= rs.getString("userid");	
-			*/
-			
+		
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
 				}catch(ClassNotFoundException e){
@@ -175,8 +155,11 @@ String favoriteStr = StringUtils.join(facility, ",");
 			
 			
 		
-		} finally {
-			// 무슨 일이 있어도 리소스를 제대로 종료
+		} catch (SQLException e) {
+			errorMsgs.add("SQL 에러: " + e.getMessage());
+		}
+		finally {
+	
 			if (rs != null) try{rs.close();} catch(SQLException e) {}
 			if (stmt != null) try{stmt.close();} catch(SQLException e) {}
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
@@ -200,13 +183,6 @@ String favoriteStr = StringUtils.join(facility, ",");
 <link href="css/index.css" rel="stylesheet">
 
 
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-  <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-<![endif]-->
-
-<!-- Fav and touch icons -->
-
 
 
 <title>Errors</title>
@@ -229,7 +205,7 @@ String favoriteStr = StringUtils.join(facility, ",");
 				<h3>Errors:</h3>
 				<ul>
 					<% for(String msg: errorMsgs) { %>
-					<li><%=msg %></li>
+					<li style = " list-style: none;"><%=msg %></li>
 					<% } %>
 				</ul>
 			</div>
@@ -245,43 +221,8 @@ String favoriteStr = StringUtils.join(facility, ",");
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
 
-	<% //if (session.getAttribute("userid") == null) %>
-
-
-	<% //if (session.getAttribute("userid") == null) { %>
-	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
-
-	<% //} else { %>
-	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-	<%//<jsp:forward page="index.jsp"></jsp:forward>
-	//}%>
-
-	<%//}%>
-
-
-	<%
-		/*
-if (request.getMethod().equals("POST")) {
-  //String id = request.getParameter("userid");
-  //String pwd = request.getParameter("pwd");
-
-  if (userid == null || pwd == null || userid.length() == 0 || pwd.length() == 0) {
-	  response.sendRedirect("login.jsp");
-  }
-  
-}
-		*/
-%>
-
-
-	<!-- /container -->
-
-	<!-- Le javascript
-================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
 </body>
-</html>
+
 
 
 
@@ -290,4 +231,4 @@ if (request.getMethod().equals("POST")) {
 	
 	%>
 
-
+</html>

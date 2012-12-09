@@ -13,27 +13,16 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
 
 
 </head>
-
-
-
-
 
 <body>
 
@@ -63,8 +52,6 @@
 	String description = "" ; // 설명
 	String photo = "" ; // 사진 	
   String phonenumber = ""; 
-	
-	
 	
 	int pageNo = 1;
 
@@ -187,8 +174,6 @@
 		</div>
 		<hr>
 
-
-
 		<%
     try {
 
@@ -214,24 +199,7 @@
 								+ startPos + ", " + numInPage);
 				rs = stmt.executeQuery();
 				
-				 /*
-			      while(rs.next()){
-			      	
-						roomid=rs.getInt("roomid");
-						userid=rs.getString("userid");
-						roomname = rs.getString("name");
-						location = rs.getString("location");
-						distance = rs.getString("distance");
-						type =rs.getString("type");
-						kind =rs.getString("kind");
-						price = rs.getString("price");
-						address = rs.getString("address");
-						facility = rs.getString("facility");
-						description = rs.getString("description");
-						photo = rs.getString("photo");		
-			     
-
-		        }*/%>
+		%>
 
 		<div class="row">
 			<div class="span12 page-info">
@@ -442,7 +410,7 @@
 		<div class="pagination pagination-centered">
 			<ul>
 				<%
-					// 페이지 네비게이션을 위한 준비
+	
 						int startPageNo, endPageNo;
 						int delta = 5;
 						startPageNo = (pageNo <= delta) ? 1 : pageNo - delta;
@@ -452,7 +420,7 @@
 							endPageNo = numPages;
 						}
 
-						// 이전 페이지로
+					
 						if (pageNo <= 1) {
 				%>
 				<li class="disabled"><a href="#">&laquo;</a></li>
@@ -463,7 +431,7 @@
 				<%
 					}
 
-						// 페이지 목록 출력 (현재-delta ~ 현재+delta까지)
+		
 						String className = "";
 						for (int i = startPageNo; i <= endPageNo; i++) {
 							className = (i == pageNo) ? "active" : "";
@@ -473,7 +441,7 @@
 							out.println("</li>");
 						}
 
-						// 다음 페이지로
+				
 						if (pageNo >= numPages) {
 				%>
 				<li class="disabled"><a href="#">&raquo;</a></li>
@@ -491,14 +459,7 @@
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
-
+	
 
 <%
  

@@ -13,18 +13,11 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
 
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 <script src="js/jquery-1.8.2.min.js"></script>
 <script src="js/bootstrap.min.js"></script>
@@ -337,7 +330,7 @@
 
 
 
-				<input type="submit" value="방 등록 하기">
+				<input  class="btn btn-large btn-primary"  type="submit" value="방 등록 하기">
 			</fieldset>
 		</form>
 		<% } %>
@@ -348,13 +341,7 @@
 		<jsp:include page="share/footer.jsp"></jsp:include>
 
 	</div>
-	<!-- /container -->
-
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
+	
 </body>
 <script type="text/javascript">
 

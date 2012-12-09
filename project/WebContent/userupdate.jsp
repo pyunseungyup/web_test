@@ -2,7 +2,7 @@
 	pageEncoding="UTF-8" import="java.sql.*" import="java.util.*"%>
 
 <%
-	// DB 접속을 위한 준비
+
 	Connection conn = null;
 	PreparedStatement stmt = null;
 	ResultSet rs = null;
@@ -21,9 +21,7 @@
 	String name = "" ;  
 	String phonenumber = "" ; 
 	String pwd_confirm = "";
-	//Date date;
-	
-	//id = request.getParameter("id");		
+		
 	s_userid=session.getAttribute("s_userid").toString();
 	userid = request.getParameter("userid");
 	pwd = request.getParameter("pwd");
@@ -36,23 +34,24 @@
 	List<String> errorMsgs = new ArrayList<String>();
 	
 	int result = 0;
-	
 	if (userid == null || userid.trim().length() == 0) {
-		errorMsgs.add("아이디를 다시  입력해주세요.");
+		errorMsgs.add("ID 반드시 입력해주세요.");
 	}
 	
-	if (pwd == null  || pwd_confirm == null  || !pwd.equals(pwd_confirm)) {
-		errorMsgs.add("패스워드을 다시  입력해주세요.");
-	}
+	
+	if (pwd == null || pwd.length() < 6 || !pwd.equals(pwd_confirm)) {
+		
+		errorMsgs.add("비밀번호는 다시 입력해주세요.");
+	} 
+	
 	
 	if (name == null || name.trim().length() == 0) {
-		errorMsgs.add("이름을 다시  입력해주세요.");
+		errorMsgs.add("Name 반드시 입력해주세요.");
 	}
 	
 	if (phonenumber == null || phonenumber.trim().length() == 0) {
-		errorMsgs.add("전화 번호을 다시  입력해주세요.");
+		errorMsgs.add("Phonenumber 반드시 입력해주세요.");
 	}
-
 	if (errorMsgs.size() == 0) {
   
   try {
@@ -69,7 +68,7 @@
 		stmt = conn.prepareStatement(
 				"UPDATE users " +
 				"SET userid=?, pwd=?, name=?, phonenumber=?"+
-						"WHERE userid = ?");
+						"WHERE userid =?");
 		
 		stmt.setString(1,  userid);
 		stmt.setString(2,  pwd);
@@ -116,17 +115,10 @@
 <meta name="description" content="">
 <meta name="author" content="">
 
-<!-- Le styles -->
+
 <link href="css/bootstrap.css" rel="stylesheet">
 <link href="css/index.css" rel="stylesheet">
 
-
-<!-- HTML5 shim, for IE6-8 support of HTML5 elements -->
-<!--[if lt IE 9]>
-      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-
-<!-- Fav and touch icons -->
 
 
 <script src="js/jquery-1.8.2.min.js"></script>
@@ -145,7 +137,7 @@
 				<h3>Errors:</h3>
 				<ul>
 					<% for(String msg: errorMsgs) { %>
-					<li><%=msg %></li>
+					<li  style = " list-style: none;"><%=msg %></li>
 					<% } %>
 				</ul>
 			</div>
@@ -158,19 +150,8 @@
 		<!-- /container -->
 	</div>
 
-	<!-- Le javascript
-    ================================================== -->
-	<!-- Placed at the end of the document so the pages load faster -->
-
-
-
 </body>
-
-
 </html>
-
-
-
 <% 
 }
 %>
