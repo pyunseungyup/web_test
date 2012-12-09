@@ -45,9 +45,9 @@
 	String name = request.getParameter("name");
 	String phonenumber = request.getParameter("phonenumber");
 	
-	LacalEncrypter encrypter = new LocalEncrypter();
+	//LacalEncrypter encrypter = new LocalEncrypter();
 	
-	pwd = encrypter.returnDecryptCode(pwd);
+	//pwd = encrypter.returnDecryptCode(pwd);
 	
 	List<String> errorMsgs = new ArrayList<String>(); 
 	//boolean result = false;
@@ -92,7 +92,7 @@
 			<%rs.close();
 			  stmt.close();
 							
-	}else{	  
+	  }else{	  
 				try {
 					  try{
 						Class.forName("com.mysql.jdbc.Driver");
