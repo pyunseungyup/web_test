@@ -337,7 +337,7 @@
 
 
 
-				<input type="submit" value="방 등록 하기">
+				<input  class="btn btn-large btn-primary"  type="submit" value="방 등록 하기">
 			</fieldset>
 		</form>
 		<% } %>

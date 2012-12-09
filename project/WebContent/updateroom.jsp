@@ -179,7 +179,7 @@
 </script>
 
 
-<title>Project Main</title>
+<title>updateroom</title>
 </head>
 
 <body>
@@ -191,11 +191,7 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 
-	<%
-	try{
-		
-	
-	%>
+
 
 		<form action="roomDBupdate.jsp" method="post"
 			enctype="multipart/form-data">
@@ -330,7 +326,7 @@
 				</div>
 
 				<div class="main_title">
-					<h3 class="btn btn-large btn-success"  style="padding-left: 20px">방 상세정보</h3>
+					<h3 class="btn btn-large btn-success"  style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information">
@@ -412,7 +408,7 @@
 					<input type="hidden" name="lng" id="lng" value ="<%=lng%>" />
 				<input type ="hidden" name="lat" id="lat" value ="<%=lat%>" />
 			  	<input type ="hidden" name="roomid" id="roomid" value ="<%=roomid%>" />
-			<input type="submit" class="btn btn disabled" value="정보수정" />
+			<input type="submit"  class="btn btn-large btn-primary"  value="정보수정" />
 			</fieldset>
 			
 		</form>
@@ -429,10 +425,7 @@
     ================================================== -->
 	<!-- Placed at the end of the document so the pages load faster -->
 
-<%}
-	
-	
-%>
+
 
 </body>
 

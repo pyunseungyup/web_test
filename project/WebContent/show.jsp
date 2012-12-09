@@ -41,8 +41,10 @@
   String phonenumber = ""; 
 	String dbuserid = "";
  
+	if(session.getAttribute("s_userid") != null ){
 	userid = session.getAttribute("s_userid").toString();
-
+	}
+	
   try {
 	  
 	
@@ -358,7 +360,23 @@
 		<jsp:include page="share/header.jsp"></jsp:include>
 
 	     <div class="picture">			
-	     	<h2>방상세보기</h2>	
+	     
+	     <h2><%=name%>Room</h2>
+	
+	     	
+	     	<div style="width :230px ; padding : 50px 0 0 470px">
+				
+				<%if(dbuserid.equals(userid)){%>
+				  
+				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn">wishlist</a>
+				 
+				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn">update</a>
+
+					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn btn-danger" data-action="delete">delete</a>
+ 
+				<%} %>
+				</div>
+	     	
 
 				<img src="./upload/<%=photo%>" width="340px" height="100px" 
 					alt="http://placehold.it/300x200" style = "float : left">
@@ -366,7 +384,7 @@
 
       
 				<div class="main_title">
-					<h3 style="padding-left: 20px">판매자정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px">판매자정보</h3>
 				</div>
         	
 				<div class="basic_information">
@@ -379,7 +397,7 @@
 				</div>
 
 				<div class="main_title">
-					<h3 style="padding-left: 20px;">방기본정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px;">방기본정보</h3>
 				</div>
 
 
@@ -423,7 +441,7 @@
 
 
 				<div class="main_title_1">
-					<h3 style="padding-left: 20px">방상세정보</h3>
+					<h3 class="btn btn-large btn-success" style="padding-left: 20px">방상세정보</h3>
 				</div>
 
 				<div class="basic_information_1">
@@ -480,19 +498,7 @@
 				
 
 
-				<div style="margin : 50px 0 0 500px">
-				
-				<%if(dbuserid.equals(userid)){%>
-				  
-				  <a href="wishlist.jsp?roomid=<%=roomid%>" class="btn btn-mini">wishlist</a>
-				  
-				  <a href="updateroom.jsp?roomid=<%=roomid%>" class="btn btn-mini">update</a>
-
-					<a href="roomdelete.jsp?roomid=<%=roomid%>" class="btn btn-mini btn-danger" data-action="delete">delete</a>
-
-				<%} %>
-				</div>
-
+		
 						
 
 		<jsp:include page="share/footer.jsp"></jsp:include>
@@ -514,4 +520,4 @@
 		if (conn != null) try{conn.close();} catch(SQLException e) {}
 	}
 %>
-</html>
+</html> 

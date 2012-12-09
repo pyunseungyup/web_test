@@ -473,10 +473,10 @@ try {
 			%>
 			<div class="alert alert-info">
 		
- <span class="label label-info" style = " margin: 0 5px">검색 결과   </span> 
-  <span class="label label-info" style = " margin: 0 5px">  대학별   : </span> <%=location%>
-   <span class="label label-info" style = " margin: 0 5px">  타입별   : </span> <%=kind%> 
-   <span class="label label-info" style = " margin: 0 5px">  거리별   : </span>  <%=serchdistance%>
+ <span class="label label-info" style = " margin: 0 10px">검색 결과    : </span> 
+  <span class="label label-info" style = " margin: 0 10px">  대학별   </span> <%=location%>
+   <span class="label label-info" style = " margin: 0 10px">  타입별    </span> <%=kind%> 
+   <span class="label label-info" style = " margin: 0 10px">  거리별    </span>  <%=serchdistance%>
 
 			
 	

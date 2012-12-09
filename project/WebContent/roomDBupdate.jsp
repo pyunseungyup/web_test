@@ -3,12 +3,11 @@
 	import="com.oreilly.servlet.MultipartRequest,com.oreilly.servlet.multipart.DefaultFileRenamePolicy"
 	import="org.apache.commons.lang3.StringUtils"%>
 
+
 <%
 	
 	String path= getServletContext().getRealPath("./upload");
 
-
-  
 	int sizeLimit = 5 * 1024 * 1024 ; // 5메가까지 제한 넘어서면 예외발생
 	MultipartRequest multi = new MultipartRequest(request, path, sizeLimit, "utf-8" , new DefaultFileRenamePolicy());
 	
@@ -22,16 +21,11 @@
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
 	
-	
-
-
 	String name = "" ; // 방이름 
 	String location = ""; // 대학별 위치
 	String userid = ""; // 유저 아이디 저장
 	String username = "" ; // 유저 네임 저장
-	
 	String distance =""; // 도보거리 기준 
-
 	String type = "" ; // 자취하숙등 타입
 	String kind = "" ; // 원룸투룸등
 	String price = "" ; // 가격
@@ -58,32 +52,13 @@
 	String[] facility = multi.getParameterValues("facility");
 	
 	String favoriteStr = StringUtils.join(facility, ",");
-	  Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
-		 String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
-		 String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
+	Enumeration formNames=multi.getFileNames();  // 폼의 이름 반환
+	String formName=(String)formNames.nextElement(); // 자료가 많을 경우엔 while 문을 사용
+	String fileName=multi.getFilesystemName(formName); // 파일의 이름 얻기
 	
 
 		
 
-	/*
-multi.setCharacterEncoding("euc-kr");
-location= new String(multi.getParameter("location").getBytes("EUC-KR"),"UTF-8"));
-name= new String(multi.getParameter("name").getBytes("EUC-KR"),"UTF-8"));
-distance= new String(multi.getParameter("distance").getBytes("EUC-KR"),"UTF-8"));
-type= new String(multi.getParameter("type").getBytes("EUC-KR"),"UTF-8"));
-price= new String(multi.getParameter("price").getBytes("EUC-KR"),"UTF-8"));
-deposit= new String(multi.getParameter("deposit").getBytes("EUC-KR"),"UTF-8"));
-address= new String(multi.getParameter("address").getBytes("EUC-KR"),"UTF-8"));
-description= new String(multi.getParameter("description").getBytes("EUC-KR"),"UTF-8"));
-lat= new String(multi.getParameter("lat").getBytes("EUC-KR"),"UTF-8"));
-lng= new String(multi.getParameter("lng").getBytes("EUC-KR"),"UTF-8"));
-photo= new String(multi.getParameter("photo").getBytes("EUC-KR"),"UTF-8"));
-
-String[] facility = multi.getParameterValues("facility");
-
-String favoriteStr = StringUtils.join(facility, ",");
-*/
-		
 	 
 	int roomid = Integer.parseInt(multi.getParameter("roomid").toString());
 	int int_distan=0;
@@ -124,13 +99,15 @@ String favoriteStr = StringUtils.join(facility, ",");
 		errorMsgs.add("사진을 선택해 주세요.");
 	}
 	
-	if(!distance.equals(null)){
-		int_distan=Integer.parseInt(distance.toString()); 
-	}
-	System.out.println(int_distan);
 	
-	if (errorMsgs.size() == 0) {
+
+	
+	if (errorMsgs.size() == 0){
 		try {
+			
+			if(!distance.equals(null)){
+				int_distan=Integer.parseInt(distance.toString()); 
+			}
 		
 			try{
 				Class.forName("com.mysql.jdbc.Driver");
@@ -163,15 +140,17 @@ String favoriteStr = StringUtils.join(facility, ",");
 			 
 
 			if (result == 0) {
-				response.sendRedirect("room.jsp");
-			}else
+				response.sendRedirect("updateroom.jsp");
+		
+		}else
 				response.sendRedirect("index.jsp");
 			
 			
 		
 		}catch (SQLException e) {
-			errorMsg = "SQL 에러: " + e.getMessage()
-		}
+		
+			errorMsgs.add("SQL 에러: " + e.getMessage());
+		} 
 		
 		finally {
 			// 무슨 일이 있어도 리소스를 제대로 종료
@@ -180,8 +159,13 @@ String favoriteStr = StringUtils.join(facility, ",");
 			if (conn != null) try{conn.close();} catch(SQLException e) {}
 		
 	}
-	}else{
+	}
+	
+	
 	%>
+
+
+	
 
 <!DOCTYPE html>
 <html lang="ko">
@@ -219,10 +203,15 @@ String favoriteStr = StringUtils.join(facility, ",");
 
 
 		<jsp:include page="share/header.jsp"></jsp:include>
+		
+	
+	
 
 
 		<div class="jumbotron">
-
+		
+		<div id="center">
+			<% if (errorMsgs.size() > 0) { %>
 			<div class="alert alert-error">
 				<h3>Errors:</h3>
 				<ul>
@@ -234,42 +223,13 @@ String favoriteStr = StringUtils.join(facility, ",");
 			<div class="form-action">
 				<a onclick="history.back();" class="btn">뒤로 돌아가기</a>
 			</div>
+			
+		 <%} %>
 		</div>
 
-
-
-
-
+</div>
 		<jsp:include page="share/footer.jsp"></jsp:include>
 	</div>
-
-	<% //if (session.getAttribute("userid") == null) %>
-
-
-	<% //if (session.getAttribute("userid") == null) { %>
-	<% //<jsp:forward page="login.jsp"></jsp:forward> %>
-
-	<% //} else { %>
-	<%//if(request.getParameter("userid")==userid && request.getParameter("pwd")==pwd){%>
-	<%//<jsp:forward page="index.jsp"></jsp:forward>
-	//}%>
-
-	<%//}%>
-
-
-	<%
-		/*
-if (request.getMethod().equals("POST")) {
-  //String id = request.getParameter("userid");
-  //String pwd = request.getParameter("pwd");
-
-  if (userid == null || pwd == null || userid.length() == 0 || pwd.length() == 0) {
-	  response.sendRedirect("login.jsp");
-  }
-  
-}
-		*/
-%>
 
 
 	<!-- /container -->
@@ -279,11 +239,6 @@ if (request.getMethod().equals("POST")) {
 	<!-- Placed at the end of the document so the pages load faster -->
 
 </body>
-
-
-
-<%
-}
-	%>
+	
 
 </html>
