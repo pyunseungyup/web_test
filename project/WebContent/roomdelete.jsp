@@ -14,7 +14,7 @@
 	String dbUrl = "jdbc:mysql://localhost:3306/bnbun";
 	String dbUser = "bnb";
 	String dbPassword = "bnbun";
-	
+	String droomid=request.getParameter("roomid");
 	request.setCharacterEncoding("utf-8");
 
 	int roomid = 0;
@@ -29,6 +29,16 @@
 		stmt.setInt(1,  roomid);
 		
 		result=stmt.executeUpdate();
+		
+		if(result!=0){
+	
+			conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);
+			stmt = conn.prepareStatement("DELETE FROM wish WHERE roomid=?");
+			stmt.setString(1, droomid);
+			
+			result=stmt.executeUpdate();
+			
+		}
 	
 	} finally {
 
