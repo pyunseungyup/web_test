@@ -76,6 +76,7 @@
 		 if(dbpwd.equals(pwd) && dbuserid.equals(userid)){
 			session.setAttribute("s_userid", userid);	
 			session.setAttribute("s_name", dbname);	
+			response.sendRedirect("index.jsp");
 			
 		}else{		
 			%>

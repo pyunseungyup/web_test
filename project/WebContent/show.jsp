@@ -16,7 +16,7 @@
 
 	
 	String roomid= "";
-	 roomid = request.getParameter("roomid");
+	roomid = request.getParameter("roomid");
 	 
 	 
 	 
@@ -47,10 +47,7 @@
   try {
 	  
 	
-		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);	
-		
-		
-		
+		conn = DriverManager.getConnection(dbUrl, dbUser, dbPassword);			
 		
 		stmt = conn.prepareStatement("SELECT * FROM rooms WHERE roomid=?");
 		stmt.setString(1, roomid);
